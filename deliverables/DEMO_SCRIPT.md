@@ -70,8 +70,16 @@ Then point at card ④ (Multi-commodity lens):*
 
 > "And the framework isn't oil-specific. The same disruption, scored across every
 > strategic import — Hormuz isn't just a crude problem: it carries **53 percent of
-> India's LNG** too. Malacca? That's the pharma and semiconductor artery. One
-> engine, any material."
+> India's LNG** too. Malacca? That's the pharma and semiconductor artery."
+
+*Action: click "Red Sea suspension":*
+
+> "Here's the proof it discriminates: suspend the Red Sea — the brief's own
+> scenario — and India's crude barely moves, it sails the Cape. But cooking oil
+> lights up: eighteen percent, the Black Sea sunflower artery. One engine, any
+> material — and it knows the difference. And card ⑤: the executive brief writes
+> itself from the engine's numbers — including the SPR scheduler's verdict:
+> hold, bridge, or ration, with the exact drawdown rate."
 
 ## SHOT 6.5 — Knowledge graph (2:40–2:55) · click "Knowledge graph" toggle (top-right)
 > "Under everything sits a knowledge graph — fifty nodes, a hundred and sixty-three
@@ -84,9 +92,9 @@ hover Russia (grade + volumes). Switch back to "Live map" before the next shot.*
 
 ## SHOT 7 — Proof & close (2:55–3:15) · switch to terminal
 > Run: `python run_validate.py` — let the green checks scroll.
-> "Forty-five automated checks — every claim falsifiable. Real government data.
-> Two domain experts. India's energy lifeline has no helmsman for the storm.
-> Now it does. KARNADHAR."
+> "Fifty automated checks — every claim falsifiable, re-run in CI on every push.
+> Real government data. Two domain experts. India's energy lifeline has no
+> helmsman for the storm. Now it does. KARNADHAR."
 
 *(Optional 5s bonus if pacing allows: `python run_demo.py` — the curated
 head-to-head where the wedge is worth $3.15M/day of protected yield; say

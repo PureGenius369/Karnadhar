@@ -348,8 +348,8 @@ function foot(s, txt) {
     s.addText(r[2], { x: 8.75, y: y + 0.12, w: 3.8, h: 0.85, fontFace: F, fontSize: 12, color: MUT, margin: 0, valign: 'middle', lineSpacing: 15 });
   });
 
-  s.addText('An honest engine: when a shock is too severe to reroute around, KARNADHAR quantifies the gap instead of pretending — because “you must cut demand by X” is the most decision-useful output there is.', {
-    x: 0.6, y: 6.85, w: 12.1, h: 0.5, fontFace: F, fontSize: 12.5, italic: true, color: TEAL, margin: 0,
+  s.addText('Also modelled: the brief’s Red Sea suspension — India’s crude barely moves (Cape-routed), but the commodity lens shows who is hit: Black-Sea edible oils (18%). And when a shock is too severe to reroute around, KARNADHAR quantifies the gap — the SPR scheduler answers hold / bridge / ration with a drawdown rate.', {
+    x: 0.6, y: 6.8, w: 12.1, h: 0.6, fontFace: F, fontSize: 12, italic: true, color: TEAL, margin: 0, lineSpacing: 15,
   });
   s.addNotes('The engine generalizes — any chokepoint, any supplier sanction, any combination, all on the real customs-data model. Notice two things no dashboard gives you. First, honesty: in the compound shock the naive plan pretends to fill the gap with 546,000 barrels a day of crude the refineries cannot run; we count only usable barrels and state the true shortfall — 2,166. Second, the decision layer: the optimizer prices the reroute in tankers — plus 66 VLCC-equivalents — and its shadow prices name the scarcest barrel. That is what makes it usable for policy.');
 }
@@ -368,7 +368,7 @@ function foot(s, txt) {
     ['Cut vs alive routes', 'every supply corridor recolours the instant a scenario changes', RED],
     ['Knowledge-graph view', 'toggle to the 50-node supplier→strait→refinery graph; threat edges glow per scenario', PURPLE],
     ['Multi-commodity lens', 'same disruption scored across 8 strategic imports — Hormuz hits 53% of LNG too', AMBER],
-    ['Decision layer', 'LP shadow prices, usable shortfall, VLCC ton-mile cost — live on every scenario', TEAL],
+    ['Decision layer', 'shadow prices, VLCC ton-mile, SPR drawdown schedule + executive brief — on every scenario', TEAL],
   ];
   feats.forEach((f, i) => {
     const y = 1.95 + i * 1.0;
@@ -389,16 +389,16 @@ function foot(s, txt) {
 
   panel(s, 0.6, 1.9, 5.9, 4.6);
   s.addText('AUTOMATED VALIDATION', { x: 0.9, y: 2.1, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, bold: true, color: DIM, charSpacing: 2, margin: 0 });
-  s.addText('45 / 45', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
+  s.addText('50 / 50', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
   s.addText('checks passed — one command, exit-code gated, run in CI on every push', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 12, color: MUT, margin: 0 });
   const checks = [
     'wedge holds: naive infeasible for grade reasons, LP optimal',
-    'cascade monotonic; bypass nuance; twin-deficit wired',
+    'cascade monotonic; bypass nuance; sensitivity band; twin deficit',
     'signal alert precedes market repricing on real data',
     'real-diet integrity: 46% exposure, configs sane',
-    'engine admits unmet demand under compound shocks',
+    'engine admits unmet demand; SPR scheduler holds/bridges/rations',
     'decision layer proven: shadow prices · VLCC ton-mile · usable shortfall',
-    'multi-commodity lens generalises (8 imports, one framework)',
+    'multi-commodity lens generalises — Red Sea spares crude, hits edible oils',
   ];
   s.addText(checks.map((c, i) => ({ text: c, options: { bullet: { code: '2713' }, color: MUT, breakLine: i < checks.length - 1 } })),
     { x: 0.95, y: 3.6, w: 5.35, h: 2.7, fontFace: F, fontSize: 12.5, margin: 0, paraSpaceAfter: 8 });

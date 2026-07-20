@@ -112,6 +112,21 @@ export default function WarMap({ data, scenario }: { data: any; scenario: any })
           'line-opacity': ['case', ['get', 'cut'], 0.85, 0.4],
         },
       });
+      // Hormuz bypass pipelines (EIA): Saudi Petroline (Abqaiq->Yanbu, ~5 Mb/d)
+      // + UAE ADCOP (Habshan->Fujairah, ~1.5 Mb/d) — the cascade's 6.5 Mb/d
+      // "bypass" nuance, drawn where it physically exists
+      m.addSource('pipes', {
+        type: 'geojson', data: {
+          type: 'FeatureCollection', features: [
+            { type: 'Feature', properties: { name: 'Petroline (Saudi E-W, ~5 Mb/d)' }, geometry: { type: 'LineString', coordinates: [[49.67, 25.94], [38.06, 24.09]] } },
+            { type: 'Feature', properties: { name: 'ADCOP (Habshan-Fujairah, ~1.5 Mb/d)' }, geometry: { type: 'LineString', coordinates: [[53.61, 23.75], [56.35, 25.17]] } },
+          ],
+        } as any,
+      });
+      m.addLayer({
+        id: 'pipes', type: 'line', source: 'pipes',
+        paint: { 'line-color': '#3b8bd4', 'line-width': 2, 'line-dasharray': [1.6, 1.2], 'line-opacity': 0.85 },
+      });
       m.addSource('sources', { type: 'geojson', data: srcFC(data, scenario) });
       m.addLayer({
         id: 'sources', type: 'circle', source: 'sources',

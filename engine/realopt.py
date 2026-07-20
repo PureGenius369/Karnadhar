@@ -204,8 +204,10 @@ def grade_plan(refs, crudes, d) -> tuple[Plan, str, list]:
     plan = {r.name: {} for r in refs}
     for (rn, cn), v in x.items():
         val = v.value() or 0
+        # 0.01 kb/d (=10 bbl/day) granularity: coarser rounding distorts blend
+        # ratios at small refineries whose gap is only a few kb/d
         if val > 0.05:
-            plan[rn][cn] = round(val, 1)
+            plan[rn][cn] = round(val, 2)
 
     # shadow prices of scarce supply (stage-2 duals; <=0 for a <= constraint,
     # so -pi = $k/day saved per extra kb/d made available)
@@ -234,4 +236,10 @@ def scenarios() -> dict:
         "hormuz_russia": Disruption("Hormuz closure + Russia sanctioned",
                                     blocked_chokepoints={"Hormuz"}, sanctioned_countries={"RUSSIA"},
                                     scramble_premium_usd=12),
+        # named in the brief ("Red Sea shipping suspension"). The result is the
+        # insight: India's CRUDE barely moves (Cape-routed), but the commodity
+        # lens shows who actually gets hit (Black-Sea edible oils via Suez).
+        "red_sea": Disruption("Red Sea suspension (Bab-el-Mandeb + Suez)",
+                              blocked_chokepoints={"Bab-el-Mandeb", "Suez"},
+                              scramble_premium_usd=3),
     }

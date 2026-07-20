@@ -84,6 +84,11 @@ def main() -> int:
           rows[-1].stressed_cad_pct_gdp > 5.0, f"{rows[-1].stressed_cad_pct_gdp}%")
     check("zero closure = zero impact (sanity)",
           rows[0].brent_usd == p.brent_base_usd and rows[0].gdp_drag_pp == 0)
+    lo = compute_cascade(1.0, CascadeParams(price_sensitivity_usd_per_mbd=5.0)).brent_usd
+    hi = compute_cascade(1.0, CascadeParams(price_sensitivity_usd_per_mbd=12.0)).brent_usd
+    mid = rows[-1].brent_usd
+    check("EF-3 testable: Brent sensitivity band brackets the central estimate",
+          lo < mid < hi, f"${lo:.0f} < ${mid:.0f} < ${hi:.0f}")
 
     # ------------------------------------------------------------------ #
     section("3. SIGNAL — alert leads the market repricing")
@@ -181,6 +186,23 @@ def main() -> int:
           du_nv.usable_short_kbd > du_sm.usable_short_kbd,
           f"{du_nv.usable_short_kbd:.0f} vs {du_sm.usable_short_kbd:.0f} kb/d")
 
+    rs_scn = realopt.scenarios()["red_sea"]
+    rs_pl, _, _ = realopt.grade_plan(refs, crudes, rs_scn)
+    rs_sm = realopt.evaluate("rss", rs_pl, refs, crudes, rs_scn)
+    check("Red Sea suspension (brief-named): India's CRUDE is largely insulated",
+          0 < rs_sm.gap_kbd < 0.1 * sm.gap_kbd and rs_sm.feasible,
+          f"{rs_sm.gap_kbd:.0f} kb/d vs Hormuz {sm.gap_kbd:.0f} (feasible, small-volume rounding sound)")
+
+    from engine.spr import plan_drawdown
+    hz_spr = plan_drawdown(sm.unmet_kbd, sm.spr_bridge_days, national)
+    du_spr = plan_drawdown(du_sm.unmet_kbd, du_sm.spr_bridge_days, national)
+    check("SPR scheduler (brief-named): holds reserves when reroute covers demand, "
+          "rations when it cannot",
+          hz_spr.verdict == "hold" and du_spr.verdict in ("ration", "bridge")
+          and (du_spr.verdict != "ration" or du_spr.demand_mgmt_kbd > 0),
+          f"hormuz={hz_spr.verdict}, compound={du_spr.verdict} "
+          f"(demand mgmt {du_spr.demand_mgmt_kbd:.0f} kb/d)")
+
     # ------------------------------------------------------------------ #
     section("5. SCENARIO LIBRARY — degrades honestly under stress")
     from engine.scenarios import SCENARIOS
@@ -215,6 +237,10 @@ def main() -> int:
     both = {r["key"]: r["affected"] for r in screen({"Hormuz"}, {"RUSSIA"})}
     check("compound disruption never reduces any commodity's affected share",
           all(both[k] >= hz[k] - 1e-9 for k in hz))
+    rs = {r["key"]: r["affected"] for r in screen({"Bab-el-Mandeb", "Suez"})}
+    check("commodity-specific arteries: Red Sea spares crude but hits edible oils",
+          rs["crude_oil"] < 0.10 and rs["edible_oil"] >= 0.15,
+          f"crude {rs['crude_oil']:.0%} vs edible oil {rs['edible_oil']:.0%}")
 
     # ------------------------------------------------------------------ #
     section("7. UI EXPORT — the war-room JSON is complete & consistent")
@@ -227,7 +253,13 @@ def main() -> int:
         check("has all top-level blocks",
               all(k in d for k in ("meta", "refineries", "sources", "routes",
                                    "signal", "scenarios")))
-        check("4 scenarios exported", len(d.get("scenarios", [])) == 4)
+        check("5 scenarios exported (incl. brief-named Red Sea suspension)",
+              len(d.get("scenarios", [])) == 5
+              and any(s["key"] == "red_sea" for s in d["scenarios"]))
+        check("every scenario ships an executive brief + SPR schedule",
+              all(len(s.get("brief", [])) >= 5 and "spr" in s
+                  and any(ln.startswith("RESERVES") for ln in s["brief"])
+                  for s in d.get("scenarios", [])))
         hz = next((s for s in d["scenarios"] if s["key"] == "hormuz"), None)
         check("Hormuz scenario: naive infeasible in export",
               hz is not None and hz["naive"]["feasible"] is False)

@@ -94,7 +94,7 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
 ```bash
 # 1) Engine (Python 3.12)
 pip install -r requirements.txt
-python run_validate.py     # 45/45 automated checks — the proof
+python run_validate.py     # 50/50 automated checks — the proof
 python run_real.py         # reroute on REAL DGCIS diets, all scenarios
 python run_karnadhar.py    # end-to-end pipeline: signal → brief in ~45 ms
 
@@ -131,10 +131,22 @@ karnadhar/
 ├── api/main.py          # FastAPI backend
 ├── frontend/            # Next.js 16 + MapLibre war-room
 ├── run_*.py             # runnable proofs (see above)
-├── run_validate.py      # 45-check validation suite (exit-code gated; runs in CI)
+├── run_validate.py      # 50-check validation suite (exit-code gated; runs in CI)
 ├── export_ui.py         # engine → UI JSON
 └── deliverables/        # pitch deck (KARNADHAR_Deck.pptx) + renders
 ```
+
+## Brief coverage — every listed build area, mapped
+
+| The brief's "what you may build" | KARNADHAR component |
+|---|---|
+| Geopolitical Risk Intelligence Agent (news, AIS, sanctions, price signals) | GDELT client + explainable alert rule (12-day backtested lead) · live AIS vessels · sanctions as a first-class disruption axis · realized landed prices from customs records |
+| Disruption Scenario Modeller (Hormuz / OPEC+ / **Red Sea**) | 5-scenario library incl. **Red Sea suspension** — crude is Cape-insulated (54 kb/d) while edible oils take 18%: commodity-specific arteries |
+| Adaptive Procurement Orchestrator (spot pricing, **tanker availability**, grade compatibility) | two-stage grade-aware LP + **shadow-price procurement priorities** + **VLCC ton-mile cost** (+66 tankers on Hormuz) |
+| Strategic Reserve Optimisation Agent (**drawdown schedules**) | `engine/spr.py` — hold / bridge / ration scheduler with draw rate, depletion %, residual demand-management need |
+| Supply Chain Digital Twin (geospatial what-if platform) | 3D-globe war-room + knowledge graph + bypass-pipeline mapping; every scenario re-solved live |
+
+Suggested technologies: agentic multi-agent chain ✓ · geospatial (AIS, pipeline & port mapping) ✓ · predictive analytics & scenario simulation ✓ · knowledge graph (supplier-route-risk-refinery) ✓ · LLM signal extraction (keyword classifier with a key-gated Claude drop-in — words, never numbers) ◐ · RAG over intelligence corpora + sanctions-registry/port-congestion feeds → **roadmap** (documented, not claimed).
 
 ## Data provenance (honest by design)
 

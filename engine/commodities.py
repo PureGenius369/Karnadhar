@@ -96,7 +96,9 @@ COMMODITIES = [
     Commodity("edible_oil", "Edible oils", 0.57, 15.5,
               {"INDONESIA": 0.38, "MALAYSIA": 0.15, "ARGENTINA": 0.12,
                "RUSSIA": 0.09, "UKRAINE": 0.09, "OTHERS": 0.17},
-              {"Malacca": 0.53},                      # palm via Malacca
+              # palm via Malacca; Black-Sea sunflower (Russia+Ukraine) reaches
+              # India via Bosporus -> Suez -> Bab-el-Mandeb: a Red Sea artery
+              {"Malacca": 0.53, "Suez": 0.18},
               0.35, 45),
     Commodity("fertiliser", "Fertilisers (urea/DAP/MOP)", 0.35, 10.2,
               {"CHINA": 0.20, "RUSSIA": 0.20, "SAUDI ARAB": 0.15, "MOROCCO": 0.10,

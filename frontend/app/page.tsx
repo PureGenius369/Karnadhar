@@ -66,7 +66,7 @@ export default function Page() {
           </div>
           {view === 'map' && (
           <div style={{ position: 'absolute', bottom: 10, left: 10, background: 'rgba(8,11,16,.82)', border: `1px solid ${C.line}`, borderRadius: 6, padding: '8px 10px', fontSize: 11, color: C.mut }}>
-            <div><span style={{ color: C.red }}>●</span> cut route / blocked chokepoint &nbsp; <span style={{ color: C.teal }}>●</span> alive route</div>
+            <div><span style={{ color: C.red }}>●</span> cut route / blocked chokepoint &nbsp; <span style={{ color: C.teal }}>●</span> alive route &nbsp; <span style={{ color: C.blue }}>┅</span> Hormuz-bypass pipeline (6.5 Mb/d)</div>
             <div style={{ marginTop: 3 }}>refinery ● size = capacity, colour = Hormuz exposure (blue→red)</div>
             <div style={{ marginTop: 3, color: '#5a6472' }}>*46% Hormuz exposure derived from real DGCIS import records</div>
           </div>
@@ -96,10 +96,18 @@ export default function Page() {
               ))}
             </div>
             <div style={{ fontSize: 10, color: '#5a6472', marginTop: 3 }}>coverage vs baseline · June 2025 Hormuz crisis</div>
+            <div style={{ fontSize: 10.5, color: C.mut, marginTop: 5, paddingTop: 5, borderTop: `1px solid ${C.line}` }}>
+              multi-source cross-check: <b style={{ color: '#b6c0cc' }}>{(data.vessels || []).filter((v: any) => v.source === 'live').length} live AIS tracks</b> (Malacca) · Hormuz snapshot · sanctions modelled as a first-class scenario axis
+            </div>
           </Card>
 
           <Card title="② Projected impact + twin deficit" accent={C.red}>
             <Row k="Brent" v={`$${cas.brent}/bbl (+${cas.brent_pct}%)`} c={C.red} />
+            {cas.brent_hi > cas.brent_lo && (
+              <div style={{ fontSize: 10.5, color: C.mut, margin: '-2px 0 2px' }}>
+                sensitivity band ${cas.brent_lo}–${cas.brent_hi} (price-impact 5–12 $/bbl per Mb/d — assumption swept, not asserted)
+              </div>
+            )}
             <Row k="Retail fuel" v={`~₹${cas.pump}/L`} />
             <Row k="GDP drag" v={`−${cas.gdp} pp`} />
             <Row k="Extra oil bill" v={`$${cas.annual_bn} bn/yr`} c={C.amber} />
@@ -150,10 +158,29 @@ export default function Page() {
               {scn.smart.plan.filter((r: any) => r.kbd >= 5).slice(0, 12).map((row: any, j: number) => (
                 <div key={j} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, padding: '1px 0', color: C.mut }}>
                   <span style={{ color: '#b6c0cc' }}>{row.refinery}</span>
-                  <span>← {row.source} <b style={{ color: C.text }}>{row.kbd}</b></span>
+                  <span>← {row.source} <b style={{ color: C.text }}>{row.kbd.toFixed(1)}</b></span>
                 </div>
               ))}
             </div>
+          </Card>
+
+          <Card title="⑤ Executive brief — the pipeline's final product" accent={C.blue}>
+            {(scn.brief || []).map((ln: string, j: number) => {
+              const dash = ln.indexOf(' - ');
+              const head = dash > 0 ? ln.slice(0, dash) : '';
+              const body = dash > 0 ? ln.slice(dash + 3) : ln;
+              return (
+                <div key={j} style={{ fontSize: 11.5, lineHeight: 1.45, padding: '2.5px 0', color: C.mut }}>
+                  {head && <b style={{ color: '#b6c0cc' }}>{head} · </b>}{body}
+                </div>
+              );
+            })}
+            {scn.spr && scn.spr.verdict === 'ration' && (
+              <div style={{ fontSize: 10.5, color: C.amber, marginTop: 4 }}>
+                SPR scheduler: even max drawdown can&apos;t bridge this — {scn.spr.demand_mgmt_kbd.toFixed(0)} kb/d must come from demand management
+              </div>
+            )}
+            <div style={{ fontSize: 10, color: '#5a6472', marginTop: 6 }}>engine numbers · template words (Claude drop-in via API key writes prose, never numbers)</div>
           </Card>
 
           <Card title="④ Multi-commodity lens — same disruption, every import" accent={C.amber}>

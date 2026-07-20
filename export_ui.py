@@ -11,6 +11,7 @@ from engine.realmodel import build_refineries, build_crudes
 from engine.realopt import naive_plan, grade_plan, evaluate, scenarios, landed
 from engine.refdata import country_info, chokepoint_exposure, load_diets
 from engine.cascade import compute_cascade, CascadeParams
+from engine.spr import plan_drawdown
 from engine.signals.gdelt import timeline_with_fallback
 from engine.signals.agent import GeopoliticalRiskAgent
 from engine.signals.ais import fetch_ais
@@ -69,6 +70,43 @@ def plan_rows(plan, crudes):
     return rows
 
 
+def compose_brief(scn, nv, sm, marg, spr, cas, band, commodities_hit) -> list:
+    """Executive brief: engine numbers, template words (the briefing agent's
+    output, rendered in the war-room; Claude drop-in writes prose, never numbers)."""
+    lines = []
+    cut = " + ".join(sorted(scn.blocked_chokepoints) +
+                     [c.title() for c in sorted(scn.sanctioned_countries)]) or "none"
+    lines.append(f"SITUATION - {scn.name}: {nv.gap_kbd:,.0f} kb/d of import supply cut ({cut}).")
+    if sm.feasible:
+        reroute = "fully feasible reroute; every barrel grade-matched"
+    else:
+        reroute = f"partial reroute; honest residual gap {sm.unmet_kbd:,.0f} kb/d"
+    if not nv.feasible:
+        why = (f"{nv.unrunnable_kbd:,.0f} kb/d un-runnable" if nv.unrunnable_kbd > 0
+               else f"{len(nv.breaches)} blend-limit breach(es)")
+        naive_note = f"naive plan infeasible ({why})"
+    else:
+        naive_note = "naive plan feasible but grade-blind"
+    short = (f" Usable shortfall {nv.usable_short_kbd:,.0f} -> {sm.usable_short_kbd:,.0f} kb/d."
+             if nv.usable_short_kbd > 0 else "")
+    lines.append(f"REROUTE - KARNADHAR: {reroute}; {naive_note}.{short} "
+                 f"+{sm.extra_vlcc:,.0f} VLCC-equivalents tied up.")
+    mat = [m for m in marg if m["avail_kbd"] >= 50]
+    if mat:
+        top = ", ".join(f"{m['source']} ({m['grade']}, ${m['shadow_kusd_per_kbd']}k/day per kb/d)"
+                        for m in mat[:2])
+        lines.append(f"PROCUREMENT PRIORITY - secure marginal barrels first: {top} [LP shadow prices].")
+    lines.append(f"RESERVES - {spr.summary()}.")
+    lines.append(f"ECONOMY - Brent ${cas.brent_usd:.0f} (sensitivity ${band[0]:.0f}-{band[1]:.0f}), "
+                 f"pump ~Rs{cas.pump_inr_per_l:.0f}/L, CAD 1.2% -> {cas.stressed_cad_pct_gdp:.1f}% GDP "
+                 f"[global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].")
+    if commodities_hit:
+        spill = ", ".join(f"{c['name']} {c['affected']:.0%}" for c in commodities_hit[:2])
+        lines.append(f"SPILLOVER - hardest-hit other imports: {spill}.")
+    lines.append("SEQUENCE (per ORF review) - re-source first, bridge with SPR, demand-manage last.")
+    return lines
+
+
 def main():
     refs, crudes = build_refineries(), build_crudes()
     raw = load_diets()
@@ -121,6 +159,14 @@ def main():
         ms = round((time.perf_counter() - t0) * 1000, 1)
         closure = min(1.0, nv.gap_kbd / national / hormuz_exposure)  # gap vs Hormuz-max
         cas = compute_cascade(min(1.0, closure), CascadeParams())
+        # EF-3 "testable": Brent under the documented price-sensitivity range 5-12 $/bbl per Mb/d
+        band = (compute_cascade(closure, CascadeParams(price_sensitivity_usd_per_mbd=5.0)).brent_usd,
+                compute_cascade(closure, CascadeParams(price_sensitivity_usd_per_mbd=12.0)).brent_usd)
+        spr = plan_drawdown(sm.unmet_kbd, sm.spr_bridge_days, national)
+        com_hit = [c for c in commodity_screen(scn.blocked_chokepoints,
+                                               {s.upper() for s in scn.sanctioned_countries})
+                   if c["key"] != "crude_oil" and c["affected"] > 0.05]
+        brief = compose_brief(scn, nv, sm, marg, spr, cas, band, com_hit)
         cut = [c.name.title() for c in crudes if scn.is_cut(c) and c.name in SRC_COORDS]
         scen_out.append({
             "key": key, "name": scn.name,
@@ -139,10 +185,16 @@ def main():
                       "marginals": [m for m in marg if m["avail_kbd"] >= 50][:3],
                       "plan": plan_rows(pl, crudes)},
             "cascade": {"brent": cas.brent_usd, "brent_pct": cas.brent_change_pct,
+                        "brent_lo": band[0], "brent_hi": band[1],
                         "pump": cas.pump_inr_per_l, "gdp": cas.gdp_drag_pp,
                         "bill_day": cas.india_extra_import_bill_musd_day,
                         "cad_stressed": cas.stressed_cad_pct_gdp,
                         "cad_base": 1.2, "annual_bn": cas.extra_annual_import_bill_usd_bn},
+            "spr": {"verdict": spr.verdict, "draw_rate_kbd": spr.draw_rate_kbd,
+                    "depletion_pct": spr.depletion_pct,
+                    "demand_mgmt_kbd": spr.demand_mgmt_kbd,
+                    "summary": spr.summary()},
+            "brief": brief,
         })
 
     # vessels: real cached AIS (Malacca live) + labelled Hormuz snapshot

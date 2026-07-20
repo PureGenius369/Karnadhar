@@ -98,3 +98,22 @@ We attacked our own work again, as a hostile judge, and found real defects:
   HHI counted "OTHERS" as one supplier; demo script quoted curated-model numbers
   over real-model screens. All reconciled; the two model tiers are now labelled.
 Validation now **45/45**, run in CI (engine + production frontend build).
+
+## 13 · Brief-coverage pass (nothing on their list left unbuilt)
+Re-read the official problem statement line by line and built what was named
+but missing:
+- **Red Sea suspension** scenario (brief-named) → the differentiating insight:
+  India's crude is Cape-insulated (54 kb/d) while **edible oils take 18%**
+  (Black-Sea sunflower via Suez) — commodity-specific arteries, proven.
+- **SPR drawdown scheduler** (`engine/spr.py`, brief's "Strategic Reserve
+  Optimisation Agent") → hold / bridge / ration verdicts with draw rate,
+  depletion % and residual demand-management need (compound shock: RATION —
+  2,136 kb/d max draw still leaves ~30 kb/d to demand management).
+- **Executive brief in the war-room** (card ⑤) — the pipeline's final product,
+  composed engine-side from real numbers; template words, Claude drop-in.
+- **EF-3 "testable" made visible**: Brent sensitivity band ($150–$244 at full
+  closure) shown in-product, not just in code.
+- **Bypass pipelines on the map** (Petroline + ADCOP) — the cascade's 6.5 Mb/d
+  nuance drawn where it physically exists.
+- Small-volume LP rounding fix (0.01 kb/d granularity) caught by the new Red
+  Sea regression check. Validation now **50/50**, in CI.
