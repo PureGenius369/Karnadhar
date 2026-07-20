@@ -364,9 +364,9 @@ function foot(s, txt) {
   s.addShape('rect', { x: 0.6, y: 1.9, w: 6.31, h: 5.0, fill: { type: 'none' }, line: { color: LINE, width: 1 } });
 
   const feats = [
-    ['Live 3D globe', 'true globe projection with real AIS vessels; refineries sized & coloured by real data', TEAL],
-    ['Cut vs alive routes', 'every supply corridor recolours the instant a scenario changes', RED],
-    ['Knowledge-graph view', 'toggle to the 50-node supplier→strait→refinery graph; threat edges glow per scenario', PURPLE],
+    ['Optimizer flows — the plan, drawn', 'every LP allocation becomes an animated flow: source → corridor → the exact refinery, width = kb/d', BLUE],
+    ['Live 3D globe / 2D toggle', 'true globe projection (or flat map), real AIS vessels, bypass pipelines mapped', TEAL],
+    ['Interactive knowledge graph', 'zoom, pan, drag the 50-node supplier→strait→refinery web; threat edges glow per scenario', PURPLE],
     ['Multi-commodity lens', 'same disruption scored across 8 strategic imports — Hormuz hits 53% of LNG too', AMBER],
     ['Decision layer', 'shadow prices, VLCC ton-mile, SPR drawdown schedule + executive brief — on every scenario', TEAL],
   ];
@@ -378,7 +378,7 @@ function foot(s, txt) {
       { text: f[1], options: { color: MUT, fontSize: 11.5 } },
     ], { x: 7.58, y, w: 5.15, h: 0.95, fontFace: F, margin: 0, lineSpacing: 15 });
   });
-  s.addNotes('This is the product. Next.js and MapLibre over a FastAPI engine. The globe is live — the red routes are the Gulf corridors dying when Hormuz closes; the green ones are the alternates KARNADHAR is re-routing through. Click a scenario and the entire national plan re-solves in tens of milliseconds, measured live in-app. And under every scenario sits the decision layer: the LP’s shadow prices naming the scarcest barrel, the usable-shortfall honesty metric, and the tanker cost of longer voyages.');
+  s.addNotes('This is the product — and the map does not just show status, it shows the ANSWER. The red routes are the Gulf corridors dying when Hormuz closes. The bright animated flows are the optimizer’s plan itself: every allocation drawn from its source, around the Cape where that is the real voyage, into the exact refinery it feeds, width-weighted by barrels per day. Hover any flow and it tells you: Russia to Jamnagar, 658 thousand barrels a day, LP-assigned. Click a scenario and the whole picture re-solves in tens of milliseconds. Under it all: shadow prices, tanker cost, SPR schedule, executive brief.');
 }
 
 // ================= 11. RIGOR =================

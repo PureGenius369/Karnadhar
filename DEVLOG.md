@@ -117,3 +117,20 @@ but missing:
   nuance drawn where it physically exists.
 - Small-volume LP rounding fix (0.01 kb/d granularity) caught by the new Red
   Sea regression check. Validation now **50/50**, in CI.
+
+## 14 · From status display to decision display
+The sharpest self-critique yet: the map showed red/green *status* but never the
+optimizer's *answer* — the one thing that makes it more than a dashboard. Fixed:
+- **Optimizer flows** — every smart-plan allocation is drawn as an animated,
+  volume-weighted flow from its source, along its real corridor, into the exact
+  refinery it feeds (hover: "Russia → RIL Jamnagar · 657.9 kb/d · LP-assigned").
+  Baseline corridors dim to ghosts; the plan carries the picture. Route
+  geometry made truthful: chokepoint-free voyages ≥30 days draw via the Cape —
+  matching the transit days the LP actually charges.
+- **3D globe / 2D map toggle** (runtime projection switch; the isStyleLoaded
+  false-negative trap documented in code).
+- **Knowledge graph is now an instrument**: wheel-zoom to cursor, pan, drag
+  nodes (sim reheats), double-click reset, zoom buttons, labels densify on zoom.
+- **Terminal pass**: live ticker tape (scenario · gap · Brent · CAD · reroute ·
+  VLCC · SPR · solve-ms), tabular monospace numerals, status LEDs, thin
+  scrollbars — Bloomberg grammar without the kitsch.

@@ -83,11 +83,13 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
   **shadow prices** (marginal value of one more kb/d of each scarce grade), the
   **usable-shortfall** honesty metric, and the **VLCC-equivalent tanker cost** of
   longer voyages.
-- **War-room UI** — Next.js + MapLibre command center on a **true 3D globe**
-  projection with real AIS vessels: cut-vs-alive corridors, per-refinery diets on
-  hover, a **knowledge-graph view** (toggle), the multi-commodity lens, and scenario
-  switching with the full national plan re-solved in tens of milliseconds
-  (measured live in-app).
+- **War-room UI** — Next.js + MapLibre command center that draws **the optimizer's
+  plan itself**: every LP allocation becomes an animated flow line — source →
+  real corridor (Cape where that's the true voyage) → the exact refinery it
+  feeds, width = kb/d, hover for the allocation. True **3D globe / 2D toggle**,
+  real AIS vessels, bypass pipelines, a fully **interactive knowledge graph**
+  (zoom/pan/drag), the multi-commodity lens, a live ticker tape, and scenario
+  switching with the national plan re-solved in tens of milliseconds.
 
 ## Run it
 

@@ -5,7 +5,7 @@
   "n_refineries": 10,
   "n_grades": 36,
   "n_commodities": 8,
-  "generated": "2026-07-20"
+  "generated": "2026-07-21"
  },
  "india_hub": {
   "lat": 22.4,
@@ -449,6 +449,10 @@
     [
      37.8,
      44.7
+    ],
+    [
+     18.5,
+     -34.4
     ],
     [
      69.1,
@@ -1191,7 +1195,7 @@
     "Qatar"
    ],
    "gap_kbd": 2312.6,
-   "solve_ms": 92.4,
+   "solve_ms": 121.2,
    "naive": {
     "feasible": false,
     "unrunnable": 0.0,
@@ -1408,7 +1412,7 @@
     "Qatar"
    ],
    "gap_kbd": 2312.6,
-   "solve_ms": 89.1,
+   "solve_ms": 108.5,
    "naive": {
     "feasible": true,
     "unrunnable": 0.0,
@@ -1679,7 +1683,7 @@
     "Russia"
    ],
    "gap_kbd": 1589.9,
-   "solve_ms": 81.9,
+   "solve_ms": 110.7,
    "naive": {
     "feasible": false,
     "unrunnable": 219.6,
@@ -1952,7 +1956,7 @@
     "Qatar"
    ],
    "gap_kbd": 3902.5,
-   "solve_ms": 83.5,
+   "solve_ms": 104.0,
    "naive": {
     "feasible": false,
     "unrunnable": 545.7,
@@ -2228,7 +2232,7 @@
     "Egypt A Rp"
    ],
    "gap_kbd": 53.9,
-   "solve_ms": 80.9,
+   "solve_ms": 115.5,
    "naive": {
     "feasible": false,
     "unrunnable": 19.0,

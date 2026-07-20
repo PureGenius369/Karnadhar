@@ -16,7 +16,9 @@
 > exactly should every Indian refinery do?"
 
 *Action: drag the globe slightly (show the curvature), then hover Jamnagar so its
-real diet popup shows; the tiny dots at the straits are real AIS vessels.*
+real diet popup shows; the tiny dots at the straits are real AIS vessels. The
+bright animated lines ARE the optimizer's plan — you'll say so in Shot 3. If the
+globe feels heavy on your recorder, the 2D MAP toggle (top-left) is one click.*
 
 ## SHOT 2 — The problem with "oil is oil" (0:25–0:55) · stay on map
 > "Most tools treat oil as one number — barrels. But a refinery is an engine tuned to a
@@ -42,7 +44,13 @@ real diet popup shows; the tiny dots at the straits are real AIS vessels.*
 
 *Action: hover the INFEASIBLE / FEASIBLE cards; point at "+66 VLCC-equiv" and the
 "marginal barrel" line; click "Russia fully sanctioned" to show 220 → 0 usable
-shortfall; click back to Hormuz.*
+shortfall; click back to Hormuz. Then point at the MAP:*
+
+> "And you're not reading the plan off a table — you're **looking at it**. Every
+> bright line is one LP allocation: Russia's Urals swinging around the Cape of
+> Good Hope into Jamnagar — hover it: six hundred fifty-eight thousand barrels a
+> day, assigned by the optimizer. The dim lines are yesterday's corridors. The
+> red ones are dead. The bright ones are the answer."
 
 ## SHOT 4 — Early warning (1:30–1:55) · card ①
 > "And we're not waiting for the news. KARNADHAR watches global event data — this is
@@ -87,8 +95,9 @@ Then point at card ④ (Multi-commodity lens):*
 > every edge carrying real volumes and provenance. Watch Hormuz — the red threads
 > are exactly who it threatens, and how badly."
 
-*Action: hover Hormuz, then one refinery (tooltip shows Nelson/API window), then
-hover Russia (grade + volumes). Switch back to "Live map" before the next shot.*
+*Action: scroll to ZOOM into the Hormuz cluster (labels densify), drag to pan,
+grab-and-drag one refinery node, hover it (tooltip shows Nelson/API window),
+double-click to reset. Switch back to "Live map" before the next shot.*
 
 ## SHOT 7 — Proof & close (2:55–3:15) · switch to terminal
 > Run: `python run_validate.py` — let the green checks scroll.

@@ -87,9 +87,36 @@ function refFC(d: any): any {
   };
 }
 
-export default function WarMap({ data, scenario }: { data: any; scenario: any }) {
+// THE ANSWER LAYER — the LP's actual reroute plan drawn as flows:
+// each smart-plan allocation becomes a line from its source, along that
+// source's real corridor, ending at the SPECIFIC refinery it now feeds,
+// width-weighted by kb/d. Red shows what died; THIS shows what to do.
+function flowFC(d: any, scn: any): any {
+  const routeBySrc: Record<string, any> = {};
+  for (const r of d.routes) routeBySrc[r.source] = r;
+  const refByName: Record<string, any> = {};
+  for (const r of d.refineries) refByName[r.name] = r;
+  const feats: any[] = [];
+  for (const row of scn?.smart?.plan || []) {
+    if (row.kbd < 3) continue;                    // skip sub-3 kb/d noise
+    const rt = routeBySrc[row.source];
+    const ref = refByName[row.refinery];
+    if (!rt || !ref) continue;                    // micro-suppliers without coords
+    const path = rt.path.slice(0, -1).concat([[ref.lon, ref.lat]]);
+    feats.push({
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: path },
+      properties: { source: row.source, refinery: row.refinery, grade: row.grade, kbd: row.kbd },
+    });
+  }
+  return { type: 'FeatureCollection', features: feats };
+}
+
+export default function WarMap({ data, scenario, projection = 'globe' }:
+  { data: any; scenario: any; projection?: 'globe' | 'mercator' }) {
   const ref = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
+  const dashTimer = useRef<number | null>(null);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -102,14 +129,16 @@ export default function WarMap({ data, scenario }: { data: any; scenario: any })
     (window as any).__map = m;
     m.on('error', (e: any) => console.warn('maplibre error:', e?.error?.message || e));
     m.on('load', () => {
+      // baseline corridors: cut = red arteries, alive = dim ghost lines —
+      // deliberately faded so the OPTIMIZER FLOWS (below) carry the story
       m.addSource('routes', { type: 'geojson', data: routeFC(data, scenario) });
       m.addLayer({
         id: 'routes', type: 'line', source: 'routes',
         layout: { 'line-cap': 'round' },
         paint: {
           'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 0, 0.8, 2500, 4.5],
-          'line-color': ['case', ['get', 'cut'], '#e24b4a', '#1d9e75'],
-          'line-opacity': ['case', ['get', 'cut'], 0.85, 0.4],
+          'line-color': ['case', ['get', 'cut'], '#e24b4a', '#1d6e56'],
+          'line-opacity': ['case', ['get', 'cut'], 0.8, 0.16],
         },
       });
       // Hormuz bypass pipelines (EIA): Saudi Petroline (Abqaiq->Yanbu, ~5 Mb/d)
@@ -127,6 +156,39 @@ export default function WarMap({ data, scenario }: { data: any; scenario: any })
         id: 'pipes', type: 'line', source: 'pipes',
         paint: { 'line-color': '#3b8bd4', 'line-width': 2, 'line-dasharray': [1.6, 1.2], 'line-opacity': 0.85 },
       });
+
+      // OPTIMIZER FLOWS — the grade-aware LP's plan, drawn: source -> corridor
+      // -> the exact refinery it feeds, width = kb/d. Glow under, ants on top.
+      m.addSource('flows', { type: 'geojson', data: flowFC(data, scenario) });
+      m.addLayer({
+        id: 'flows-glow', type: 'line', source: 'flows',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: {
+          'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 3, 2.5, 700, 12],
+          'line-color': '#2ec9ff', 'line-opacity': 0.16, 'line-blur': 3,
+        },
+      });
+      m.addLayer({
+        id: 'flows', type: 'line', source: 'flows',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: {
+          'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 3, 1.1, 700, 4.2],
+          'line-color': ['interpolate', ['linear'], ['get', 'kbd'], 3, '#59d6b7', 400, '#2ec9ff'],
+          'line-opacity': 0.95,
+          'line-dasharray': [0, 4, 3] as any,
+        },
+      });
+      // barrels-in-motion: phase-cycle the dash pattern (~12 fps is plenty)
+      const DASH: number[][] = [
+        [0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5],
+        [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5],
+      ];
+      let dashT = 0;
+      dashTimer.current = window.setInterval(() => {
+        if (!m.getLayer('flows')) return;
+        dashT = (dashT + 1) % DASH.length;
+        m.setPaintProperty('flows', 'line-dasharray', DASH[dashT] as any);
+      }, 90);
       m.addSource('sources', { type: 'geojson', data: srcFC(data, scenario) });
       m.addLayer({
         id: 'sources', type: 'circle', source: 'sources',
@@ -199,8 +261,27 @@ export default function WarMap({ data, scenario }: { data: any; scenario: any })
           `<div style="font:11px system-ui;color:#e8edf2"><b>${p.name || 'vessel'}</b> · ${p.sog} kn · AIS ${p.src === 'live' ? 'LIVE' : 'snapshot'}</div>`).addTo(m);
       });
       m.on('mouseleave', 'vessels', () => pop.remove());
+      m.on('mouseenter', 'flows', (e: any) => {
+        m.getCanvas().style.cursor = 'pointer';
+        const p = e.features[0].properties;
+        pop.setLngLat(e.lngLat).setHTML(
+          `<div style="font:11.5px ui-monospace,Consolas,monospace;color:#e8edf2">
+            <b style="color:#2ec9ff">${p.source} → ${p.refinery}</b><br/>
+            ${p.grade} · <b>${Number(p.kbd).toFixed(1)} kb/d</b> · LP-assigned
+          </div>`).addTo(m);
+      });
+      m.on('mouseleave', 'flows', () => { m.getCanvas().style.cursor = ''; pop.remove(); });
+      m.on('mouseenter', 'pipes', (e: any) => {
+        const p = e.features[0].properties;
+        pop.setLngLat(e.lngLat).setHTML(
+          `<div style="font:11.5px ui-monospace,Consolas,monospace;color:#e8edf2"><b style="color:#3b8bd4">${p.name}</b> · Hormuz bypass</div>`).addTo(m);
+      });
+      m.on('mouseleave', 'pipes', () => pop.remove());
     });
-    return () => { m.remove(); if (map.current === m) map.current = null; };
+    return () => {
+      if (dashTimer.current) { clearInterval(dashTimer.current); dashTimer.current = null; }
+      m.remove(); if (map.current === m) map.current = null;
+    };
   }, [data]);
 
   useEffect(() => {
@@ -209,7 +290,21 @@ export default function WarMap({ data, scenario }: { data: any; scenario: any })
     (m.getSource('routes') as any).setData(routeFC(data, scenario));
     (m.getSource('sources') as any).setData(srcFC(data, scenario));
     (m.getSource('chokes') as any).setData(chokeFC(data, scenario));
+    (m.getSource('flows') as any)?.setData(flowFC(data, scenario));
   }, [scenario, data]);
+
+  // 2D / 3D: swap the projection live (globe <-> mercator).
+  // NB: don't gate on isStyleLoaded() — it false-negatives during tile loads
+  // and 'style.load' has already fired, so the deferred apply would never run.
+  useEffect(() => {
+    const m = map.current;
+    if (!m) return;
+    try {
+      (m as any).setProjection({ type: projection });
+    } catch {
+      m.once('styledata', () => { try { (m as any).setProjection({ type: projection }); } catch { } });
+    }
+  }, [projection]);
 
   return <div ref={ref} style={{ position: 'absolute', inset: 0 }} />;
 }

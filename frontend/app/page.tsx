@@ -8,17 +8,23 @@ const KgView = dynamic(() => import('./KgView'), { ssr: false });
 const C = {
   bg: '#080b10', panel: '#0f141b', line: '#1e2733', text: '#e8edf2',
   mut: '#8b95a3', teal: '#5dcaa5', amber: '#f2a623', red: '#e24b4a', blue: '#3b8bd4',
+  cyan: '#2ec9ff',
 };
+const MONO = 'ui-monospace, "Cascadia Mono", Consolas, monospace';
 
-const Card = ({ title, children, accent = '#1e2733' }: any) => (
-  <div style={{ background: C.panel, border: `1px solid ${C.line}`, borderLeft: `2px solid ${accent}`, borderRadius: 8, padding: '12px 14px', marginBottom: 12 }}>
-    <div style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase', color: C.mut, marginBottom: 8 }}>{title}</div>
+const Card = ({ title, children, accent = '#1e2733', led }: any) => (
+  <div style={{ background: C.panel, border: `1px solid ${C.line}`, borderLeft: `2px solid ${accent}`, borderRadius: 6, padding: '12px 14px', marginBottom: 12 }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+      <span style={{ fontSize: 10, letterSpacing: 1.2, textTransform: 'uppercase', color: C.mut }}>{title}</span>
+      {led && <span style={{ fontSize: 9, fontFamily: MONO, letterSpacing: 1, color: led[1] }}><span className="led-live">●</span> {led[0]}</span>}
+    </div>
     {children}
   </div>
 );
 const Row = ({ k, v, c = '#e8edf2' }: any) => (
   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, padding: '2px 0' }}>
-    <span style={{ color: C.mut }}>{k}</span><span style={{ color: c, fontWeight: 600 }}>{v}</span>
+    <span style={{ color: C.mut }}>{k}</span>
+    <span style={{ color: c, fontWeight: 600, fontFamily: MONO, fontSize: 12.5 }}>{v}</span>
   </div>
 );
 
@@ -26,6 +32,7 @@ export default function Page() {
   const [data, setData] = useState<any>(null);
   const [si, setSi] = useState(0);
   const [view, setView] = useState<'map' | 'graph'>('map');
+  const [proj, setProj] = useState<'globe' | 'mercator'>('globe');
   useEffect(() => { fetch('/karnadhar.json').then((r) => r.json()).then(setData); }, []);
 
   if (!data)
@@ -39,34 +46,63 @@ export default function Page() {
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: C.bg, color: C.text, font: '14px system-ui, sans-serif', overflow: 'hidden' }}>
       {/* top bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 18px', borderBottom: `1px solid ${C.line}` }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '9px 18px 7px', borderBottom: `1px solid ${C.line}` }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
           <span style={{ fontSize: 20, fontWeight: 800, color: C.teal, letterSpacing: 1 }}>KARNADHAR</span>
           <span style={{ fontSize: 12, color: C.mut }}>India Energy Supply-Chain Resilience — live command center</span>
         </div>
-        <div style={{ display: 'flex', gap: 18, fontSize: 12, color: C.mut }}>
+        <div style={{ display: 'flex', gap: 18, fontSize: 12, color: C.mut, fontFamily: MONO }}>
           <span><b style={{ color: C.text }}>{data.meta.national_kbd.toLocaleString()}</b> kb/d run</span>
           <span><b style={{ color: C.amber }}>{Math.round(data.meta.hormuz_exposure * 100)}%</b> via Hormuz*</span>
           <span><b style={{ color: C.text }}>{data.meta.n_refineries}</b> refineries · <b style={{ color: C.text }}>{data.meta.n_grades}</b> grades</span>
         </div>
       </div>
+      {/* terminal ticker tape — the active scenario, quantified */}
+      <div style={{ display: 'flex', gap: 0, alignItems: 'center', padding: '4px 18px', borderBottom: `1px solid ${C.line}`, background: '#0a0e14', fontFamily: MONO, fontSize: 10.5, letterSpacing: 0.4, whiteSpace: 'nowrap', overflow: 'hidden' }}>
+        <span style={{ color: C.red, fontWeight: 700 }}>▮ {scn.name.toUpperCase()}</span>
+        {[
+          ['GAP', `${scn.gap_kbd.toFixed(0)} KB/D`, C.text],
+          ['BRENT', `$${cas.brent} (+${cas.brent_pct}%)`, cas.brent_pct > 0 ? C.red : C.mut],
+          ['CAD', `${cas.cad_stressed}% GDP`, cas.cad_stressed > 3 ? C.red : C.mut],
+          ['REROUTE', scn.smart.feasible ? 'FEASIBLE' : `PARTIAL −${scn.smart.unmet.toFixed(0)}`, scn.smart.feasible ? C.teal : C.amber],
+          ['VLCC', `+${scn.smart.extra_vlcc.toFixed(0)}`, C.amber],
+          ['SPR', (scn.spr?.verdict || 'hold').toUpperCase(), scn.spr?.verdict === 'ration' ? C.red : C.teal],
+          ['SOLVE', `${scn.solve_ms} MS`, C.cyan],
+        ].map(([k, v, c]: any, i) => (
+          <span key={i} style={{ marginLeft: 16, color: C.mut }}>{k} <b style={{ color: c }}>{v}</b></span>
+        ))}
+      </div>
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0 }}>
         {/* map / knowledge graph */}
         <div style={{ flex: 1, position: 'relative' }}>
-          {view === 'map' ? <WarMap data={data} scenario={scn} /> : <KgView highlightChokepoints={scn.blocked} />}
-          <div style={{ position: 'absolute', top: 10, right: 10, display: 'flex', gap: 4, background: 'rgba(8,11,16,.85)', border: `1px solid ${C.line}`, borderRadius: 7, padding: 3, zIndex: 5 }}>
+          {view === 'map' ? <WarMap data={data} scenario={scn} projection={proj} /> : <KgView highlightChokepoints={scn.blocked} />}
+          <div style={{ position: 'absolute', top: 10, right: 10, display: 'flex', gap: 4, background: 'rgba(8,11,16,.85)', border: `1px solid ${C.line}`, borderRadius: 6, padding: 3, zIndex: 5 }}>
             {(['map', 'graph'] as const).map((v) => (
               <button key={v} onClick={() => setView(v)} style={{
-                cursor: 'pointer', fontSize: 11.5, fontWeight: 700, padding: '5px 12px', borderRadius: 5,
+                cursor: 'pointer', fontSize: 10.5, fontWeight: 700, padding: '5px 12px', borderRadius: 4,
+                fontFamily: MONO, letterSpacing: 0.8, textTransform: 'uppercase',
                 border: 'none', background: view === v ? 'rgba(93,202,165,.18)' : 'transparent',
                 color: view === v ? C.teal : C.mut,
               }}>{v === 'map' ? 'Live map' : 'Knowledge graph'}</button>
             ))}
           </div>
           {view === 'map' && (
+          <div style={{ position: 'absolute', top: 10, left: 10, display: 'flex', gap: 4, background: 'rgba(8,11,16,.85)', border: `1px solid ${C.line}`, borderRadius: 6, padding: 3, zIndex: 5 }}>
+            {(['globe', 'mercator'] as const).map((p) => (
+              <button key={p} onClick={() => setProj(p)} style={{
+                cursor: 'pointer', fontSize: 10.5, fontWeight: 700, padding: '5px 12px', borderRadius: 4,
+                fontFamily: MONO, letterSpacing: 0.8, textTransform: 'uppercase',
+                border: 'none', background: proj === p ? 'rgba(46,201,255,.15)' : 'transparent',
+                color: proj === p ? C.cyan : C.mut,
+              }}>{p === 'globe' ? '3D globe' : '2D map'}</button>
+            ))}
+          </div>
+          )}
+          {view === 'map' && (
           <div style={{ position: 'absolute', bottom: 10, left: 10, background: 'rgba(8,11,16,.82)', border: `1px solid ${C.line}`, borderRadius: 6, padding: '8px 10px', fontSize: 11, color: C.mut }}>
-            <div><span style={{ color: C.red }}>●</span> cut route / blocked chokepoint &nbsp; <span style={{ color: C.teal }}>●</span> alive route &nbsp; <span style={{ color: C.blue }}>┅</span> Hormuz-bypass pipeline (6.5 Mb/d)</div>
+            <div><span style={{ color: C.cyan, fontWeight: 700 }}>━</span> <b style={{ color: C.cyan }}>optimizer flow</b> — the LP&apos;s plan: source → refinery, width = kb/d (hover any line)</div>
+            <div style={{ marginTop: 3 }}><span style={{ color: C.red }}>●</span> cut route / blocked strait &nbsp; <span style={{ color: '#3d7a68' }}>●</span> pre-crisis corridor (dimmed) &nbsp; <span style={{ color: C.blue }}>┅</span> bypass pipeline (6.5 Mb/d)</div>
             <div style={{ marginTop: 3 }}>refinery ● size = capacity, colour = Hormuz exposure (blue→red)</div>
             <div style={{ marginTop: 3, color: '#5a6472' }}>*46% Hormuz exposure derived from real DGCIS import records</div>
           </div>
@@ -86,7 +122,7 @@ export default function Page() {
             ))}
           </div>
 
-          <Card title="① Early-warning signal (real GDELT)" accent={C.blue}>
+          <Card title="① Early-warning signal (real GDELT)" accent={C.blue} led={[sig.source === 'live' ? 'LIVE FEED' : 'REAL SERIES · CACHED', C.teal]}>
             <Row k="Alert raised" v={sig.alert_day} c={C.amber} />
             <Row k="Market repriced" v={sig.market_day} />
             <Row k="Lead time" v={`${sig.lead_days} days ahead`} c={C.teal} />
@@ -117,7 +153,7 @@ export default function Page() {
             </div>
           </Card>
 
-          <Card title="③ Reroute — naive vs KARNADHAR" accent={C.teal}>
+          <Card title="③ Reroute — naive vs KARNADHAR" accent={C.teal} led={[`LP · ${scn.solve_ms} MS`, C.cyan]}>
             <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
               <div style={{ flex: 1, background: 'rgba(226,75,74,.08)', border: `1px solid ${C.red}33`, borderRadius: 6, padding: 8 }}>
                 <div style={{ fontSize: 10, color: C.mut }}>Naive (fungible)</div>

@@ -23,4 +23,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* terminal-grade thin scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #243040 #0b0f15;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: #0b0f15; }
+*::-webkit-scrollbar-thumb { background: #243040; border-radius: 4px; }
+*::-webkit-scrollbar-thumb:hover { background: #33455e; }
+
+/* subtle terminal flicker-free pulse for live LEDs */
+@keyframes led-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.led-live { animation: led-pulse 2s ease-in-out infinite; }

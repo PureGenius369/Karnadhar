@@ -49,12 +49,16 @@ def route_path(country):
     """origin -> (chokepoint) -> India, as [lon,lat] pairs."""
     if country not in SRC_COORDS:
         return None
-    o = SRC_COORDS[country]; cps = country_info(country)[3]
+    o = SRC_COORDS[country]
+    grade, api, sul, cps, transit = country_info(country)
     path = [[o[1], o[0]]]
     for k in cps:
         c = CHOKEPOINTS[k]; path.append([c["lon"], c["lat"]])
-    if not cps:  # open-ocean: bend around the Cape if crossing hemispheres
-        if o[1] < 20 or o[0] < 0:
+    if not cps:
+        # open-ocean lanes: a chokepoint-free route with a long voyage IS the
+        # Cape route (Russia 35d, US Gulf 40d, ...) — draw it that way, matching
+        # the transit-day the optimizer charges for it
+        if transit >= 30 or o[1] < 20 or o[0] < 0:
             path.append([CHOKEPOINTS["Cape"]["lon"], CHOKEPOINTS["Cape"]["lat"]])
     path.append([INDIA_HUB["lon"], INDIA_HUB["lat"]])
     return path
