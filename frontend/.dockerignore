@@ -1,0 +1,9 @@
+# Keep the Docker build context lean; the image rebuilds these fresh.
+node_modules
+.next
+.git
+npm-debug.log*
+.env*
+Dockerfile
+.dockerignore
+README.md
