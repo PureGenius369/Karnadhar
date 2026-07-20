@@ -1,0 +1,16 @@
+# secrets — NEVER commit
+.env
+*.key
+.aisstream_key
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node (root: pptxgenjs for the deck; frontend has its own .gitignore too)
+node_modules/
+frontend/.next/
+
+# NOTE: engine/signals/cache/ is deliberately COMMITTED — it holds the cached REAL
+# GDELT + AIS series (public data) that make the demos reproducible offline.

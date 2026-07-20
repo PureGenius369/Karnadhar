@@ -1,0 +1,95 @@
+<svg viewBox="0 0 1180 810" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+<title>KARNADHAR system architecture</title>
+<desc>Five-tier architecture: real-time data signals feed a multi-agent intelligence layer under an orchestrator, running on a domain engine and knowledge layer, surfacing in a geospatial command center, producing decisions for energy-sector buyers. The grade-aware rerouting optimizer is the defensible wedge.</desc>
+<defs>
+<marker id="arr" markerWidth="10" markerHeight="10" refX="5" refY="4" orient="auto"><path d="M1.5,1.5 L7,4 L1.5,6.5" fill="none" stroke="#1D9E75" stroke-width="1.6"/></marker>
+</defs>
+<style>
+.title{font-size:30px;font-weight:700;fill:#1D9E75;}
+.subtitle{font-size:14px;fill:#6b7280;}
+.tag{font-size:12.5px;fill:#6b7280;font-style:italic;}
+.mini{font-family:Consolas,monospace;font-size:10px;fill:#6b7280;}
+.tierhdr{font-size:12px;font-weight:600;fill:#6b7280;letter-spacing:1.2px;}
+.boxt{font-size:13.5px;font-weight:600;fill:#1f2937;}
+.boxt-w{font-size:13.5px;font-weight:700;fill:#C0481F;}
+.boxs{font-size:10.5px;fill:#6b7280;}
+.barT{font-size:13.5px;font-weight:700;fill:#1f2937;letter-spacing:.5px;}
+.bars{font-size:10.5px;fill:#6b7280;}
+.legend{font-size:11px;fill:#6b7280;}
+.chip{font-size:11px;fill:#1f2937;font-weight:500;}
+.pill{font-size:11px;font-weight:700;fill:#0F6E56;}
+.card{fill:#f9fafb;stroke:#d1d5db;stroke-width:1;}
+.tealbar{fill:#e1f5ee;stroke:#1D9E75;stroke-width:1.5;}
+.wedge{fill:#fdeee2;stroke:#D85A30;stroke-width:2;}
+.flow{stroke:#1D9E75;stroke-width:1.6;}
+.tick{stroke:#1D9E75;stroke-width:1.2;stroke-opacity:.5;}
+</style>
+<rect x="0" y="0" width="1180" height="810" fill="#ffffff"/>
+
+<text class="title" x="40" y="44">KARNADHAR</text>
+<text class="subtitle" x="245" y="44">Energy Supply-Chain Resilience &#183; System Architecture</text>
+<text class="tag" x="1140" y="34" text-anchor="end">"From 47-day crisis to 47-minute command"</text>
+<text class="mini" x="1140" y="52" text-anchor="end">ET AI HACKATHON 2026 &#183; PROBLEM #2</text>
+
+<rect x="40" y="62" width="12" height="12" rx="2" fill="#D85A30"/>
+<text class="legend" x="58" y="72">&#9733; Defensible wedge - grade-aware, transit-aware, SPR-coupled rerouting</text>
+<rect x="560" y="62" width="12" height="12" rx="2" fill="#1D9E75"/>
+<text class="legend" x="578" y="72">Signal to decision flow</text>
+<text class="mini" x="1140" y="72" text-anchor="end">REAL public data &#183; no synthetic signals</text>
+
+<text class="tierhdr" x="40" y="104">(1) REAL-TIME DATA SIGNALS</text>
+<rect class="card" x="40" y="114" width="200" height="56" rx="8"/><text class="boxt" x="140" y="139" text-anchor="middle">GDELT</text><text class="boxs" x="140" y="156" text-anchor="middle">Global news &amp; events</text>
+<rect class="card" x="265" y="114" width="200" height="56" rx="8"/><text class="boxt" x="365" y="139" text-anchor="middle">AIS Stream</text><text class="boxs" x="365" y="156" text-anchor="middle">Live tanker positions</text>
+<rect class="card" x="490" y="114" width="200" height="56" rx="8"/><text class="boxt" x="590" y="139" text-anchor="middle">OFAC &#183; OPEC</text><text class="boxs" x="590" y="156" text-anchor="middle">Sanctions &amp; supply cuts</text>
+<rect class="card" x="715" y="114" width="200" height="56" rx="8"/><text class="boxt" x="815" y="139" text-anchor="middle">Markets</text><text class="boxs" x="815" y="156" text-anchor="middle">Brent &#183; Dubai &#183; WTI</text>
+<rect class="card" x="940" y="114" width="200" height="56" rx="8"/><text class="boxt" x="1040" y="139" text-anchor="middle">PPAC &#183; ISPRL &#183; EIA</text><text class="boxs" x="1040" y="156" text-anchor="middle">Imports &#183; reserves &#183; Hormuz</text>
+<line class="flow" x1="590" y1="172" x2="590" y2="196" marker-end="url(#arr)"/>
+<text class="mini" x="600" y="188">ingest &#183; normalize &#183; RAG index</text>
+
+<text class="tierhdr" x="40" y="218">(2) MULTI-AGENT INTELLIGENCE</text>
+<rect class="tealbar" x="40" y="226" width="1100" height="30" rx="8"/>
+<text class="barT" x="590" y="245" text-anchor="middle">ORCHESTRATOR AGENT &#183; coordinates the six specialists &#183; Claude (latest)</text>
+<line class="tick" x1="122.5" y1="256" x2="122.5" y2="268"/><line class="tick" x1="309.5" y1="256" x2="309.5" y2="268"/><line class="tick" x1="496.5" y1="256" x2="496.5" y2="268"/><line class="tick" x1="683.5" y1="256" x2="683.5" y2="268"/><line class="tick" x1="870.5" y1="256" x2="870.5" y2="268"/><line class="tick" x1="1057.5" y1="256" x2="1057.5" y2="268"/>
+<rect class="card" x="40" y="268" width="165" height="60" rx="8"/><text class="boxt" x="122.5" y="293" text-anchor="middle">Geopolitical Risk</text><text class="boxs" x="122.5" y="310" text-anchor="middle">Disruption probability</text>
+<rect class="card" x="227" y="268" width="165" height="60" rx="8"/><text class="boxt" x="309.5" y="293" text-anchor="middle">Maritime / AIS</text><text class="boxs" x="309.5" y="310" text-anchor="middle">Chokepoint flow watch</text>
+<rect class="card" x="414" y="268" width="165" height="60" rx="8"/><text class="boxt" x="496.5" y="293" text-anchor="middle">Scenario Cascade</text><text class="boxs" x="496.5" y="310" text-anchor="middle">Economic impact sim</text>
+<rect class="wedge" x="601" y="268" width="165" height="60" rx="8"/><text class="boxt-w" x="683.5" y="293" text-anchor="middle">&#9733; Procurement Opt.</text><text class="boxs" x="683.5" y="310" text-anchor="middle">Grade-aware rerouting</text>
+<rect class="card" x="788" y="268" width="165" height="60" rx="8"/><text class="boxt" x="870.5" y="293" text-anchor="middle">Reserve Optimizer</text><text class="boxs" x="870.5" y="310" text-anchor="middle">SPR drawdown schedule</text>
+<rect class="card" x="975" y="268" width="165" height="60" rx="8"/><text class="boxt" x="1057.5" y="293" text-anchor="middle">Briefing</text><text class="boxs" x="1057.5" y="310" text-anchor="middle">Cited executive memo</text>
+<line class="flow" x1="590" y1="330" x2="590" y2="354" marker-end="url(#arr)"/>
+<text class="mini" x="600" y="346">agents run on</text>
+
+<text class="tierhdr" x="40" y="376">(3) DOMAIN ENGINE &amp; KNOWLEDGE</text>
+<rect class="wedge" x="40" y="386" width="245" height="58" rx="8"/><text class="boxt-w" x="162.5" y="411" text-anchor="middle">&#9733; Grade &amp; Config KB</text><text class="boxs" x="162.5" y="428" text-anchor="middle">Crude assay compatibility</text>
+<rect class="card" x="325" y="386" width="245" height="58" rx="8"/><text class="boxt" x="447.5" y="411" text-anchor="middle">Knowledge Graph</text><text class="boxs" x="447.5" y="428" text-anchor="middle">Supplier &#183; route &#183; refinery</text>
+<rect class="card" x="610" y="386" width="245" height="58" rx="8"/><text class="boxt" x="732.5" y="411" text-anchor="middle">Glass-box Cascade Model</text><text class="boxs" x="732.5" y="428" text-anchor="middle">Explicit, testable assumptions</text>
+<rect class="wedge" x="895" y="386" width="245" height="58" rx="8"/><text class="boxt-w" x="1017.5" y="411" text-anchor="middle">&#9733; LP Optimization Core</text><text class="boxs" x="1017.5" y="428" text-anchor="middle">Feasible reroute solver</text>
+<line class="flow" x1="590" y1="446" x2="590" y2="470" marker-end="url(#arr)"/>
+
+<text class="tierhdr" x="40" y="492">(4) COMMAND CENTER</text>
+<rect class="tealbar" x="40" y="500" width="1100" height="60" rx="8"/>
+<text class="barT" x="64" y="526">COMMAND CENTER</text>
+<text class="bars" x="64" y="544">Next.js &#183; Tailwind &#183; MapLibre geospatial war-room</text>
+<rect x="760" y="518" width="110" height="24" rx="12" fill="#e1f5ee" stroke="#1D9E75"/><text class="pill" x="815" y="534" text-anchor="middle">Monitor</text>
+<rect x="880" y="518" width="110" height="24" rx="12" fill="#e1f5ee" stroke="#1D9E75"/><text class="pill" x="935" y="534" text-anchor="middle">Simulate</text>
+<rect x="1000" y="518" width="120" height="24" rx="12" fill="#fdeee2" stroke="#D85A30"/><text class="pill" x="1060" y="534" text-anchor="middle" fill="#C0481F">Orchestrate</text>
+<line class="flow" x1="590" y1="560" x2="590" y2="584" marker-end="url(#arr)"/>
+
+<text class="tierhdr" x="40" y="606">(5) DECISIONS to USERS</text>
+<rect class="card" x="40" y="616" width="245" height="56" rx="8"/><text class="boxt" x="162.5" y="640" text-anchor="middle">Disruption Score</text><text class="boxs" x="162.5" y="657" text-anchor="middle">By corridor &amp; supplier</text>
+<rect class="card" x="325" y="616" width="245" height="56" rx="8"/><text class="boxt" x="447.5" y="640" text-anchor="middle">Scenario Cascade</text><text class="boxs" x="447.5" y="657" text-anchor="middle">Price &#183; refinery &#183; GDP</text>
+<rect class="wedge" x="610" y="616" width="245" height="56" rx="8"/><text class="boxt-w" x="732.5" y="640" text-anchor="middle">&#9733; Reroute Plan</text><text class="boxs" x="732.5" y="657" text-anchor="middle">Ranked &amp; feasible</text>
+<rect class="card" x="895" y="616" width="245" height="56" rx="8"/><text class="boxt" x="1017.5" y="640" text-anchor="middle">SPR Schedule + Brief</text><text class="boxs" x="1017.5" y="657" text-anchor="middle">Decision-ready memo</text>
+
+<text class="mini" x="40" y="704">BUYERS</text>
+<rect x="100" y="690" width="84" height="22" rx="11" fill="#f9fafb" stroke="#d1d5db"/><text class="chip" x="142" y="705" text-anchor="middle">Refiners</text>
+<rect x="192" y="690" width="80" height="22" rx="11" fill="#f9fafb" stroke="#d1d5db"/><text class="chip" x="232" y="705" text-anchor="middle">Traders</text>
+<rect x="280" y="690" width="84" height="22" rx="11" fill="#f9fafb" stroke="#d1d5db"/><text class="chip" x="322" y="705" text-anchor="middle">Shippers</text>
+<rect x="372" y="690" width="82" height="22" rx="11" fill="#f9fafb" stroke="#d1d5db"/><text class="chip" x="413" y="705" text-anchor="middle">Insurers</text>
+<rect x="462" y="690" width="84" height="22" rx="11" fill="#f9fafb" stroke="#d1d5db"/><text class="chip" x="504" y="705" text-anchor="middle">Utilities</text>
+<rect x="554" y="690" width="150" height="22" rx="11" fill="#e1f5ee" stroke="#1D9E75"/><text class="chip" x="629" y="705" text-anchor="middle">Govt / Strategic Reserves</text>
+
+<line x1="40" y1="732" x2="1140" y2="732" stroke="#e5e7eb" stroke-width="1"/>
+<text class="mini" x="40" y="752">STACK  Python FastAPI &#183; Claude &#183; Next.js &#183; MapLibre &#183; LP / optimization</text>
+<text class="mini" x="1140" y="752" text-anchor="end">SCALES  7 buyer segments &#183; 50+ import-dependent nations &#183; oil to LNG to critical minerals</text>
+</svg>

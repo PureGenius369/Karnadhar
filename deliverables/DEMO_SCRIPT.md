@@ -1,0 +1,87 @@
+# KARNADHAR — Demo Video Script (target ~3:00)
+
+**Setup before recording**
+1. `cd karnadhar && python -m uvicorn api.main:app --port 8000` (optional; UI runs from JSON alone)
+2. `cd frontend && npm run dev` → open http://localhost:3000 in a maximised browser (dark theme).
+3. Second window ready: a terminal at `karnadhar/` (font ~16pt, dark).
+4. Recorder: OBS / Xbox Game Bar (Win+G). 1080p. Mic on, quiet room. Speak slowly.
+
+---
+
+## SHOT 1 — The hook (0:00–0:25) · war-room on screen, Hormuz scenario selected
+> "India imports 88 percent of its crude oil — and nearly half of it sails through one
+> strait: Hormuz. In June 2025 the world watched it almost close. This is KARNADHAR —
+> a live 3D globe of India's energy lifeline, and an AI command center that answers
+> the question every planning tool dodges: if the strait closes **tomorrow**, what
+> exactly should every Indian refinery do?"
+
+*Action: drag the globe slightly (show the curvature), then hover Jamnagar so its
+real diet popup shows; the tiny dots at the straits are real AIS vessels.*
+
+## SHOT 2 — The problem with "oil is oil" (0:25–0:55) · stay on map
+> "Most tools treat oil as one number — barrels. But a refinery is an engine tuned to a
+> fuel. Jamnagar — Nelson complexity 21 — digests heavy, sour, asphaltene-rich crude.
+> Mumbai — complexity 7 — physically cannot. So when the red routes die, the question
+> isn't 'where do we buy oil?' It's 'which exact grade can each refinery actually run —
+> and who has it?' Everything you see here is built from official customs records —
+> every refinery's real diet, real suppliers, real prices. Our 46-percent Hormuz
+> exposure isn't quoted from a report. The system derives it."
+
+*Action: point at red Gulf routes converging on Hormuz, then green alternates.*
+
+## SHOT 3 — The result (0:55–1:30) · right panel, card ③
+> "Watch the verdict. The naive plan — buy the cheapest barrels — is **infeasible**:
+> it sends two hundred and fifty thousand barrels a day to refineries that cannot
+> process them. KARNADHAR's grade-aware optimizer produces a **feasible** plan —
+> every barrel runnable — and protects over three million dollars a day of product
+> yield. That's more than a billion dollars a year, from decision quality alone."
+
+*Action: hover the INFEASIBLE / FEASIBLE cards, scroll the refinery-by-refinery plan.*
+
+## SHOT 4 — Early warning (1:30–1:55) · card ①
+> "And we're not waiting for the news. KARNADHAR watches global event data — this is
+> the real June 2025 series. Coverage exploded to two hundred times baseline. Our
+> alert fired on June 11th — **twelve days before** Brent jumped eight percent."
+
+*Action: point at the signal bars and the lead-time line.*
+
+## SHOT 5 — Twin deficit (1:55–2:20) · card ②
+> "The cascade is a glass box — every assumption named and testable. Brent at 190.
+> Petrol above 125 rupees. But the real constraint — validated with an ORF
+> Distinguished Fellow — is the **twin deficit**: 191 billion dollars a year of extra
+> outflow India cannot pay in dollars. The binding constraint isn't barrels. It's the
+> balance of payments."
+
+## SHOT 6 — Any disruption (2:20–2:40) · click scenarios live
+> "And it's not one hard-coded scenario. Sanction Russia — the map recolours, the
+> plan recomputes, in forty-five milliseconds. Stack Hormuz **plus** an OPEC squeeze —
+> and the engine is honest: even the optimal reroute leaves a gap, quantified, which
+> is exactly what tells policymakers to trigger demand management."
+
+*Action: click "Russia fully sanctioned", pause; click "Hormuz + OPEC+ squeeze".
+Then point at card ④ (Multi-commodity lens):*
+
+> "And the framework isn't oil-specific. The same disruption, scored across every
+> strategic import — Hormuz isn't just a crude problem: it carries **53 percent of
+> India's LNG** too. Malacca? That's the pharma and semiconductor artery. One
+> engine, any material."
+
+## SHOT 6.5 — Knowledge graph (2:40–2:55) · click "Knowledge graph" toggle (top-right)
+> "Under everything sits a knowledge graph — fifty nodes, a hundred and sixty-three
+> edges: which supplier ships which grade through which strait to which refinery,
+> every edge carrying real volumes and provenance. Watch Hormuz — the red threads
+> are exactly who it threatens, and how badly."
+
+*Action: hover Hormuz, then one refinery (tooltip shows Nelson/API window), then
+hover Russia (grade + volumes). Switch back to "Live map" before the next shot.*
+
+## SHOT 7 — Proof & close (2:55–3:15) · switch to terminal
+> Run: `python run_validate.py` — let the green checks scroll.
+> "Thirty-five automated checks. Real data. Two domain experts. India's energy
+> lifeline has no helmsman for the storm. Now it does. KARNADHAR."
+
+---
+
+**Upload:** YouTube (unlisted is fine if allowed — else public), title
+"KARNADHAR — AI Energy Supply-Chain Command Center | ET AI Hackathon 2026".
+Keep the link in the submission form AND the GitHub README.

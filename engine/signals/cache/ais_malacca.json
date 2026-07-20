@@ -1,0 +1,50 @@
+{
+  "chokepoint": "Malacca",
+  "bbox": [
+    [
+      1.0,
+      103.0
+    ],
+    [
+      2.0,
+      104.6
+    ]
+  ],
+  "vessels": [
+    {
+      "mmsi": 354393000,
+      "name": "IWAMI",
+      "lat": 1.2324,
+      "lon": 103.8238,
+      "sog": 0.1
+    },
+    {
+      "mmsi": 232019341,
+      "name": "VS LEIA",
+      "lat": 1.2495,
+      "lon": 103.6892,
+      "sog": 0
+    },
+    {
+      "mmsi": 477229100,
+      "name": "SEAMERIDIAN",
+      "lat": 1.2286,
+      "lon": 103.8191,
+      "sog": 0
+    },
+    {
+      "mmsi": 538012775,
+      "name": "DAI QUANG",
+      "lat": 1.1824,
+      "lon": 103.7586,
+      "sog": 0.1
+    },
+    {
+      "mmsi": 563131500,
+      "name": "ONE MANCHESTER",
+      "lat": 1.2751,
+      "lon": 103.7588,
+      "sog": 0
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# keep Cloud Run source uploads lean — the buildpack rebuilds these in the cloud
+node_modules/
+.next/

@@ -1,0 +1,18 @@
+{
+  "_provenance": "REPRESENTATIVE tanker positions in the Strait of Hormuz approaches, NOT live AIS. Coordinates/speeds are illustrative (anonymised MMSIs/names) for offline demo. Run engine/signals/ais.fetch_ais with an AISSTREAM_API_KEY on a non-sandboxed machine to collect & cache the REAL feed; the metrics and map logic are identical.",
+  "bbox": [[24.0, 54.0], [27.5, 57.5]],
+  "vessels": [
+    {"mmsi": 470000001, "name": "VLCC NORTHSTAR", "lat": 26.42, "lon": 56.31, "sog": 11.8},
+    {"mmsi": 470000002, "name": "GULF PIONEER",   "lat": 26.55, "lon": 56.18, "sog": 12.4},
+    {"mmsi": 470000003, "name": "DESERT FALCON",  "lat": 26.61, "lon": 56.42, "sog": 0.2},
+    {"mmsi": 470000004, "name": "ARABIAN PEARL",  "lat": 26.18, "lon": 55.74, "sog": 13.1},
+    {"mmsi": 470000005, "name": "OCEAN MAJESTY",  "lat": 25.92, "lon": 55.31, "sog": 0.0},
+    {"mmsi": 470000006, "name": "ENERGY VOYAGER", "lat": 26.74, "lon": 56.55, "sog": 10.6},
+    {"mmsi": 470000007, "name": "CRUDE CARRIER 7","lat": 25.61, "lon": 54.98, "sog": 0.5},
+    {"mmsi": 470000008, "name": "GULF SENTINEL",  "lat": 26.33, "lon": 56.02, "sog": 12.9},
+    {"mmsi": 470000009, "name": "PERSIAN STAR",   "lat": 26.88, "lon": 56.69, "sog": 9.7},
+    {"mmsi": 470000010, "name": "HORMUZ TRADER",  "lat": 25.45, "lon": 54.62, "sog": 0.3},
+    {"mmsi": 470000011, "name": "BLUE HORIZON",   "lat": 26.05, "lon": 55.49, "sog": 11.2},
+    {"mmsi": 470000012, "name": "TANKER ZEPHYR",  "lat": 26.69, "lon": 56.48, "sog": 0.0}
+  ]
+}

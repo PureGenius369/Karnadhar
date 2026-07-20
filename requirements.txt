@@ -1,0 +1,11 @@
+# KARNADHAR engine + API + data pipeline  (Python 3.12)
+pulp>=3.0            # LP solver (CBC) — the grade-aware reroute optimizer
+requests>=2.31       # GDELT client
+websockets>=12       # aisstream.io live AIS client
+pandas>=2.0          # DGCIS .xls ingestion
+xlrd>=2.0            # legacy .xls reader for official trade files
+fastapi>=0.110       # backend API
+uvicorn[standard]>=0.29
+matplotlib>=3.8      # deck/report chart generation
+# optional (drop-in upgrades, not required to run):
+# anthropic           # Claude-written briefs + headline classification

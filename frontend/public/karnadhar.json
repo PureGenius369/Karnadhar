@@ -1,0 +1,2057 @@
+{
+ "meta": {
+  "national_kbd": 5013,
+  "hormuz_exposure": 0.46,
+  "n_refineries": 10,
+  "n_grades": 36,
+  "n_commodities": 8,
+  "generated": "2026-07-18"
+ },
+ "india_hub": {
+  "lat": 22.4,
+  "lon": 69.1
+ },
+ "chokepoints": {
+  "Hormuz": {
+   "lat": 26.57,
+   "lon": 56.25,
+   "label": "Strait of Hormuz"
+  },
+  "Bab-el-Mandeb": {
+   "lat": 12.6,
+   "lon": 43.3,
+   "label": "Bab-el-Mandeb"
+  },
+  "Suez": {
+   "lat": 30.6,
+   "lon": 32.35,
+   "label": "Suez Canal"
+  },
+  "Cape": {
+   "lat": -34.4,
+   "lon": 18.5,
+   "label": "Cape of Good Hope"
+  },
+  "Malacca": {
+   "lat": 2.5,
+   "lon": 101.5,
+   "label": "Strait of Malacca"
+  }
+ },
+ "refineries": [
+  {
+   "name": "RIL Jamnagar",
+   "lat": 22.34,
+   "lon": 69.85,
+   "kbd": 1531.4,
+   "nelson": 21.1,
+   "hormuz": 0.43,
+   "api_opt": 31.4,
+   "diet": {
+    "Russia": 534.8,
+    "Saudi Arab": 261.9,
+    "Iraq": 218.2,
+    "U S A": 116.1,
+    "U Arab Emts": 74.0
+   }
+  },
+  {
+   "name": "Nayara Vadinar",
+   "lat": 22.28,
+   "lon": 69.73,
+   "kbd": 836.8,
+   "nelson": 11.8,
+   "hormuz": 0.29,
+   "api_opt": 31.5,
+   "diet": {
+    "Russia": 464.8,
+    "Iraq": 148.5,
+    "Angola": 53.0,
+    "U Arab Emts": 44.5,
+    "Nigeria": 41.8
+   }
+  },
+  {
+   "name": "IOCL Paradip",
+   "lat": 20.27,
+   "lon": 86.67,
+   "kbd": 699.6,
+   "nelson": 12.2,
+   "hormuz": 0.5,
+   "api_opt": 32.3,
+   "diet": {
+    "Iraq": 167.1,
+    "Russia": 143.5,
+    "U Arab Emts": 97.4,
+    "Saudi Arab": 75.4,
+    "U S A": 56.8
+   }
+  },
+  {
+   "name": "HMEL Bathinda",
+   "lat": 30.21,
+   "lon": 74.95,
+   "kbd": 467.3,
+   "nelson": 12.5,
+   "hormuz": 0.52,
+   "api_opt": 31.6,
+   "diet": {
+    "Russia": 150.5,
+    "Saudi Arab": 82.4,
+    "Iraq": 75.9,
+    "U Arab Emts": 44.1,
+    "Oman": 35.1
+   }
+  },
+  {
+   "name": "BPCL/HPCL Mumbai",
+   "lat": 19.0,
+   "lon": 72.83,
+   "kbd": 465.5,
+   "nelson": 7.0,
+   "hormuz": 0.6,
+   "api_opt": 34.7,
+   "diet": {
+    "Saudi Arab": 117.2,
+    "U Arab Emts": 107.8,
+    "U S A": 97.6,
+    "Iraq": 35.6,
+    "Russia": 30.8
+   }
+  },
+  {
+   "name": "HPCL Visakhapatnam",
+   "lat": 17.69,
+   "lon": 83.22,
+   "kbd": 283.0,
+   "nelson": 7.0,
+   "hormuz": 0.45,
+   "api_opt": 33.2,
+   "diet": {
+    "Nigeria": 63.5,
+    "U Arab Emts": 61.3,
+    "Iraq": 49.4,
+    "Russia": 49.1,
+    "Saudi Arab": 14.7
+   }
+  },
+  {
+   "name": "BPCL Kochi",
+   "lat": 9.97,
+   "lon": 76.28,
+   "kbd": 249.9,
+   "nelson": 8.0,
+   "hormuz": 0.54,
+   "api_opt": 32.6,
+   "diet": {
+    "Russia": 77.0,
+    "U Arab Emts": 57.5,
+    "Iraq": 41.0,
+    "Saudi Arab": 28.2,
+    "Oman": 16.5
+   }
+  },
+  {
+   "name": "MRPL Mangalore",
+   "lat": 12.95,
+   "lon": 74.83,
+   "kbd": 243.9,
+   "nelson": 9.5,
+   "hormuz": 0.55,
+   "api_opt": 31.4,
+   "diet": {
+    "Russia": 76.7,
+    "Saudi Arab": 66.2,
+    "Iraq": 38.3,
+    "U Arab Emts": 23.6,
+    "Oman": 11.1
+   }
+  },
+  {
+   "name": "CPCL Chennai",
+   "lat": 13.08,
+   "lon": 80.29,
+   "kbd": 206.2,
+   "nelson": 7.0,
+   "hormuz": 0.56,
+   "api_opt": 31.6,
+   "diet": {
+    "Iraq": 61.6,
+    "Russia": 60.7,
+    "Saudi Arab": 33.3,
+    "U Arab Emts": 17.5,
+    "U S A": 8.0
+   }
+  },
+  {
+   "name": "ONGC Mangalore (OMPL)",
+   "lat": 12.9,
+   "lon": 74.86,
+   "kbd": 29.4,
+   "nelson": 8.0,
+   "hormuz": 0.93,
+   "api_opt": 31.7,
+   "diet": {
+    "Saudi Arab": 12.4,
+    "Iraq": 7.0,
+    "U Arab Emts": 5.2,
+    "Kuwait": 2.8,
+    "Russia": 2.0
+   }
+  }
+ ],
+ "sources": [
+  {
+   "source": "Russia",
+   "grade": "Urals",
+   "lat": 44.7,
+   "lon": 37.8,
+   "api": 31.0,
+   "sulphur": 1.6,
+   "asph": 2.8,
+   "price": 72.2,
+   "kbd": 2544.0,
+   "chokepoints": []
+  },
+  {
+   "source": "Iraq",
+   "grade": "Basrah",
+   "lat": 30.0,
+   "lon": 48.0,
+   "api": 29.5,
+   "sulphur": 2.9,
+   "asph": 3.6,
+   "price": 65.9,
+   "kbd": 1348.0,
+   "chokepoints": [
+    "Hormuz"
+   ]
+  },
+  {
+   "source": "Saudi Arab",
+   "grade": "Arab Medium",
+   "lat": 26.6,
+   "lon": 50.0,
+   "api": 31.0,
+   "sulphur": 2.4,
+   "asph": 3.0,
+   "price": 77.8,
+   "kbd": 1138.3,
+   "chokepoints": [
+    "Hormuz"
+   ]
+  },
+  {
+   "source": "U Arab Emts",
+   "grade": "Murban/Zakum",
+   "lat": 24.5,
+   "lon": 54.4,
+   "api": 37.0,
+   "sulphur": 1.2,
+   "asph": 0.8,
+   "price": 77.0,
+   "kbd": 852.5,
+   "chokepoints": [
+    "Hormuz"
+   ]
+  },
+  {
+   "source": "U S A",
+   "grade": "WTI Midland",
+   "lat": 29.3,
+   "lon": -94.8,
+   "api": 41.5,
+   "sulphur": 0.24,
+   "asph": 0.2,
+   "price": 72.4,
+   "kbd": 492.9,
+   "chokepoints": []
+  },
+  {
+   "source": "Kuwait",
+   "grade": "Kuwait Export",
+   "lat": 29.1,
+   "lon": 48.1,
+   "api": 31.0,
+   "sulphur": 2.55,
+   "asph": 3.4,
+   "price": 65.7,
+   "kbd": 247.4,
+   "chokepoints": [
+    "Hormuz"
+   ]
+  },
+  {
+   "source": "Nigeria",
+   "grade": "Bonny Light",
+   "lat": 4.3,
+   "lon": 7.0,
+   "api": 35.3,
+   "sulphur": 0.15,
+   "asph": 0.5,
+   "price": 77.8,
+   "kbd": 241.5,
+   "chokepoints": []
+  },
+  {
+   "source": "Angola",
+   "grade": "Girassol",
+   "lat": -8.8,
+   "lon": 13.2,
+   "api": 30.0,
+   "sulphur": 0.33,
+   "asph": 1.0,
+   "price": 73.2,
+   "kbd": 219.8,
+   "chokepoints": []
+  },
+  {
+   "source": "Brazil",
+   "grade": "Tupi",
+   "lat": -22.9,
+   "lon": -43.2,
+   "api": 29.0,
+   "sulphur": 0.4,
+   "asph": 1.2,
+   "price": 72.9,
+   "kbd": 169.3,
+   "chokepoints": []
+  },
+  {
+   "source": "Colombia",
+   "grade": "Vasconia",
+   "lat": 10.4,
+   "lon": -75.5,
+   "api": 24.0,
+   "sulphur": 1.0,
+   "asph": 5.0,
+   "price": 63.3,
+   "kbd": 125.5,
+   "chokepoints": []
+  },
+  {
+   "source": "Oman",
+   "grade": "Oman Export",
+   "lat": 23.6,
+   "lon": 58.5,
+   "api": 33.0,
+   "sulphur": 1.2,
+   "asph": 1.5,
+   "price": 84.8,
+   "kbd": 114.3,
+   "chokepoints": []
+  },
+  {
+   "source": "Qatar",
+   "grade": "Qatar Marine",
+   "lat": 25.9,
+   "lon": 51.6,
+   "api": 36.0,
+   "sulphur": 1.45,
+   "asph": 0.9,
+   "price": 69.0,
+   "kbd": 113.7,
+   "chokepoints": [
+    "Hormuz"
+   ]
+  },
+  {
+   "source": "Egypt A Rp",
+   "grade": "Egypt Blend",
+   "lat": 29.9,
+   "lon": 32.5,
+   "api": 33.0,
+   "sulphur": 1.5,
+   "asph": 2.0,
+   "price": 76.1,
+   "kbd": 86.3,
+   "chokepoints": [
+    "Suez"
+   ]
+  },
+  {
+   "source": "Venezuela",
+   "grade": "Merey",
+   "lat": 10.5,
+   "lon": -64.2,
+   "api": 16.0,
+   "sulphur": 2.5,
+   "asph": 11.0,
+   "price": 83.3,
+   "kbd": 41.3,
+   "chokepoints": []
+  },
+  {
+   "source": "Congo P Rep",
+   "grade": "Djeno",
+   "lat": -4.8,
+   "lon": 11.8,
+   "api": 27.0,
+   "sulphur": 0.3,
+   "asph": 1.0,
+   "price": 81.3,
+   "kbd": 32.2,
+   "chokepoints": []
+  },
+  {
+   "source": "Mexico",
+   "grade": "Maya",
+   "lat": 19.2,
+   "lon": -96.1,
+   "api": 22.0,
+   "sulphur": 3.3,
+   "asph": 10.0,
+   "price": 60.4,
+   "kbd": 24.1,
+   "chokepoints": []
+  },
+  {
+   "source": "Gabon",
+   "grade": "Rabi Light",
+   "lat": -0.7,
+   "lon": 8.8,
+   "api": 33.0,
+   "sulphur": 0.1,
+   "asph": 0.3,
+   "price": 81.5,
+   "kbd": 18.9,
+   "chokepoints": []
+  },
+  {
+   "source": "Algeria",
+   "grade": "Saharan Blend",
+   "lat": 36.8,
+   "lon": 3.0,
+   "api": 45.0,
+   "sulphur": 0.1,
+   "asph": 0.1,
+   "price": 103.3,
+   "kbd": 11.5,
+   "chokepoints": []
+  },
+  {
+   "source": "Canada",
+   "grade": "Cold Lake",
+   "lat": 49.0,
+   "lon": -123.0,
+   "api": 21.0,
+   "sulphur": 3.5,
+   "asph": 12.0,
+   "price": 58.0,
+   "kbd": 3.5,
+   "chokepoints": []
+  }
+ ],
+ "routes": [
+  {
+   "source": "Russia",
+   "path": [
+    [
+     37.8,
+     44.7
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 2544.0
+  },
+  {
+   "source": "Iraq",
+   "path": [
+    [
+     48.0,
+     30.0
+    ],
+    [
+     56.25,
+     26.57
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [
+    "Hormuz"
+   ],
+   "kbd": 1348.0
+  },
+  {
+   "source": "Saudi Arab",
+   "path": [
+    [
+     50.0,
+     26.6
+    ],
+    [
+     56.25,
+     26.57
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [
+    "Hormuz"
+   ],
+   "kbd": 1138.3
+  },
+  {
+   "source": "U Arab Emts",
+   "path": [
+    [
+     54.4,
+     24.5
+    ],
+    [
+     56.25,
+     26.57
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [
+    "Hormuz"
+   ],
+   "kbd": 852.5
+  },
+  {
+   "source": "U S A",
+   "path": [
+    [
+     -94.8,
+     29.3
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 492.9
+  },
+  {
+   "source": "Kuwait",
+   "path": [
+    [
+     48.1,
+     29.1
+    ],
+    [
+     56.25,
+     26.57
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [
+    "Hormuz"
+   ],
+   "kbd": 247.4
+  },
+  {
+   "source": "Nigeria",
+   "path": [
+    [
+     7.0,
+     4.3
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 241.5
+  },
+  {
+   "source": "Angola",
+   "path": [
+    [
+     13.2,
+     -8.8
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 219.8
+  },
+  {
+   "source": "Brazil",
+   "path": [
+    [
+     -43.2,
+     -22.9
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 169.3
+  },
+  {
+   "source": "Colombia",
+   "path": [
+    [
+     -75.5,
+     10.4
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 125.5
+  },
+  {
+   "source": "Oman",
+   "path": [
+    [
+     58.5,
+     23.6
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 114.3
+  },
+  {
+   "source": "Qatar",
+   "path": [
+    [
+     51.6,
+     25.9
+    ],
+    [
+     56.25,
+     26.57
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [
+    "Hormuz"
+   ],
+   "kbd": 113.7
+  },
+  {
+   "source": "Egypt A Rp",
+   "path": [
+    [
+     32.5,
+     29.9
+    ],
+    [
+     32.35,
+     30.6
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [
+    "Suez"
+   ],
+   "kbd": 86.3
+  },
+  {
+   "source": "Venezuela",
+   "path": [
+    [
+     -64.2,
+     10.5
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 41.3
+  },
+  {
+   "source": "Congo P Rep",
+   "path": [
+    [
+     11.8,
+     -4.8
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 32.2
+  },
+  {
+   "source": "Mexico",
+   "path": [
+    [
+     -96.1,
+     19.2
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 24.1
+  },
+  {
+   "source": "Gabon",
+   "path": [
+    [
+     8.8,
+     -0.7
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 18.9
+  },
+  {
+   "source": "Algeria",
+   "path": [
+    [
+     3.0,
+     36.8
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 11.5
+  },
+  {
+   "source": "Canada",
+   "path": [
+    [
+     -123.0,
+     49.0
+    ],
+    [
+     18.5,
+     -34.4
+    ],
+    [
+     69.1,
+     22.4
+    ]
+   ],
+   "chokepoints": [],
+   "kbd": 3.5
+  }
+ ],
+ "vessels": [
+  {
+   "name": "IWAMI",
+   "lat": 1.2324,
+   "lon": 103.8238,
+   "sog": 0.1,
+   "source": "live"
+  },
+  {
+   "name": "VS LEIA",
+   "lat": 1.2495,
+   "lon": 103.6892,
+   "sog": 0,
+   "source": "live"
+  },
+  {
+   "name": "SEAMERIDIAN",
+   "lat": 1.2286,
+   "lon": 103.8191,
+   "sog": 0,
+   "source": "live"
+  },
+  {
+   "name": "DAI QUANG",
+   "lat": 1.1824,
+   "lon": 103.7586,
+   "sog": 0.1,
+   "source": "live"
+  },
+  {
+   "name": "ONE MANCHESTER",
+   "lat": 1.2751,
+   "lon": 103.7588,
+   "sog": 0,
+   "source": "live"
+  },
+  {
+   "name": "VLCC NORTHSTAR",
+   "lat": 26.42,
+   "lon": 56.31,
+   "sog": 11.8,
+   "source": "snapshot"
+  },
+  {
+   "name": "GULF PIONEER",
+   "lat": 26.55,
+   "lon": 56.18,
+   "sog": 12.4,
+   "source": "snapshot"
+  },
+  {
+   "name": "DESERT FALCON",
+   "lat": 26.61,
+   "lon": 56.42,
+   "sog": 0.2,
+   "source": "snapshot"
+  },
+  {
+   "name": "ARABIAN PEARL",
+   "lat": 26.18,
+   "lon": 55.74,
+   "sog": 13.1,
+   "source": "snapshot"
+  },
+  {
+   "name": "OCEAN MAJESTY",
+   "lat": 25.92,
+   "lon": 55.31,
+   "sog": 0.0,
+   "source": "snapshot"
+  },
+  {
+   "name": "ENERGY VOYAGER",
+   "lat": 26.74,
+   "lon": 56.55,
+   "sog": 10.6,
+   "source": "snapshot"
+  },
+  {
+   "name": "CRUDE CARRIER 7",
+   "lat": 25.61,
+   "lon": 54.98,
+   "sog": 0.5,
+   "source": "snapshot"
+  },
+  {
+   "name": "GULF SENTINEL",
+   "lat": 26.33,
+   "lon": 56.02,
+   "sog": 12.9,
+   "source": "snapshot"
+  },
+  {
+   "name": "PERSIAN STAR",
+   "lat": 26.88,
+   "lon": 56.69,
+   "sog": 9.7,
+   "source": "snapshot"
+  },
+  {
+   "name": "HORMUZ TRADER",
+   "lat": 25.45,
+   "lon": 54.62,
+   "sog": 0.3,
+   "source": "snapshot"
+  },
+  {
+   "name": "BLUE HORIZON",
+   "lat": 26.05,
+   "lon": 55.49,
+   "sog": 11.2,
+   "source": "snapshot"
+  },
+  {
+   "name": "TANKER ZEPHYR",
+   "lat": 26.69,
+   "lon": 56.48,
+   "sog": 0.0,
+   "source": "snapshot"
+  }
+ ],
+ "commodities": [
+  {
+   "key": "crude_oil",
+   "name": "Crude oil",
+   "dependence": 0.88,
+   "annual_usd_bn": 157.0,
+   "hhi": 0.229,
+   "rigidity": 0.65,
+   "stockpile_days": 9.5,
+   "ivx": 60.4,
+   "affected": 0,
+   "suppliers": {
+    "RUSSIA": 0.36,
+    "IRAQ": 0.2,
+    "SAUDI ARAB": 0.13,
+    "U ARAB EMTS": 0.09,
+    "U S A": 0.04,
+    "OTHERS": 0.18
+   },
+   "chokepoints": {
+    "Hormuz": 0.46
+   }
+  },
+  {
+   "key": "lng",
+   "name": "LNG (natural gas)",
+   "dependence": 0.48,
+   "annual_usd_bn": 13.3,
+   "hhi": 0.285,
+   "rigidity": 0.55,
+   "stockpile_days": 3,
+   "ivx": 52.4,
+   "affected": 0,
+   "suppliers": {
+    "QATAR": 0.42,
+    "U S A": 0.14,
+    "U ARAB EMTS": 0.11,
+    "ANGOLA": 0.06,
+    "OTHERS": 0.27
+   },
+   "chokepoints": {
+    "Hormuz": 0.53
+   }
+  },
+  {
+   "key": "pharma_api",
+   "name": "Pharma APIs / KSMs",
+   "dependence": 0.7,
+   "annual_usd_bn": 4.6,
+   "hhi": 0.58,
+   "rigidity": 0.9,
+   "stockpile_days": 75,
+   "ivx": 61.1,
+   "affected": 0,
+   "suppliers": {
+    "CHINA": 0.7,
+    "OTHERS": 0.3
+   },
+   "chokepoints": {
+    "Malacca": 0.7
+   }
+  },
+  {
+   "key": "semiconductors",
+   "name": "Semiconductors",
+   "dependence": 0.9,
+   "annual_usd_bn": 18.0,
+   "hhi": 0.233,
+   "rigidity": 0.85,
+   "stockpile_days": 30,
+   "ivx": 67.9,
+   "affected": 0,
+   "suppliers": {
+    "CHINA": 0.35,
+    "TAIWAN": 0.18,
+    "KOREA RP": 0.14,
+    "SINGAPORE": 0.12,
+    "OTHERS": 0.21
+   },
+   "chokepoints": {
+    "Malacca": 0.79
+   }
+  },
+  {
+   "key": "edible_oil",
+   "name": "Edible oils",
+   "dependence": 0.57,
+   "annual_usd_bn": 15.5,
+   "hhi": 0.226,
+   "rigidity": 0.35,
+   "stockpile_days": 45,
+   "ivx": 41.4,
+   "affected": 0,
+   "suppliers": {
+    "INDONESIA": 0.38,
+    "MALAYSIA": 0.15,
+    "ARGENTINA": 0.12,
+    "RUSSIA": 0.09,
+    "UKRAINE": 0.09,
+    "OTHERS": 0.17
+   },
+   "chokepoints": {
+    "Malacca": 0.53
+   }
+  },
+  {
+   "key": "fertiliser",
+   "name": "Fertilisers (urea/DAP/MOP)",
+   "dependence": 0.35,
+   "annual_usd_bn": 10.2,
+   "hhi": 0.185,
+   "rigidity": 0.5,
+   "stockpile_days": 60,
+   "ivx": 29.8,
+   "affected": 0,
+   "suppliers": {
+    "CHINA": 0.2,
+    "RUSSIA": 0.2,
+    "SAUDI ARAB": 0.15,
+    "MOROCCO": 0.1,
+    "OMAN": 0.1,
+    "OTHERS": 0.25
+   },
+   "chokepoints": {
+    "Hormuz": 0.3,
+    "Malacca": 0.2
+   }
+  },
+  {
+   "key": "coking_coal",
+   "name": "Coking coal",
+   "dependence": 0.85,
+   "annual_usd_bn": 12.1,
+   "hhi": 0.37,
+   "rigidity": 0.45,
+   "stockpile_days": 30,
+   "ivx": 47.7,
+   "affected": 0,
+   "suppliers": {
+    "AUSTRALIA": 0.55,
+    "U S A": 0.15,
+    "RUSSIA": 0.15,
+    "OTHERS": 0.15
+   },
+   "chokepoints": {}
+  },
+  {
+   "key": "solar_modules",
+   "name": "Solar PV modules/cells",
+   "dependence": 0.8,
+   "annual_usd_bn": 7.0,
+   "hhi": 0.68,
+   "rigidity": 0.6,
+   "stockpile_days": 60,
+   "ivx": 64.8,
+   "affected": 0,
+   "suppliers": {
+    "CHINA": 0.8,
+    "OTHERS": 0.2
+   },
+   "chokepoints": {
+    "Malacca": 0.8
+   }
+  }
+ ],
+ "signal": {
+  "source": "cache",
+  "alert_day": "2025-06-11",
+  "lead_days": 12,
+  "market_day": "2025-06-23",
+  "baseline": 0.001,
+  "series": [
+   {
+    "day": "2025-06-01",
+    "x": 0.0,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-02",
+    "x": 1.0,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-03",
+    "x": 0.5,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-04",
+    "x": 2.6,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-05",
+    "x": 1.8,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-06",
+    "x": 1.0,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-07",
+    "x": 0.7,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-08",
+    "x": 2.6,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-09",
+    "x": 0.8,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-10",
+    "x": 0.0,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-11",
+    "x": 51.0,
+    "alerted": false
+   },
+   {
+    "day": "2025-06-12",
+    "x": 52.1,
+    "alerted": true
+   },
+   {
+    "day": "2025-06-13",
+    "x": 202.0,
+    "alerted": true
+   },
+   {
+    "day": "2025-06-14",
+    "x": 177.5,
+    "alerted": true
+   }
+  ]
+ },
+ "scenarios": [
+  {
+   "key": "hormuz",
+   "name": "Strait of Hormuz closure",
+   "blocked": [
+    "Hormuz"
+   ],
+   "sanctioned": [],
+   "cut_sources": [
+    "Iraq",
+    "Saudi Arab",
+    "U Arab Emts",
+    "Kuwait",
+    "Qatar"
+   ],
+   "gap_kbd": 2312.6,
+   "solve_ms": 49.8,
+   "naive": {
+    "feasible": false,
+    "unrunnable": 0.0,
+    "unmet": 0.0,
+    "yield_loss": 3.35,
+    "true_cost": 183.24,
+    "breaches": [
+     "HPCL Visakhapatnam desulph 1.60>1.48"
+    ]
+   },
+   "smart": {
+    "feasible": true,
+    "unmet": 0.0,
+    "yield_loss": 3.26,
+    "true_cost": 183.15,
+    "avg_transit": 34.5,
+    "spr_bridge": 28.5,
+    "effective_spr": 20.6,
+    "spr_margin": -7.9,
+    "plan": [
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 657.9
+     },
+     {
+      "refinery": "Nayara Vadinar",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 239.7
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 198.4
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Vasconia",
+      "source": "Colombia",
+      "kbd": 125.5
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Maya",
+      "source": "Mexico",
+      "kbd": 24.1
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Cold Lake",
+      "source": "Canada",
+      "kbd": 3.5
+     },
+     {
+      "refinery": "HMEL Bathinda",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 242.9
+     },
+     {
+      "refinery": "BPCL/HPCL Mumbai",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 280.4
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 58.1
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Guyana",
+      "kbd": 18.0
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Korea Rp",
+      "kbd": 12.7
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Panama Republic",
+      "kbd": 9.7
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Uruguay",
+      "kbd": 8.9
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Singapore",
+      "kbd": 7.2
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Congo D. Rep.",
+      "kbd": 6.2
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Togo",
+      "kbd": 4.3
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Aruba",
+      "kbd": 3.1
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 131.6
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "South Sudan",
+      "kbd": 2.6
+     },
+     {
+      "refinery": "MRPL Mangalore",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 135.1
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 115.3
+     },
+     {
+      "refinery": "ONGC Mangalore (OMPL)",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 27.4
+     }
+    ]
+   },
+   "cascade": {
+    "brent": 190.0,
+    "brent_pct": 131.7,
+    "pump": 125.5,
+    "gdp": 1.4,
+    "bill_day": 522.7,
+    "cad_stressed": 6.09,
+    "cad_base": 1.2,
+    "annual_bn": 190.8
+   }
+  },
+  {
+   "key": "hormuz_opec",
+   "name": "Hormuz + OPEC+ squeeze",
+   "blocked": [
+    "Hormuz"
+   ],
+   "sanctioned": [],
+   "cut_sources": [
+    "Iraq",
+    "Saudi Arab",
+    "U Arab Emts",
+    "Kuwait",
+    "Qatar"
+   ],
+   "gap_kbd": 2312.6,
+   "solve_ms": 37.0,
+   "naive": {
+    "feasible": true,
+    "unrunnable": 0.0,
+    "unmet": 0.0,
+    "yield_loss": 5.24,
+    "true_cost": 193.56,
+    "breaches": []
+   },
+   "smart": {
+    "feasible": true,
+    "unmet": 0.1,
+    "yield_loss": 3.29,
+    "true_cost": 192.2,
+    "avg_transit": 32.8,
+    "spr_bridge": 26.8,
+    "effective_spr": 20.6,
+    "spr_margin": -6.2,
+    "plan": [
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 657.9
+     },
+     {
+      "refinery": "Nayara Vadinar",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 239.7
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 158.1
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Tupi",
+      "source": "Brazil",
+      "kbd": 101.6
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Vasconia",
+      "source": "Colombia",
+      "kbd": 75.3
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Maya",
+      "source": "Mexico",
+      "kbd": 14.5
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Cold Lake",
+      "source": "Canada",
+      "kbd": 2.1
+     },
+     {
+      "refinery": "HMEL Bathinda",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 111.0
+     },
+     {
+      "refinery": "HMEL Bathinda",
+      "grade": "Girassol",
+      "source": "Angola",
+      "kbd": 131.9
+     },
+     {
+      "refinery": "BPCL/HPCL Mumbai",
+      "grade": "WTI Midland",
+      "source": "U S A",
+      "kbd": 135.5
+     },
+     {
+      "refinery": "BPCL/HPCL Mumbai",
+      "grade": "Bonny Light",
+      "source": "Nigeria",
+      "kbd": 144.9
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 10.9
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "WTI Midland",
+      "source": "U S A",
+      "kbd": 42.0
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Egypt Blend",
+      "source": "Egypt A Rp",
+      "kbd": 51.8
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Rabi Light",
+      "source": "Gabon",
+      "kbd": 11.3
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Turkey",
+      "kbd": 8.8
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "Aruba",
+      "kbd": 1.9
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Other",
+      "source": "South Sudan",
+      "kbd": 1.6
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 71.0
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Libya",
+      "kbd": 15.7
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Guyana",
+      "kbd": 10.8
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Korea Rp",
+      "kbd": 7.6
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Ghana",
+      "kbd": 7.3
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Panama Republic",
+      "kbd": 5.8
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Uruguay",
+      "kbd": 5.3
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Singapore",
+      "kbd": 4.3
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Congo D. Rep.",
+      "kbd": 3.7
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Togo",
+      "kbd": 2.6
+     },
+     {
+      "refinery": "MRPL Mangalore",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 135.1
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 115.3
+     },
+     {
+      "refinery": "ONGC Mangalore (OMPL)",
+      "grade": "Urals",
+      "source": "Russia",
+      "kbd": 27.4
+     }
+    ]
+   },
+   "cascade": {
+    "brent": 190.0,
+    "brent_pct": 131.7,
+    "pump": 125.5,
+    "gdp": 1.4,
+    "bill_day": 522.7,
+    "cad_stressed": 6.09,
+    "cad_base": 1.2,
+    "annual_bn": 190.8
+   }
+  },
+  {
+   "key": "russia_sanction",
+   "name": "Russia fully sanctioned",
+   "blocked": [],
+   "sanctioned": [
+    "RUSSIA"
+   ],
+   "cut_sources": [
+    "Russia"
+   ],
+   "gap_kbd": 1589.9,
+   "solve_ms": 37.0,
+   "naive": {
+    "feasible": false,
+    "unrunnable": 219.6,
+    "unmet": 0.0,
+    "yield_loss": 3.32,
+    "true_cost": 117.62,
+    "breaches": [
+     "RIL Jamnagar desulph 2.27>2.04",
+     "Nayara Vadinar desulph 2.90>1.91",
+     "IOCL Paradip desulph 2.90>1.88",
+     "HMEL Bathinda desulph 2.90>2.15",
+     "BPCL/HPCL Mumbai <- Basrah (API 30/S 2.9/Asph 3.6)",
+     "BPCL/HPCL Mumbai desulph 2.90>1.66"
+    ]
+   },
+   "smart": {
+    "feasible": false,
+    "unmet": 0.0,
+    "yield_loss": 2.71,
+    "true_cost": 120.82,
+    "avg_transit": 14.4,
+    "spr_bridge": 8.4,
+    "effective_spr": 30.0,
+    "spr_margin": 21.5,
+    "plan": [
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Basrah",
+      "source": "Iraq",
+      "kbd": 339.2
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Tupi",
+      "source": "Brazil",
+      "kbd": 147.1
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Vasconia",
+      "source": "Colombia",
+      "kbd": 48.5
+     },
+     {
+      "refinery": "Nayara Vadinar",
+      "grade": "Basrah",
+      "source": "Iraq",
+      "kbd": 72.0
+     },
+     {
+      "refinery": "Nayara Vadinar",
+      "grade": "Kuwait Export",
+      "source": "Kuwait",
+      "kbd": 247.4
+     },
+     {
+      "refinery": "Nayara Vadinar",
+      "grade": "Girassol",
+      "source": "Angola",
+      "kbd": 145.4
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Basrah",
+      "source": "Iraq",
+      "kbd": 66.5
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Vasconia",
+      "source": "Colombia",
+      "kbd": 77.0
+     },
+     {
+      "refinery": "HMEL Bathinda",
+      "grade": "Basrah",
+      "source": "Iraq",
+      "kbd": 106.3
+     },
+     {
+      "refinery": "HMEL Bathinda",
+      "grade": "Girassol",
+      "source": "Angola",
+      "kbd": 32.2
+     },
+     {
+      "refinery": "HMEL Bathinda",
+      "grade": "Tupi",
+      "source": "Brazil",
+      "kbd": 12.1
+     },
+     {
+      "refinery": "BPCL/HPCL Mumbai",
+      "grade": "Qatar Marine",
+      "source": "Qatar",
+      "kbd": 30.8
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Qatar Marine",
+      "source": "Qatar",
+      "kbd": 49.1
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Qatar Marine",
+      "source": "Qatar",
+      "kbd": 33.8
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Guyana",
+      "kbd": 18.0
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Ghana",
+      "kbd": 12.1
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Panama Republic",
+      "kbd": 4.6
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Congo D. Rep.",
+      "kbd": 6.2
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Other",
+      "source": "Togo",
+      "kbd": 2.3
+     },
+     {
+      "refinery": "MRPL Mangalore",
+      "grade": "Basrah",
+      "source": "Iraq",
+      "kbd": 55.5
+     },
+     {
+      "refinery": "MRPL Mangalore",
+      "grade": "Girassol",
+      "source": "Angola",
+      "kbd": 21.2
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Girassol",
+      "source": "Angola",
+      "kbd": 21.1
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Other",
+      "source": "Korea Rp",
+      "kbd": 12.7
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Other",
+      "source": "Panama Republic",
+      "kbd": 5.1
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Other",
+      "source": "Uruguay",
+      "kbd": 8.9
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Other",
+      "source": "Singapore",
+      "kbd": 7.2
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Other",
+      "source": "Aruba",
+      "kbd": 3.1
+     },
+     {
+      "refinery": "CPCL Chennai",
+      "grade": "Other",
+      "source": "South Sudan",
+      "kbd": 2.6
+     },
+     {
+      "refinery": "ONGC Mangalore (OMPL)",
+      "grade": "Other",
+      "source": "Togo",
+      "kbd": 2.0
+     }
+    ]
+   },
+   "cascade": {
+    "brent": 140.3,
+    "brent_pct": 71.1,
+    "pump": 113.8,
+    "gdp": 0.76,
+    "bill_day": 282.2,
+    "cad_stressed": 3.84,
+    "cad_base": 1.2,
+    "annual_bn": 103.0
+   }
+  },
+  {
+   "key": "hormuz_russia",
+   "name": "Hormuz closure + Russia sanctioned",
+   "blocked": [
+    "Hormuz"
+   ],
+   "sanctioned": [
+    "RUSSIA"
+   ],
+   "cut_sources": [
+    "Russia",
+    "Iraq",
+    "Saudi Arab",
+    "U Arab Emts",
+    "Kuwait",
+    "Qatar"
+   ],
+   "gap_kbd": 3902.5,
+   "solve_ms": 36.0,
+   "naive": {
+    "feasible": false,
+    "unrunnable": 545.7,
+    "unmet": 2124.7,
+    "yield_loss": 6.86,
+    "true_cost": 163.0,
+    "breaches": [
+     "RIL Jamnagar <- WTI Midland (API 42/S 0.24/Asph 0.2)",
+     "Nayara Vadinar <- Merey (API 16/S 2.5/Asph 11.0)",
+     "Nayara Vadinar <- Saharan Blend (API 45/S 0.1/Asph 0.1)"
+    ]
+   },
+   "smart": {
+    "feasible": false,
+    "unmet": 2166.0,
+    "yield_loss": 6.15,
+    "true_cost": 158.3,
+    "avg_transit": 28.3,
+    "spr_bridge": 22.3,
+    "effective_spr": 12.2,
+    "spr_margin": -10.1,
+    "plan": [
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Girassol",
+      "source": "Angola",
+      "kbd": 219.8
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Tupi",
+      "source": "Brazil",
+      "kbd": 169.3
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Vasconia",
+      "source": "Colombia",
+      "kbd": 125.5
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Djeno",
+      "source": "Congo P Rep",
+      "kbd": 32.2
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Maya",
+      "source": "Mexico",
+      "kbd": 24.1
+     },
+     {
+      "refinery": "RIL Jamnagar",
+      "grade": "Cold Lake",
+      "source": "Canada",
+      "kbd": 3.5
+     },
+     {
+      "refinery": "Nayara Vadinar",
+      "grade": "WTI Midland",
+      "source": "U S A",
+      "kbd": 193.2
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Bonny Light",
+      "source": "Nigeria",
+      "kbd": 241.5
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Malaysia",
+      "kbd": 27.1
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Libya",
+      "kbd": 26.2
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Guyana",
+      "kbd": 18.0
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Iran",
+      "kbd": 17.0
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Brunei",
+      "kbd": 15.2
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Turkey",
+      "kbd": 14.6
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Korea Rp",
+      "kbd": 12.7
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Ghana",
+      "kbd": 12.1
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Panama Republic",
+      "kbd": 9.7
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Uruguay",
+      "kbd": 8.9
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Singapore",
+      "kbd": 7.2
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Congo D. Rep.",
+      "kbd": 6.2
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Argentina",
+      "kbd": 5.9
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Sudan",
+      "kbd": 5.9
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Togo",
+      "kbd": 4.3
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "Aruba",
+      "kbd": 3.1
+     },
+     {
+      "refinery": "IOCL Paradip",
+      "grade": "Other",
+      "source": "South Sudan",
+      "kbd": 2.6
+     },
+     {
+      "refinery": "BPCL/HPCL Mumbai",
+      "grade": "WTI Midland",
+      "source": "U S A",
+      "kbd": 299.7
+     },
+     {
+      "refinery": "BPCL/HPCL Mumbai",
+      "grade": "Saharan Blend",
+      "source": "Algeria",
+      "kbd": 11.5
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Oman Export",
+      "source": "Oman",
+      "kbd": 91.0
+     },
+     {
+      "refinery": "HPCL Visakhapatnam",
+      "grade": "Egypt Blend",
+      "source": "Egypt A Rp",
+      "kbd": 86.3
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Oman Export",
+      "source": "Oman",
+      "kbd": 23.3
+     },
+     {
+      "refinery": "BPCL Kochi",
+      "grade": "Rabi Light",
+      "source": "Gabon",
+      "kbd": 18.9
+     }
+    ]
+   },
+   "cascade": {
+    "brent": 190.0,
+    "brent_pct": 131.7,
+    "pump": 125.5,
+    "gdp": 1.4,
+    "bill_day": 522.7,
+    "cad_stressed": 6.09,
+    "cad_base": 1.2,
+    "annual_bn": 190.8
+   }
+  }
+ ]
+}
