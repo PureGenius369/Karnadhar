@@ -73,6 +73,8 @@ def main():
     refs, crudes = build_refineries(), build_crudes()
     raw = load_diets()
     national = sum(r.capacity_kbd for r in refs)
+    # DERIVE the national Hormuz exposure from the model itself (no hardcoding)
+    hormuz_exposure = sum(r.volume_at_risk({"Hormuz"}, set()) for r in refs) / national
 
     # geo
     refineries = []
@@ -114,10 +116,10 @@ def main():
     for key, scn in scenarios().items():
         t0 = time.perf_counter()
         nv = evaluate("naive", naive_plan(refs, crudes, scn), refs, crudes, scn)
-        pl, st = grade_plan(refs, crudes, scn)
+        pl, st, marg = grade_plan(refs, crudes, scn)
         sm = evaluate("smart", pl, refs, crudes, scn)
         ms = round((time.perf_counter() - t0) * 1000, 1)
-        closure = min(1.0, nv.gap_kbd / national / 0.46)  # gap as frac of Hormuz-max
+        closure = min(1.0, nv.gap_kbd / national / hormuz_exposure)  # gap vs Hormuz-max
         cas = compute_cascade(min(1.0, closure), CascadeParams())
         cut = [c.name.title() for c in crudes if scn.is_cut(c) and c.name in SRC_COORDS]
         scen_out.append({
@@ -125,12 +127,16 @@ def main():
             "blocked": list(scn.blocked_chokepoints), "sanctioned": list(scn.sanctioned_countries),
             "cut_sources": cut, "gap_kbd": nv.gap_kbd, "solve_ms": ms,
             "naive": {"feasible": nv.feasible, "unrunnable": nv.unrunnable_kbd,
-                      "unmet": nv.unmet_kbd, "yield_loss": nv.yield_loss_musd_day,
+                      "unmet": nv.unmet_kbd, "usable_short": nv.usable_short_kbd,
+                      "yield_loss": nv.yield_loss_musd_day,
                       "true_cost": nv.true_cost_musd_day, "breaches": nv.breaches[:6]},
             "smart": {"feasible": sm.feasible, "unmet": sm.unmet_kbd,
+                      "usable_short": sm.usable_short_kbd,
                       "yield_loss": sm.yield_loss_musd_day, "true_cost": sm.true_cost_musd_day,
                       "avg_transit": sm.avg_transit_days, "spr_bridge": sm.spr_bridge_days,
                       "effective_spr": sm.effective_spr_days, "spr_margin": sm.spr_margin_days,
+                      "fleet_vlcc": sm.fleet_vlcc, "extra_vlcc": sm.extra_vlcc,
+                      "marginals": [m for m in marg if m["avail_kbd"] >= 50][:3],
                       "plan": plan_rows(pl, crudes)},
             "cascade": {"brent": cas.brent_usd, "brent_pct": cas.brent_change_pct,
                         "pump": cas.pump_inr_per_l, "gdp": cas.gdp_drag_pp,
@@ -152,9 +158,9 @@ def main():
     commodities = commodity_screen()
 
     data = {
-        "meta": {"national_kbd": round(national), "hormuz_exposure": 0.46,
+        "meta": {"national_kbd": round(national), "hormuz_exposure": round(hormuz_exposure, 3),
                  "n_refineries": len(refs), "n_grades": len(crudes),
-                 "n_commodities": len(commodities), "generated": "2026-07-18"},
+                 "n_commodities": len(commodities), "generated": date.today().isoformat()},
         "india_hub": INDIA_HUB, "chokepoints": CHOKEPOINTS,
         "refineries": refineries, "sources": sources, "routes": routes,
         "vessels": vessels, "commodities": commodities,

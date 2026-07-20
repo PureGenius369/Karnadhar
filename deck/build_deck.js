@@ -278,7 +278,8 @@ function foot(s, txt) {
     panel(s, x, 5.35, 3.87, 1.45);
     stat(s, x + 0.1, 5.5, 3.67, c[0], c[1], c[2], 26);
   });
-  s.addNotes('We ran the same crisis through two planners. The naive planner — price-rational, supply-respecting, but grade-blind — produces a plan where 250,000 barrels a day go to refineries that cannot process them. It is infeasible for a grade reason, which is exactly our thesis. KARNADHAR’s linear program produces a fully feasible plan and protects over 3 million dollars a day of product yield — over a billion dollars a year.');
+  foot(s, 'Curated stress-demo (15 grades × 7 refineries, public assays) — the wedge REPRODUCES on the real DGCIS model: sulphur-blend breach at Vizag; 220 kb/d un-runnable under sanctions (next slides)');
+  s.addNotes('We ran the same crisis through two planners. The naive planner — price-rational, supply-respecting, but grade-blind — produces a plan where 250,000 barrels a day go to refineries that cannot process them. It is infeasible for a grade reason, which is exactly our thesis. KARNADHAR’s linear program produces a fully feasible plan and protects over 3 million dollars a day of product yield — over a billion dollars a year. And the same failure mode reproduces on the real customs-data model — different numbers, same physics, which is the point.');
 }
 
 // ================= 7. EARLY WARNING =================
@@ -333,10 +334,10 @@ function foot(s, txt) {
   title(s, 'Block any chokepoint. Sanction any supplier. Model it.');
 
   const rows2 = [
-    ['Hormuz full closure', 'naive: INFEASIBLE (250 kb/d un-runnable)', 'KARNADHAR: FEASIBLE — $3.15M/day yield protected', TEAL],
-    ['Hormuz + OPEC+ squeeze', 'even optimal reroute leaves 32 kb/d unmet', 'engine says so honestly → demand management + SPR draw', AMBER],
-    ['Russia sanctioned', '1,590 kb/d of discounted crude vanishes', 'feasible reroute at higher cost — India’s new #1 supplier is replaceable, at a price', BLUE],
-    ['Hormuz + Russia (compound)', 'the nightmare: 2 of top 3 suppliers gone', 'partial coverage only — quantified shortfall drives rationing policy', RED],
+    ['Hormuz full closure', 'naive: INFEASIBLE — blend breaches Vizag’s sulphur limit', 'KARNADHAR: FEASIBLE — and priced: the reroute ties up +66 VLCC-equivalents (ton-mile)', TEAL],
+    ['Hormuz + OPEC+ squeeze', 'alternate suppliers squeezed to 60% of headroom', 'still feasible — grade-matching value rises to $1.95M/day of protected yield', AMBER],
+    ['Russia sanctioned', 'naive sends 220 kb/d to refineries that cannot run it', 'usable shortfall 220 → 0 — India’s #1 supplier is replaceable, at a price', BLUE],
+    ['Hormuz + Russia (compound)', 'the nightmare: 3,900 kb/d gap, 2 of top 3 suppliers gone', 'honest: 2,166 kb/d unmet, quantified — naive pretends, with 546 kb/d of fake fill', RED],
   ];
   rows2.forEach((r, i) => {
     const y = 1.9 + i * 1.22;
@@ -350,7 +351,7 @@ function foot(s, txt) {
   s.addText('An honest engine: when a shock is too severe to reroute around, KARNADHAR quantifies the gap instead of pretending — because “you must cut demand by X” is the most decision-useful output there is.', {
     x: 0.6, y: 6.85, w: 12.1, h: 0.5, fontFace: F, fontSize: 12.5, italic: true, color: TEAL, margin: 0,
   });
-  s.addNotes('The engine generalizes. Any chokepoint, any supplier sanction, any combination. And critically — it’s honest. Add an OPEC squeeze on top of Hormuz and even the optimal reroute leaves 32,000 barrels a day unmet. The engine says so, quantified. That honesty is what makes it usable for policy.');
+  s.addNotes('The engine generalizes — any chokepoint, any supplier sanction, any combination, all on the real customs-data model. Notice two things no dashboard gives you. First, honesty: in the compound shock the naive plan pretends to fill the gap with 546,000 barrels a day of crude the refineries cannot run; we count only usable barrels and state the true shortfall — 2,166. Second, the decision layer: the optimizer prices the reroute in tankers — plus 66 VLCC-equivalents — and its shadow prices name the scarcest barrel. That is what makes it usable for policy.');
 }
 
 // ================= 10. WAR-ROOM =================
@@ -367,7 +368,7 @@ function foot(s, txt) {
     ['Cut vs alive routes', 'every supply corridor recolours the instant a scenario changes', RED],
     ['Knowledge-graph view', 'toggle to the 50-node supplier→strait→refinery graph; threat edges glow per scenario', PURPLE],
     ['Multi-commodity lens', 'same disruption scored across 8 strategic imports — Hormuz hits 53% of LNG too', AMBER],
-    ['45 ms', 'scenario click → new national plan on screen', TEAL],
+    ['Decision layer', 'LP shadow prices, usable shortfall, VLCC ton-mile cost — live on every scenario', TEAL],
   ];
   feats.forEach((f, i) => {
     const y = 1.95 + i * 1.0;
@@ -377,7 +378,7 @@ function foot(s, txt) {
       { text: f[1], options: { color: MUT, fontSize: 11.5 } },
     ], { x: 7.58, y, w: 5.15, h: 0.95, fontFace: F, margin: 0, lineSpacing: 15 });
   });
-  s.addNotes('This is the product. Next.js and MapLibre over a FastAPI engine. The map you see is live — the red routes are the Gulf corridors dying when Hormuz closes; the green ones are the alternates KARNADHAR is re-routing through. Click a scenario and the entire national plan recomputes in 45 milliseconds. This screenshot shows the Russia-sanction scenario — one cut artery, and the map tells you instantly what changed.');
+  s.addNotes('This is the product. Next.js and MapLibre over a FastAPI engine. The globe is live — the red routes are the Gulf corridors dying when Hormuz closes; the green ones are the alternates KARNADHAR is re-routing through. Click a scenario and the entire national plan re-solves in tens of milliseconds, measured live in-app. And under every scenario sits the decision layer: the LP’s shadow prices naming the scarcest barrel, the usable-shortfall honesty metric, and the tanker cost of longer voyages.');
 }
 
 // ================= 11. RIGOR =================
@@ -388,14 +389,15 @@ function foot(s, txt) {
 
   panel(s, 0.6, 1.9, 5.9, 4.6);
   s.addText('AUTOMATED VALIDATION', { x: 0.9, y: 2.1, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, bold: true, color: DIM, charSpacing: 2, margin: 0 });
-  s.addText('39 / 39', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
-  s.addText('checks passed — one command, exit-code gated', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 12, color: MUT, margin: 0 });
+  s.addText('45 / 45', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
+  s.addText('checks passed — one command, exit-code gated, run in CI on every push', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 12, color: MUT, margin: 0 });
   const checks = [
     'wedge holds: naive infeasible for grade reasons, LP optimal',
     'cascade monotonic; bypass nuance; twin-deficit wired',
     'signal alert precedes market repricing on real data',
     'real-diet integrity: 46% exposure, configs sane',
     'engine admits unmet demand under compound shocks',
+    'decision layer proven: shadow prices · VLCC ton-mile · usable shortfall',
     'multi-commodity lens generalises (8 imports, one framework)',
   ];
   s.addText(checks.map((c, i) => ({ text: c, options: { bullet: { code: '2713' }, color: MUT, breakLine: i < checks.length - 1 } })),
@@ -423,7 +425,7 @@ function foot(s, txt) {
     { text: 'Prof. U. K. Bhui', options: { color: TEXT, bold: true, fontSize: 13.5 } },
     { text: ' — Petroleum Engg., PDEU: wedge validated (“you are perfectly right”); SARA/asphaltene dimension added on his guidance.', options: { color: MUT, fontSize: 11.5 } },
   ], { x: 7.15, y: 4.85, w: 5.4, h: 1.55, fontFace: F, margin: 0, lineSpacing: 16 });
-  s.addNotes('Three layers of trust. A validation suite — 35 assertions about the engine’s behaviour, all green, runnable in one command. Full coverage of the brief’s five evaluation-focus criteria. And two independent domain experts — a Distinguished Fellow at ORF for the economics, and a PDEU petroleum professor for the refining science — reviewed our assumptions.');
+  s.addNotes('Three layers of trust. A validation suite — 45 falsifiable assertions about the engine’s behaviour, all green, one command, and run automatically in CI on every push to the public repo. Full coverage of the brief’s five evaluation-focus criteria. And two independent domain experts — a Distinguished Fellow at ORF for the economics, and a PDEU petroleum professor for the refining science — reviewed our assumptions.');
 }
 
 // ================= 12. BUSINESS =================

@@ -1,236 +1,438 @@
 {
-  "BPCL Kochi": {
-    "total_tons": 12440213.0,
-    "nelson": 8.0,
-    "diet": {
-      "RUSSIA": 3834528.0,
-      "U ARAB EMTS": 2865526.0,
-      "IRAQ": 2040886.0,
-      "SAUDI ARAB": 1402829.0,
-      "OMAN": 822308.0,
-      "EGYPT A RP": 603659.0,
-      "QATAR": 286959.0,
-      "U S A": 149298.0,
-      "ANGOLA": 133608.0,
-      "LIBYA": 132496.0,
-      "SINGAPORE": 85885.0,
-      "KUWAIT": 82231.0
+  "schema": 2,
+  "source_file": "Petroleum_crude_May2025_to_April2026.xls",
+  "note": "Derived from official DGCIS port-wise trade records; regenerate with `python -m engine.refdata` next to the raw .xls.",
+  "refineries": {
+    "BPCL Kochi": {
+      "total_tons": 12440213.0,
+      "nelson": 8.0,
+      "diet": {
+        "RUSSIA": 3834528.0,
+        "U ARAB EMTS": 2865526.0,
+        "IRAQ": 2040886.0,
+        "SAUDI ARAB": 1402829.0,
+        "OMAN": 822308.0,
+        "EGYPT A RP": 603659.0,
+        "QATAR": 286959.0,
+        "U S A": 149298.0,
+        "ANGOLA": 133608.0,
+        "LIBYA": 132496.0,
+        "SINGAPORE": 85885.0,
+        "KUWAIT": 82231.0
+      }
+    },
+    "BPCL/HPCL Mumbai": {
+      "total_tons": 23180653.0,
+      "nelson": 7.0,
+      "diet": {
+        "SAUDI ARAB": 5838238.0,
+        "U ARAB EMTS": 5365900.0,
+        "U S A": 4859381.0,
+        "IRAQ": 1772928.0,
+        "RUSSIA": 1534634.0,
+        "KUWAIT": 900208.0,
+        "CONGO P REP": 743297.0,
+        "MALAYSIA": 468335.0,
+        "BRUNEI": 429950.0,
+        "NIGERIA": 370472.0,
+        "ALGERIA": 356611.0,
+        "LIBYA": 273195.0,
+        "ARGENTINA": 182430.0,
+        "QATAR": 85074.0,
+        "EGYPT A RP": 0.0,
+        "TURKEY": 0.0
+      }
+    },
+    "Bangalore Airport": {
+      "total_tons": 0.0,
+      "nelson": null,
+      "diet": {
+        "CANADA": 0.0,
+        "HUNGARY": 0.0,
+        "U S A": 0.0
+      }
+    },
+    "CPCL Chennai": {
+      "total_tons": 10274231.0,
+      "nelson": 7.0,
+      "diet": {
+        "IRAQ": 3068648.0,
+        "RUSSIA": 3023948.0,
+        "SAUDI ARAB": 1660664.0,
+        "U ARAB EMTS": 869611.0,
+        "U S A": 399680.0,
+        "ANGOLA": 276007.0,
+        "EGYPT A RP": 260042.0,
+        "QATAR": 143550.0,
+        "MALAYSIA": 134075.0,
+        "LIBYA": 133896.0,
+        "GHANA": 131147.0,
+        "GABON": 93303.0,
+        "SOUTH SUDAN": 79660.0
+      }
+    },
+    "Delhi Air": {
+      "total_tons": 0.0,
+      "nelson": null,
+      "diet": {
+        "ITALY": 0.0,
+        "SINGAPORE": 0.0
+      }
+    },
+    "HMEL Bathinda": {
+      "total_tons": 23264507.0,
+      "nelson": 12.5,
+      "diet": {
+        "RUSSIA": 7492631.0,
+        "SAUDI ARAB": 4101676.0,
+        "IRAQ": 3778050.0,
+        "U ARAB EMTS": 2193547.0,
+        "OMAN": 1746669.0,
+        "KUWAIT": 1370844.0,
+        "QATAR": 649687.0,
+        "BRAZIL": 564444.0,
+        "NIGERIA": 388585.0,
+        "EGYPT A RP": 289079.0,
+        "ANGOLA": 261113.0,
+        "VENEZUELA": 152410.0,
+        "LIBYA": 138451.0,
+        "TURKEY": 137321.0
+      }
+    },
+    "HPCL Visakhapatnam": {
+      "total_tons": 14088064.0,
+      "nelson": 7.0,
+      "diet": {
+        "NIGERIA": 3160301.0,
+        "U ARAB EMTS": 3050248.0,
+        "IRAQ": 2458747.0,
+        "RUSSIA": 2445421.0,
+        "SAUDI ARAB": 732309.0,
+        "BRAZIL": 529246.0,
+        "ANGOLA": 391497.0,
+        "GABON": 372624.0,
+        "GUYANA": 278138.0,
+        "U S A": 267889.0,
+        "QATAR": 139997.0,
+        "TOGO": 135290.0,
+        "GHANA": 126357.0,
+        "CONGO P REP": 0.0
+      }
+    },
+    "IOCL Paradip": {
+      "total_tons": 34843677.0,
+      "nelson": 12.2,
+      "diet": {
+        "IRAQ": 8319847.0,
+        "RUSSIA": 7147417.0,
+        "U ARAB EMTS": 4848335.0,
+        "SAUDI ARAB": 3754850.0,
+        "U S A": 2828573.0,
+        "ANGOLA": 2192436.0,
+        "NIGERIA": 1515319.0,
+        "BRAZIL": 1344074.0,
+        "KUWAIT": 438914.0,
+        "KOREA RP": 393990.0,
+        "PANAMA REPUBLIC": 302861.0,
+        "MEXICO": 292480.0,
+        "COLOMBIA": 290013.0,
+        "GUYANA": 280516.0,
+        "URUGUAY": 275930.0,
+        "OMAN": 250008.0,
+        "CONGO D. REP.": 192257.0,
+        "QATAR": 140396.0,
+        "CAMEROON": 35461.0,
+        "MALAYSIA": 0.0
+      }
+    },
+    "Kolkata Sea": {
+      "total_tons": 61788.0,
+      "nelson": null,
+      "diet": {
+        "BRUNEI": 41601.0,
+        "MALAYSIA": 20187.0
+      }
+    },
+    "MRPL Mangalore": {
+      "total_tons": 12147834.0,
+      "nelson": 9.5,
+      "diet": {
+        "RUSSIA": 3820162.0,
+        "SAUDI ARAB": 3295893.0,
+        "IRAQ": 1905268.0,
+        "U ARAB EMTS": 1176992.0,
+        "OMAN": 552024.0,
+        "ANGOLA": 536205.0,
+        "KUWAIT": 350387.0,
+        "TURKEY": 179735.0,
+        "LIBYA": 138882.0,
+        "GABON": 121605.0,
+        "EGYPT A RP": 70681.0,
+        "U S A": 0.0
+      }
+    },
+    "Mumbai Air": {
+      "total_tons": 0.0,
+      "nelson": null,
+      "diet": {
+        "OMAN": 0.0,
+        "SINGAPORE": 0.0,
+        "U S A": 0.0
+      }
+    },
+    "Nayara Vadinar": {
+      "total_tons": 41660671.0,
+      "nelson": 11.8,
+      "diet": {
+        "RUSSIA": 23144588.0,
+        "IRAQ": 7392608.0,
+        "ANGOLA": 2641580.0,
+        "U ARAB EMTS": 2214257.0,
+        "NIGERIA": 2080379.0,
+        "KUWAIT": 1341184.0,
+        "U S A": 1054079.0,
+        "SAUDI ARAB": 984393.0,
+        "EGYPT A RP": 276530.0,
+        "BRAZIL": 271937.0,
+        "TURKEY": 138847.0,
+        "GHANA": 120289.0
+      }
+    },
+    "ONGC Mangalore (OMPL)": {
+      "total_tons": 1463740.0,
+      "nelson": 8.0,
+      "diet": {
+        "SAUDI ARAB": 615647.0,
+        "IRAQ": 349541.0,
+        "U ARAB EMTS": 260476.0,
+        "KUWAIT": 138426.0,
+        "RUSSIA": 99650.0
+      }
+    },
+    "RIL Jamnagar": {
+      "total_tons": 76259323.0,
+      "nelson": 21.1,
+      "diet": {
+        "RUSSIA": 26632522.0,
+        "SAUDI ARAB": 13039842.0,
+        "IRAQ": 10867333.0,
+        "U S A": 5780390.0,
+        "U ARAB EMTS": 3685458.0,
+        "COLOMBIA": 3615555.0,
+        "KUWAIT": 3075987.0,
+        "BRAZIL": 2560179.0,
+        "QATAR": 2092472.0,
+        "EGYPT A RP": 1184963.0,
+        "VENEZUELA": 1134005.0,
+        "IRAN": 529110.0,
+        "MEXICO": 458581.0,
+        "ANGOLA": 407556.0,
+        "CONGO P REP": 258260.0,
+        "MALAYSIA": 220760.0,
+        "OMAN": 187761.0,
+        "SUDAN": 184335.0,
+        "SINGAPORE": 138409.0,
+        "CANADA": 108894.0,
+        "ARUBA": 96951.0,
+        "PANAMA REPUBLIC": 0.0
+      }
     }
   },
-  "BPCL/HPCL Mumbai": {
-    "total_tons": 23180653.0,
-    "nelson": 7.0,
-    "diet": {
-      "SAUDI ARAB": 5838238.0,
-      "U ARAB EMTS": 5365900.0,
-      "U S A": 4859381.0,
-      "IRAQ": 1772928.0,
-      "RUSSIA": 1534634.0,
-      "KUWAIT": 900208.0,
-      "CONGO P REP": 743297.0,
-      "MALAYSIA": 468335.0,
-      "BRUNEI": 429950.0,
-      "NIGERIA": 370472.0,
-      "ALGERIA": 356611.0,
-      "LIBYA": 273195.0,
-      "ARGENTINA": 182430.0,
-      "QATAR": 85074.0,
-      "EGYPT A RP": 0.0,
-      "TURKEY": 0.0
-    }
-  },
-  "Bangalore Airport": {
-    "total_tons": 0.0,
-    "nelson": null,
-    "diet": {
-      "CANADA": 0.0,
-      "HUNGARY": 0.0,
-      "U S A": 0.0
-    }
-  },
-  "CPCL Chennai": {
-    "total_tons": 10274231.0,
-    "nelson": 7.0,
-    "diet": {
-      "IRAQ": 3068648.0,
-      "RUSSIA": 3023948.0,
-      "SAUDI ARAB": 1660664.0,
-      "U ARAB EMTS": 869611.0,
-      "U S A": 399680.0,
-      "ANGOLA": 276007.0,
-      "EGYPT A RP": 260042.0,
-      "QATAR": 143550.0,
-      "MALAYSIA": 134075.0,
-      "LIBYA": 133896.0,
-      "GHANA": 131147.0,
-      "GABON": 93303.0,
-      "SOUTH SUDAN": 79660.0
-    }
-  },
-  "Delhi Air": {
-    "total_tons": 0.0,
-    "nelson": null,
-    "diet": {
-      "ITALY": 0.0,
-      "SINGAPORE": 0.0
-    }
-  },
-  "HMEL Bathinda": {
-    "total_tons": 23264507.0,
-    "nelson": 12.5,
-    "diet": {
-      "RUSSIA": 7492631.0,
-      "SAUDI ARAB": 4101676.0,
-      "IRAQ": 3778050.0,
-      "U ARAB EMTS": 2193547.0,
-      "OMAN": 1746669.0,
-      "KUWAIT": 1370844.0,
-      "QATAR": 649687.0,
-      "BRAZIL": 564444.0,
-      "NIGERIA": 388585.0,
-      "EGYPT A RP": 289079.0,
-      "ANGOLA": 261113.0,
-      "VENEZUELA": 152410.0,
-      "LIBYA": 138451.0,
-      "TURKEY": 137321.0
-    }
-  },
-  "HPCL Visakhapatnam": {
-    "total_tons": 14088064.0,
-    "nelson": 7.0,
-    "diet": {
-      "NIGERIA": 3160301.0,
-      "U ARAB EMTS": 3050248.0,
-      "IRAQ": 2458747.0,
-      "RUSSIA": 2445421.0,
-      "SAUDI ARAB": 732309.0,
-      "BRAZIL": 529246.0,
-      "ANGOLA": 391497.0,
-      "GABON": 372624.0,
-      "GUYANA": 278138.0,
-      "U S A": 267889.0,
-      "QATAR": 139997.0,
-      "TOGO": 135290.0,
-      "GHANA": 126357.0,
-      "CONGO P REP": 0.0
-    }
-  },
-  "IOCL Paradip": {
-    "total_tons": 34843677.0,
-    "nelson": 12.2,
-    "diet": {
-      "IRAQ": 8319847.0,
-      "RUSSIA": 7147417.0,
-      "U ARAB EMTS": 4848335.0,
-      "SAUDI ARAB": 3754850.0,
-      "U S A": 2828573.0,
-      "ANGOLA": 2192436.0,
-      "NIGERIA": 1515319.0,
-      "BRAZIL": 1344074.0,
-      "KUWAIT": 438914.0,
-      "KOREA RP": 393990.0,
-      "PANAMA REPUBLIC": 302861.0,
-      "MEXICO": 292480.0,
-      "COLOMBIA": 290013.0,
-      "GUYANA": 280516.0,
-      "URUGUAY": 275930.0,
-      "OMAN": 250008.0,
-      "CONGO D. REP.": 192257.0,
-      "QATAR": 140396.0,
-      "CAMEROON": 35461.0,
-      "MALAYSIA": 0.0
-    }
-  },
-  "Kolkata Sea": {
-    "total_tons": 61788.0,
-    "nelson": null,
-    "diet": {
-      "BRUNEI": 41601.0,
-      "MALAYSIA": 20187.0
-    }
-  },
-  "MRPL Mangalore": {
-    "total_tons": 12147834.0,
-    "nelson": 9.5,
-    "diet": {
-      "RUSSIA": 3820162.0,
-      "SAUDI ARAB": 3295893.0,
-      "IRAQ": 1905268.0,
-      "U ARAB EMTS": 1176992.0,
-      "OMAN": 552024.0,
-      "ANGOLA": 536205.0,
-      "KUWAIT": 350387.0,
-      "TURKEY": 179735.0,
-      "LIBYA": 138882.0,
-      "GABON": 121605.0,
-      "EGYPT A RP": 70681.0,
-      "U S A": 0.0
-    }
-  },
-  "Mumbai Air": {
-    "total_tons": 0.0,
-    "nelson": null,
-    "diet": {
-      "OMAN": 0.0,
-      "SINGAPORE": 0.0,
-      "U S A": 0.0
-    }
-  },
-  "Nayara Vadinar": {
-    "total_tons": 41660671.0,
-    "nelson": 11.8,
-    "diet": {
-      "RUSSIA": 23144588.0,
-      "IRAQ": 7392608.0,
-      "ANGOLA": 2641580.0,
-      "U ARAB EMTS": 2214257.0,
-      "NIGERIA": 2080379.0,
-      "KUWAIT": 1341184.0,
-      "U S A": 1054079.0,
-      "SAUDI ARAB": 984393.0,
-      "EGYPT A RP": 276530.0,
-      "BRAZIL": 271937.0,
-      "TURKEY": 138847.0,
-      "GHANA": 120289.0
-    }
-  },
-  "ONGC Mangalore (OMPL)": {
-    "total_tons": 1463740.0,
-    "nelson": 8.0,
-    "diet": {
-      "SAUDI ARAB": 615647.0,
-      "IRAQ": 349541.0,
-      "U ARAB EMTS": 260476.0,
-      "KUWAIT": 138426.0,
-      "RUSSIA": 99650.0
-    }
-  },
-  "RIL Jamnagar": {
-    "total_tons": 76259323.0,
-    "nelson": 21.1,
-    "diet": {
-      "RUSSIA": 26632522.0,
-      "SAUDI ARAB": 13039842.0,
-      "IRAQ": 10867333.0,
-      "U S A": 5780390.0,
-      "U ARAB EMTS": 3685458.0,
-      "COLOMBIA": 3615555.0,
-      "KUWAIT": 3075987.0,
-      "BRAZIL": 2560179.0,
-      "QATAR": 2092472.0,
-      "EGYPT A RP": 1184963.0,
-      "VENEZUELA": 1134005.0,
-      "IRAN": 529110.0,
-      "MEXICO": 458581.0,
-      "ANGOLA": 407556.0,
-      "CONGO P REP": 258260.0,
-      "MALAYSIA": 220760.0,
-      "OMAN": 187761.0,
-      "SUDAN": 184335.0,
-      "SINGAPORE": 138409.0,
-      "CANADA": 108894.0,
-      "ARUBA": 96951.0,
-      "PANAMA REPUBLIC": 0.0
+  "national": {
+    "ALGERIA": {
+      "tons": 356611.0,
+      "usd": 270145667.0,
+      "price_bbl": 103.3
+    },
+    "ANGOLA": {
+      "tons": 6840002.0,
+      "usd": 3672481050.0,
+      "price_bbl": 73.2
+    },
+    "ARGENTINA": {
+      "tons": 182430.0,
+      "usd": 110358495.0,
+      "price_bbl": 82.5
+    },
+    "ARUBA": {
+      "tons": 96951.0,
+      "usd": 37712082.0,
+      "price_bbl": 53.1
+    },
+    "BRAZIL": {
+      "tons": 5269880.0,
+      "usd": 2816151601.0,
+      "price_bbl": 72.9
+    },
+    "BRUNEI": {
+      "tons": 471551.0,
+      "usd": 278976391.0,
+      "price_bbl": 80.7
+    },
+    "CAMEROON": {
+      "tons": 35461.0,
+      "usd": 19746289.0,
+      "price_bbl": 76.0
+    },
+    "CANADA": {
+      "tons": 108894.0,
+      "usd": 46326660.0,
+      "price_bbl": 58.0
+    },
+    "COLOMBIA": {
+      "tons": 3905568.0,
+      "usd": 1811643821.0,
+      "price_bbl": 63.3
+    },
+    "CONGO D. REP.": {
+      "tons": 192257.0,
+      "usd": 94026082.0,
+      "price_bbl": 66.7
+    },
+    "CONGO P REP": {
+      "tons": 1001557.0,
+      "usd": 596596987.0,
+      "price_bbl": 81.3
+    },
+    "EGYPT A RP": {
+      "tons": 2684954.0,
+      "usd": 1497552781.0,
+      "price_bbl": 76.1
+    },
+    "GABON": {
+      "tons": 587532.0,
+      "usd": 351078066.0,
+      "price_bbl": 81.5
+    },
+    "GHANA": {
+      "tons": 377793.0,
+      "usd": 204788983.0,
+      "price_bbl": 74.0
+    },
+    "GUYANA": {
+      "tons": 558654.0,
+      "usd": 274460288.0,
+      "price_bbl": 67.0
+    },
+    "HUNGARY": {
+      "tons": 0.0,
+      "usd": 24.0,
+      "price_bbl": null
+    },
+    "IRAN": {
+      "tons": 529110.0,
+      "usd": 430450479.0,
+      "price_bbl": 111.0
+    },
+    "IRAQ": {
+      "tons": 41953856.0,
+      "usd": 20252522046.0,
+      "price_bbl": 65.9
+    },
+    "ITALY": {
+      "tons": 0.0,
+      "usd": 25.0,
+      "price_bbl": null
+    },
+    "KOREA RP": {
+      "tons": 393990.0,
+      "usd": 202787397.0,
+      "price_bbl": 70.2
+    },
+    "KUWAIT": {
+      "tons": 7698181.0,
+      "usd": 3709773136.0,
+      "price_bbl": 65.7
+    },
+    "LIBYA": {
+      "tons": 816920.0,
+      "usd": 462418035.0,
+      "price_bbl": 77.2
+    },
+    "MALAYSIA": {
+      "tons": 843357.0,
+      "usd": 502921024.0,
+      "price_bbl": 81.4
+    },
+    "MEXICO": {
+      "tons": 751061.0,
+      "usd": 332763573.0,
+      "price_bbl": 60.4
+    },
+    "NIGERIA": {
+      "tons": 7515056.0,
+      "usd": 4287974630.0,
+      "price_bbl": 77.8
+    },
+    "OMAN": {
+      "tons": 3558770.0,
+      "usd": 2213084036.0,
+      "price_bbl": 84.8
+    },
+    "PANAMA REPUBLIC": {
+      "tons": 302861.0,
+      "usd": 137169296.0,
+      "price_bbl": 61.8
+    },
+    "QATAR": {
+      "tons": 3538135.0,
+      "usd": 1788250369.0,
+      "price_bbl": 69.0
+    },
+    "RUSSIA": {
+      "tons": 79175501.0,
+      "usd": 41877924844.0,
+      "price_bbl": 72.2
+    },
+    "SAUDI ARAB": {
+      "tons": 35426341.0,
+      "usd": 20211724800.0,
+      "price_bbl": 77.8
+    },
+    "SINGAPORE": {
+      "tons": 224294.0,
+      "usd": 112702291.0,
+      "price_bbl": 68.6
+    },
+    "SOUTH SUDAN": {
+      "tons": 79660.0,
+      "usd": 40494905.0,
+      "price_bbl": 69.4
+    },
+    "SUDAN": {
+      "tons": 184335.0,
+      "usd": 115683007.0,
+      "price_bbl": 85.6
+    },
+    "TOGO": {
+      "tons": 135290.0,
+      "usd": 72735093.0,
+      "price_bbl": 73.3
+    },
+    "TURKEY": {
+      "tons": 455903.0,
+      "usd": 260037118.0,
+      "price_bbl": 77.8
+    },
+    "U ARAB EMTS": {
+      "tons": 26530350.0,
+      "usd": 14978487963.0,
+      "price_bbl": 77.0
+    },
+    "U S A": {
+      "tons": 15339290.0,
+      "usd": 8137230363.0,
+      "price_bbl": 72.4
+    },
+    "URUGUAY": {
+      "tons": 275930.0,
+      "usd": 137129621.0,
+      "price_bbl": 67.8
+    },
+    "VENEZUELA": {
+      "tons": 1286415.0,
+      "usd": 785025071.0,
+      "price_bbl": 83.3
     }
   }
 }

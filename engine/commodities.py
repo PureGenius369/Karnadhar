@@ -43,8 +43,13 @@ class Commodity:
 
     @property
     def supplier_hhi(self) -> float:
-        """Herfindahl concentration of suppliers (0..1)."""
-        return round(sum(s * s for s in self.suppliers.values()), 3)
+        """Herfindahl concentration of suppliers (0..1).
+
+        The residual "OTHERS" bucket is excluded: it is many small suppliers,
+        not one — counting it as a single supplier would overstate concentration.
+        """
+        return round(sum(s * s for k, s in self.suppliers.items()
+                         if k.upper() != "OTHERS"), 3)
 
     @property
     def max_chokepoint(self) -> float:

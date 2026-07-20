@@ -1,11 +1,17 @@
 # KARNADHAR — India's Energy Supply-Chain Command Center
 
+[![validation](https://github.com/PureGenius369/Karnadhar/actions/workflows/ci.yml/badge.svg)](https://github.com/PureGenius369/Karnadhar/actions/workflows/ci.yml)
+![python](https://img.shields.io/badge/python-3.12-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
 > *Karnadhar (कर्णधार, Sanskrit): the helmsman who steers the ship through the storm.*
-> **From a 47-day crisis to a 45-millisecond command.**
+> **From a 47-day crisis to a sub-second command.**
 
 Built for the **ET AI Hackathon 2026 — Phase 2**, Problem #2 (*AI-Driven Energy Supply
 Chain Resilience for Import-Dependent Economies*), by **Mann Sutariya** (Pandit Deendayal
 Energy University).
+
+![KARNADHAR war-room — 3D globe with live corridors, refineries and AIS vessels](captures/globe_view.jpg)
 
 India imports **88%** of its crude; **46%** of it transits the Strait of Hormuz — a number
 this system **derives from official customs records**, not from a report. Strategic
@@ -26,10 +32,23 @@ Engineering, PDEU). A deep-conversion coker like Jamnagar (Nelson 21.1) digests 
 anything but starves on ultra-light condensate; a simple refinery like Mumbai (Nelson 7)
 cannot touch sour crude.
 
-**The headline result:** in a full Hormuz closure, the naive "oil is oil" plan assigns
-**250 kb/d to refineries that physically cannot run it** — infeasible for a *grade*
-reason. KARNADHAR's grade-aware LP produces a fully feasible national reroute and
-protects **$3.15M/day of product yield** (~$1.15bn/yr).
+**The headline results (real DGCIS model, 10 refineries × 36 supplier grades):**
+
+- **Hormuz closure** — the naive "oil is oil" plan is *infeasible for a grade
+  reason*: its blend breaches Visakhapatnam's sulphur ceiling. KARNADHAR's
+  two-stage LP re-sources the full 2,313 kb/d gap feasibly — and prices the
+  hidden cost: the reroute ties up **+66 VLCC-equivalents** (the ton-mile effect
+  a fungible view never sees).
+- **Russia sanctioned** — naive sends **220 kb/d to refineries that physically
+  cannot run it**; KARNADHAR: zero. Usable shortfall 220 → 0.
+- **Hormuz + Russia (compound)** — naive *pretends* to fill the gap with 546 kb/d
+  of un-runnable crude; counting only runnable barrels, KARNADHAR re-sources
+  **504 kb/d more usable supply** and quantifies the honest remaining gap.
+- **Shadow prices** — the LP's duals name the scarcest barrel (heavy Colombian
+  coker feed, ~$4.2k/day per extra kb/d): a procurement priority list that is
+  *derived, not opined*.
+- On the curated stress-demo (`run_demo.py`), the wedge is worth **$3.15M/day of
+  protected yield** (~$1.15bn/yr) — labelled as the demonstration model.
 
 ## What it is
 
@@ -60,17 +79,22 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
   glass-box Import Vulnerability Index; the same disruption scored across every
   material (`python run_commodities.py` — Hormuz hits 53% of LNG, not just 46% of
   crude; Malacca is the pharma/electronics artery).
+- **Decision layer, not just a dashboard** — every scenario ships with the LP's
+  **shadow prices** (marginal value of one more kb/d of each scarce grade), the
+  **usable-shortfall** honesty metric, and the **VLCC-equivalent tanker cost** of
+  longer voyages.
 - **War-room UI** — Next.js + MapLibre command center on a **true 3D globe**
   projection with real AIS vessels: cut-vs-alive corridors, per-refinery diets on
   hover, a **knowledge-graph view** (toggle), the multi-commodity lens, and scenario
-  switching with the full national plan recomputed in ~45 ms.
+  switching with the full national plan re-solved in tens of milliseconds
+  (measured live in-app).
 
 ## Run it
 
 ```bash
 # 1) Engine (Python 3.12)
 pip install -r requirements.txt
-python run_validate.py     # 39/39 automated checks — the proof
+python run_validate.py     # 45/45 automated checks — the proof
 python run_real.py         # reroute on REAL DGCIS diets, all scenarios
 python run_karnadhar.py    # end-to-end pipeline: signal → brief in ~45 ms
 
@@ -107,12 +131,19 @@ karnadhar/
 ├── api/main.py          # FastAPI backend
 ├── frontend/            # Next.js 16 + MapLibre war-room
 ├── run_*.py             # runnable proofs (see above)
-├── run_validate.py      # 35-check validation suite (exit-code gated)
+├── run_validate.py      # 45-check validation suite (exit-code gated; runs in CI)
 ├── export_ui.py         # engine → UI JSON
 └── deliverables/        # pitch deck (KARNADHAR_Deck.pptx) + renders
 ```
 
 ## Data provenance (honest by design)
+
+**Reproducibility:** the raw DGCIS `.xls` files are government downloads and are
+not redistributed here; the repo ships the **derived dataset**
+(`engine/data/india_refinery_diets.json`, schema-versioned, with the derivation
+code in `engine/refdata.py`). Every run — validation, exports, the war-room —
+works from a fresh clone; anyone holding the raw files reproduces the dataset
+bit-identically with `python -m engine.refdata`.
 
 | Element | Status |
 |---|---|

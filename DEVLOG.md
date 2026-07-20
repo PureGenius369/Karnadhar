@@ -75,4 +75,26 @@ scenario-aware threat edges). "Not only crude oil — any material" → built th
 Index, per-scenario affected shares (Hormuz hits 53% of LNG; Malacca is the
 pharma/semiconductor artery; coking coal proves the framework discriminates).
 Map upgraded to a **true 3D globe** with real AIS vessels. Production build
-verified for Cloud Run. Validation now **39/39**.
+verified for Cloud Run.
+
+## 12 · The second self-audit (judge-grade hardening)
+We attacked our own work again, as a hostile judge, and found real defects:
+- **Fatal**: a fresh clone crashed — the loader wanted the raw DGCIS `.xls`
+  (outside the repo). Fixed with a schema-versioned committed derivation
+  (`engine/data/india_refinery_diets.json`) + transparent fallback; CI now runs
+  the exact judge path on every push.
+- **Artifact**: our own plan showed INFEASIBLE on the Russia scenario — a
+  boundary-equal breach (`2.04>2.04`) from a 1e-6 epsilon meeting 0.1-kb/d
+  rounding. Fixed with a rounding-aware blend tolerance + regression check.
+- **Modeling**: LP blend caps were normalised by the full gap (invalid under
+  scarce supply) and used a big-M objective. Replaced with a **two-stage
+  lexicographic LP** (max fill, then min cost) with volume-relative blend caps.
+- **Honesty metric**: naive "fills" compound-shock gaps with un-runnable crude.
+  Added **usable shortfall** (unmet + un-runnable): naive 2,670 vs ours 2,166.
+- **Decision layer**: stage-2 **shadow prices** (marginal $/day of one more kb/d
+  of each scarce grade — scarcity turns out to be heavy coker feed, the wedge
+  priced) and the **VLCC ton-mile cost** of rerouting (+66 tankers on Hormuz).
+- Consistency: cascade banner said 40% Hormuz share vs the derived 46%; commodity
+  HHI counted "OTHERS" as one supplier; demo script quoted curated-model numbers
+  over real-model screens. All reconciled; the two model tiers are now labelled.
+Validation now **45/45**, run in CI (engine + production frontend build).

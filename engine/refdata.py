@@ -126,8 +126,39 @@ def _read_one(path: Path) -> pd.DataFrame:
     return df
 
 
+_FALLBACK_NOTICE_SHOWN = False
+
+
+def _fallback() -> dict:
+    """Committed derivation of the raw DGCIS .xls (same numbers, reproducible).
+
+    The raw government .xls files are large and live outside the repo; the repo
+    ships the DERIVED dataset (engine/data/india_refinery_diets.json), written by
+    `python -m engine.refdata` from the originals. Anyone cloning the repo gets
+    bit-identical model inputs without needing the raw files.
+    """
+    global _FALLBACK_NOTICE_SHOWN
+    if not DERIVED_JSON.exists():
+        raise FileNotFoundError(
+            f"Neither the raw DGCIS .xls ({XLS_FILES[0].name}) nor the derived "
+            f"dataset ({DERIVED_JSON}) is present. Re-clone the repo or run "
+            f"`python -m engine.refdata` next to the raw files.")
+    if not _FALLBACK_NOTICE_SHOWN:
+        print("[refdata] raw DGCIS .xls not found -> using the committed "
+              "derived dataset (engine/data/india_refinery_diets.json)")
+        _FALLBACK_NOTICE_SHOWN = True
+    d = json.loads(DERIVED_JSON.read_text())
+    return d if "refineries" in d else {"refineries": d, "national": None}
+
+
 def load_diets(path: Path = XLS_FILES[0]) -> dict:
-    """Return {refinery: {"total_tons", "nelson", "diet": {country: tons}}}."""
+    """Return {refinery: {"total_tons", "nelson", "diet": {country: tons}}}.
+
+    Prefers the raw DGCIS .xls when present (author's machine); otherwise falls
+    back to the committed derived JSON so a fresh clone runs identically.
+    """
+    if not path.exists():
+        return _fallback()["refineries"]
     df = _read_one(path)
     out: dict = {}
     for ref, g in df.groupby("refinery"):
@@ -142,6 +173,13 @@ def load_diets(path: Path = XLS_FILES[0]) -> dict:
 
 def national_by_country(path: Path = XLS_FILES[0]) -> dict:
     """{country: {tons, usd, price_bbl}} — realized landed price from real values."""
+    if not path.exists():
+        nat = _fallback()["national"]
+        if nat is None:
+            raise FileNotFoundError(
+                "Derived dataset predates schema 2 (no national table). "
+                "Run `python -m engine.refdata` next to the raw .xls once.")
+        return nat
     df = _read_one(path)
     out: dict = {}
     for c, g in df.groupby("country"):
@@ -172,9 +210,23 @@ def avg_quality(diet: dict) -> tuple[float, float]:
 
 
 def build_and_save() -> dict:
+    """Derive from the raw .xls and commit the result (schema 2: diets + national).
+
+    This is the reproducibility bridge: the repo ships this JSON, so every run
+    (validation, exports, the war-room) works from a fresh clone with no raw files.
+    """
     refs = load_diets()
+    nat = national_by_country()
+    payload = {
+        "schema": 2,
+        "source_file": XLS_FILES[0].name,
+        "note": "Derived from official DGCIS port-wise trade records; "
+                "regenerate with `python -m engine.refdata` next to the raw .xls.",
+        "refineries": refs,
+        "national": nat,
+    }
     DERIVED_JSON.parent.mkdir(parents=True, exist_ok=True)
-    DERIVED_JSON.write_text(json.dumps(refs, indent=2))
+    DERIVED_JSON.write_text(json.dumps(payload, indent=2))
     return refs
 
 

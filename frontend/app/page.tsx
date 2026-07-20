@@ -113,8 +113,12 @@ export default function Page() {
             <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
               <div style={{ flex: 1, background: 'rgba(226,75,74,.08)', border: `1px solid ${C.red}33`, borderRadius: 6, padding: 8 }}>
                 <div style={{ fontSize: 10, color: C.mut }}>Naive (fungible)</div>
-                <div style={{ fontSize: 15, fontWeight: 800, color: C.red }}>{scn.naive.feasible ? 'FEASIBLE' : 'INFEASIBLE'}</div>
-                <div style={{ fontSize: 11, color: C.mut }}>{scn.naive.unrunnable > 0 ? `${scn.naive.unrunnable.toFixed(0)} kb/d un-runnable` : ''}{scn.naive.unmet > 0 ? ` · ${scn.naive.unmet.toFixed(0)} unmet` : ''}</div>
+                <div style={{ fontSize: 15, fontWeight: 800, color: scn.naive.feasible ? C.mut : C.red }}>{scn.naive.feasible ? 'FEASIBLE' : 'INFEASIBLE'}</div>
+                <div style={{ fontSize: 11, color: C.mut }}>
+                  {scn.naive.unrunnable > 0 ? `${scn.naive.unrunnable.toFixed(0)} kb/d un-runnable` :
+                    (!scn.naive.feasible && scn.naive.breaches?.length ? `${scn.naive.breaches.length} blend-limit breach${scn.naive.breaches.length > 1 ? 'es' : ''}` : '')}
+                  {scn.naive.unmet > 0 ? ` · ${scn.naive.unmet.toFixed(0)} unmet` : ''}
+                </div>
               </div>
               <div style={{ flex: 1, background: 'rgba(93,202,165,.08)', border: `1px solid ${C.teal}44`, borderRadius: 6, padding: 8 }}>
                 <div style={{ fontSize: 10, color: C.mut }}>KARNADHAR (grade-aware)</div>
@@ -123,10 +127,27 @@ export default function Page() {
               </div>
             </div>
             <Row k="Gap to re-source" v={`${scn.gap_kbd.toFixed(0)} kb/d`} />
+            {scn.naive.usable_short > 0 && (
+              <Row k="Usable shortfall (naive → ours)" v={`${scn.naive.usable_short.toFixed(0)} → ${scn.smart.usable_short.toFixed(0)} kb/d`} c={C.teal} />
+            )}
             <Row k="Yield value protected" v={`$${yieldProt} M/day`} c={C.teal} />
+            {scn.smart.extra_vlcc > 0.5 && (
+              <Row k="Extra tankers tied up" v={`+${scn.smart.extra_vlcc.toFixed(0)} VLCC-equiv`} c={C.amber} />
+            )}
             <Row k="Reserve runway" v={`~${scn.smart.effective_spr}d vs ${scn.smart.spr_bridge}d bridge`} />
+            {scn.smart.spr_margin < 0 && (
+              <div style={{ fontSize: 10.5, color: C.amber, marginTop: 3 }}>
+                ⚠ voyage bridge exceeds stretched reserves by {Math.abs(scn.smart.spr_margin).toFixed(0)}d — the model
+                flags a demand-management window (a finding, not a failure)
+              </div>
+            )}
+            {scn.smart.marginals?.length > 0 && (
+              <div style={{ fontSize: 10.5, color: C.mut, marginTop: 5, paddingTop: 5, borderTop: `1px solid ${C.line}` }}>
+                marginal barrel (LP shadow price): <b style={{ color: '#b6c0cc' }}>{scn.smart.marginals[0].source} {scn.smart.marginals[0].grade}</b> — 1 extra kb/d saves <b style={{ color: C.teal }}>${scn.smart.marginals[0].shadow_kusd_per_kbd}k/day</b>
+              </div>
+            )}
             <div style={{ maxHeight: 130, overflowY: 'auto', marginTop: 8, borderTop: `1px solid ${C.line}`, paddingTop: 6 }}>
-              {scn.smart.plan.slice(0, 12).map((row: any, j: number) => (
+              {scn.smart.plan.filter((r: any) => r.kbd >= 5).slice(0, 12).map((row: any, j: number) => (
                 <div key={j} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, padding: '1px 0', color: C.mut }}>
                   <span style={{ color: '#b6c0cc' }}>{row.refinery}</span>
                   <span>← {row.source} <b style={{ color: C.text }}>{row.kbd}</b></span>

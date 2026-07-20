@@ -145,22 +145,41 @@ def main() -> int:
           min(d.max_asphaltene for d in deep) > max(s.max_asphaltene for s in simple))
 
     nv = realopt.evaluate("n", realopt.naive_plan(refs, crudes, hormuz), refs, crudes, hormuz)
-    pl, st = realopt.grade_plan(refs, crudes, hormuz)
+    pl, st, marg = realopt.grade_plan(refs, crudes, hormuz)
     sm = realopt.evaluate("s", pl, refs, crudes, hormuz)
     check("REAL-data Hormuz: naive breaches constraints", not nv.feasible,
           f"{len(nv.breaches)} breaches")
     check("REAL-data Hormuz: KARNADHAR fully feasible", sm.feasible,
           f"unmet={sm.unmet_kbd}")
+    check("Hormuz reroute prices the ton-mile effect (extra VLCC-equivalents > 0)",
+          sm.extra_vlcc > 10, f"+{sm.extra_vlcc:.0f} VLCCs")
+    check("LP duals expose scarce supply (positive shadow prices)",
+          len(marg) > 0 and all(m["shadow_kusd_per_kbd"] > 0 for m in marg),
+          f"{len(marg)} binding suppliers, top ${marg[0]['shadow_kusd_per_kbd']}k/day/kbd"
+          if marg else "none")
 
     ru = Disruption("t2", sanctioned_countries={"RUSSIA"})
     ru_gap = sum(r.volume_at_risk(set(), {"RUSSIA"}) for r in refs)
     check("supplier sanction works as a disruption axis (Russia gap > 0)",
           ru_gap > 800, f"{ru_gap:.0f} kb/d")
+    ru_scn = realopt.scenarios()["russia_sanction"]
+    ru_pl, ru_st, _ = realopt.grade_plan(refs, crudes, ru_scn)
+    ru_sm = realopt.evaluate("rs", ru_pl, refs, crudes, ru_scn)
+    check("Russia sanction: KARNADHAR plan feasible (no boundary-rounding artifact)",
+          ru_sm.feasible, f"breaches={len(ru_sm.breaches)}")
 
     dual = Disruption("t3", blocked_chokepoints={"Hormuz"}, sanctioned_countries={"RUSSIA"})
     check("compound disruption strictly worse than single",
           sum(r.volume_at_risk(dual.blocked_chokepoints, dual.sanctioned_countries)
               for r in refs) > gap)
+    du_scn = realopt.scenarios()["hormuz_russia"]
+    du_nv = realopt.evaluate("dn", realopt.naive_plan(refs, crudes, du_scn),
+                             refs, crudes, du_scn)
+    du_pl, _, _ = realopt.grade_plan(refs, crudes, du_scn)
+    du_sm = realopt.evaluate("ds", du_pl, refs, crudes, du_scn)
+    check("compound shock: naive USABLE shortfall exceeds KARNADHAR's (fake fill exposed)",
+          du_nv.usable_short_kbd > du_sm.usable_short_kbd,
+          f"{du_nv.usable_short_kbd:.0f} vs {du_sm.usable_short_kbd:.0f} kb/d")
 
     # ------------------------------------------------------------------ #
     section("5. SCENARIO LIBRARY — degrades honestly under stress")
@@ -217,6 +236,11 @@ def main() -> int:
         check("signal lead time exported and positive",
               d["signal"]["lead_days"] and d["signal"]["lead_days"] > 0,
               f"{d['signal']['lead_days']}d, source={d['signal']['source']}")
+        check("export carries the decision layer (marginals, VLCC, usable shortfall)",
+              hz is not None and "marginals" in hz["smart"]
+              and "extra_vlcc" in hz["smart"] and "usable_short" in hz["naive"])
+        check("hormuz naive breach lines exported (UI can explain INFEASIBLE)",
+              hz is not None and len(hz["naive"].get("breaches", [])) > 0)
 
     # ------------------------------------------------------------------ #
     print("\n" + "=" * 72)

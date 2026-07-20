@@ -31,12 +31,18 @@ real diet popup shows; the tiny dots at the straits are real AIS vessels.*
 
 ## SHOT 3 — The result (0:55–1:30) · right panel, card ③
 > "Watch the verdict. The naive plan — buy the cheapest barrels — is **infeasible**:
-> it sends two hundred and fifty thousand barrels a day to refineries that cannot
-> process them. KARNADHAR's grade-aware optimizer produces a **feasible** plan —
-> every barrel runnable — and protects over three million dollars a day of product
-> yield. That's more than a billion dollars a year, from decision quality alone."
+> its blend breaches Visakhapatnam's sulphur limit, and under a Russia sanction it
+> sends **two hundred and twenty thousand barrels a day** to refineries that
+> physically cannot run them. KARNADHAR's two-stage optimizer is feasible in every
+> survivable scenario — and it prices what others ignore: this reroute ties up
+> **sixty-six extra supertankers**, and the LP's shadow prices name the scarcest
+> barrel — heavy Colombian crude for the coker fleet — worth four thousand dollars
+> a day per extra thousand barrels. That's a procurement priority list, derived,
+> not opined."
 
-*Action: hover the INFEASIBLE / FEASIBLE cards, scroll the refinery-by-refinery plan.*
+*Action: hover the INFEASIBLE / FEASIBLE cards; point at "+66 VLCC-equiv" and the
+"marginal barrel" line; click "Russia fully sanctioned" to show 220 → 0 usable
+shortfall; click back to Hormuz.*
 
 ## SHOT 4 — Early warning (1:30–1:55) · card ①
 > "And we're not waiting for the news. KARNADHAR watches global event data — this is
@@ -54,9 +60,10 @@ real diet popup shows; the tiny dots at the straits are real AIS vessels.*
 
 ## SHOT 6 — Any disruption (2:20–2:40) · click scenarios live
 > "And it's not one hard-coded scenario. Sanction Russia — the map recolours, the
-> plan recomputes, in forty-five milliseconds. Stack Hormuz **plus** an OPEC squeeze —
-> and the engine is honest: even the optimal reroute leaves a gap, quantified, which
-> is exactly what tells policymakers to trigger demand management."
+> whole national plan re-solves in well under a tenth of a second. Stack Hormuz
+> **plus** an OPEC squeeze — and the engine is honest: even the optimal reroute
+> leaves a gap, quantified, which is exactly what tells policymakers to trigger
+> demand management."
 
 *Action: click "Russia fully sanctioned", pause; click "Hormuz + OPEC+ squeeze".
 Then point at card ④ (Multi-commodity lens):*
@@ -77,8 +84,15 @@ hover Russia (grade + volumes). Switch back to "Live map" before the next shot.*
 
 ## SHOT 7 — Proof & close (2:55–3:15) · switch to terminal
 > Run: `python run_validate.py` — let the green checks scroll.
-> "Thirty-five automated checks. Real data. Two domain experts. India's energy
-> lifeline has no helmsman for the storm. Now it does. KARNADHAR."
+> "Forty-five automated checks — every claim falsifiable. Real government data.
+> Two domain experts. India's energy lifeline has no helmsman for the storm.
+> Now it does. KARNADHAR."
+
+*(Optional 5s bonus if pacing allows: `python run_demo.py` — the curated
+head-to-head where the wedge is worth $3.15M/day of protected yield; say
+"and on the stress-test model, the wedge is worth over three million dollars a
+day." Keep the two models' numbers separate — real model on screen, curated
+demo in terminal.)*
 
 ---
 

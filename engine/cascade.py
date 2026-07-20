@@ -19,11 +19,14 @@ makes the whole model testable by sweeping the disruption severity. Any value ca
 be corrected by a domain expert (see outreach: Naiya / PDEU) without touching the
 logic.
 
-Illustrative base values (replace with sourced data in Phase 1):
+Base values (each one named, sourced, and swappable):
   - World liquids supply ~102 Mb/d (IEA)
   - Hormuz transit ~20 Mb/d; pipeline bypass ~6.5 Mb/d (Saudi Petroline ~5 + UAE Fujairah ~1.5) (EIA)
-  - India crude imports ~4.6 Mb/d, ~40% via Hormuz (PPAC)
+  - India crude imports 4.84 Mb/d (DGCIS 2024 actual), 46% via Hormuz —
+    DERIVED from the same DGCIS records by engine.refdata (not quoted from a report)
   - GDP drag ~0.1-0.2 %/yr per sustained +$10/bbl (RBI / MoF range)
+  - Macro block (GDP, reserves, CAD) uses the FY24 vintage deliberately — the
+    same year as the trade records, so the ratios are internally consistent.
 """
 
 from __future__ import annotations
@@ -43,7 +46,8 @@ class CascadeParams:
 
     # --- India fundamentals ---
     india_crude_imports_mbd: float = 4.84   # DGCIS 2024 actual
-    india_hormuz_share: float = 0.40
+    # derived by engine.refdata from the same DGCIS records (not a report figure)
+    india_hormuz_share: float = 0.46
     fx_inr_per_usd: float = 83.5
     litres_per_bbl: float = 159.0
     pump_base_inr_per_l: float = 100.0
