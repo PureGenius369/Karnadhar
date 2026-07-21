@@ -49,7 +49,8 @@ export default function Page() {
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', background: C.bg, color: C.text, font: '14px system-ui, sans-serif', overflow: 'hidden' }}>
       {/* top bar */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '9px 18px 7px', borderBottom: `1px solid ${C.line}` }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
+          <img src="/logo.svg" width={32} height={32} alt="KARNADHAR — the helmsman's chakra" title="Karnadhar: the helmsman — the Ashoka Chakra as a ship's wheel" />
           <span style={{ fontSize: 20, fontWeight: 800, color: C.teal, letterSpacing: 1 }}>KARNADHAR</span>
           <span style={{ fontSize: 12, color: C.mut }}>India Energy Supply-Chain Resilience — live command center</span>
         </div>
@@ -149,7 +150,10 @@ export default function Page() {
           </Card>
 
           <Card title="② Projected impact + twin deficit" accent={C.red}>
-            <Row k="Brent" v={`$${cas.brent}/bbl (+${cas.brent_pct}%)`} c={C.red} />
+            <div style={{ fontSize: 10, color: cas.brent_pct > 20 ? C.red : C.teal, marginBottom: 6, fontStyle: 'italic', lineHeight: 1.35 }}>
+              channel: {cas.channel}
+            </div>
+            <Row k="Brent" v={`$${cas.brent}/bbl (+${cas.brent_pct}%)`} c={cas.brent_pct > 20 ? C.red : C.mut} />
             {cas.brent_hi > cas.brent_lo && (
               <div style={{ fontSize: 10.5, color: C.mut, margin: '-2px 0 2px' }}>
                 sensitivity band ${cas.brent_lo}–${cas.brent_hi} (price-impact 5–12 $/bbl per Mb/d — assumption swept, not asserted)
@@ -157,10 +161,16 @@ export default function Page() {
             )}
             <Row k="Retail fuel" v={`~₹${cas.pump}/L`} />
             <Row k="GDP drag" v={`−${cas.gdp} pp`} />
-            <Row k="Extra oil bill" v={`$${cas.annual_bn} bn/yr`} c={C.amber} />
+            {cas.discount_bn > 0 && cas.brent_pct < 20
+              ? <Row k="Lost Russian discount" v={`~$${cas.discount_bn} bn/yr`} c={C.amber} />
+              : <Row k={cas.discount_bn > 0 ? 'Extra bill (Brent + discount)' : 'Extra oil bill'} v={`$${cas.annual_bn} bn/yr`} c={C.amber} />}
             <div style={{ marginTop: 6, paddingTop: 6, borderTop: `1px solid ${C.line}` }}>
-              <Row k="Current-acct deficit" v={`${cas.cad_base}% → ${cas.cad_stressed}% GDP`} c={C.red} />
-              <div style={{ fontSize: 10.5, color: C.mut, marginTop: 4 }}>India can&apos;t sustain this in USD → rationing forced <i>(validated: L. Powell, ORF)</i></div>
+              <Row k="Current-acct deficit" v={`${cas.cad_base}% → ${cas.cad_stressed}% GDP`} c={cas.cad_stressed > 3 ? C.red : C.text} />
+              <div style={{ fontSize: 10.5, color: C.mut, marginTop: 4 }}>
+                {cas.brent_pct > 20
+                  ? <>India can&apos;t sustain this in USD → rationing forced <i>(validated: L. Powell, ORF)</i></>
+                  : <>a sanction redistributes barrels — India&apos;s pain is the lost discount, not a global price spike <i>(honest channel separation)</i></>}
+              </div>
             </div>
           </Card>
 

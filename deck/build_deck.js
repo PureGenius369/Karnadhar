@@ -98,7 +98,7 @@ function foot(s, txt) {
   panel(s, 0.6, 4.2, 12.13, 2.3);
   s.addText([
     { text: 'And the real constraint isn’t barrels — it’s dollars.\n', options: { color: TEXT, bold: true, fontSize: 18 } },
-    { text: 'India is a twin-deficit economy. A sustained price shock adds ~$190 bn/yr to the import bill, blowing the current-account deficit from 1.2% to over 6% of GDP. Unlike trade-surplus Japan or Korea, India cannot sustain that dollar outflow — which is why unprepared economies take ', options: { color: MUT, fontSize: 14.5 } },
+    { text: 'India is a twin-deficit economy. A sustained price shock adds ~$190 bn/yr to the import bill, blowing the current-account deficit from 0.7% (FY24) to over 6% of GDP. Unlike trade-surplus Japan or Korea, India cannot sustain that dollar outflow — which is why unprepared economies take ', options: { color: MUT, fontSize: 14.5 } },
     { text: '47 days longer', options: { color: RED, bold: true, fontSize: 14.5 } },
     { text: ' to stabilise supply (McKinsey). The data to act exists. The intelligence layer to act on it does not.', options: { color: MUT, fontSize: 14.5 } },
   ], { x: 0.95, y: 4.5, w: 11.4, h: 1.75, fontFace: F, margin: 0, lineSpacing: 22 });
@@ -311,7 +311,7 @@ function foot(s, txt) {
     ['₹125.5/L', 'retail fuel at full closure (+₹25.5)', AMBER],
     ['−1.4 pp', 'GDP drag · +2.0 pp CPI', BLUE],
     ['$191 bn/yr', 'extra import bill in USD', RED],
-    ['1.2% → 6.1%', 'current-account deficit, % of GDP', RED],
+    ['0.7% → 6.1%', 'current-account deficit, % of GDP', RED],
   ];
   st.forEach((c, i) => {
     const y = 1.95 + i * 1.18;
@@ -324,7 +324,7 @@ function foot(s, txt) {
     x: 0.65, y: 6.0, w: 8.6, h: 0.8, fontFace: F, fontSize: 12.5, color: MUT, margin: 0, lineSpacing: 18,
   });
   foot(s, 'Cascade: closure → net shortfall (after Saudi/UAE pipeline bypass) → Brent → import bill → pump price → CPI/GDP → CAD · reviewed with Lydia Powell, ORF');
-  s.addNotes('The brief demands explicit, testable assumptions — so our cascade is a glass box. Notice the flat segment: a 25% closure is absorbed by the Saudi and UAE bypass pipelines — the model knows that nuance. At full closure: Brent 190, petrol above 125 rupees, and the number that matters most — the current-account deficit exploding past 6% of GDP. India can’t sustain that dollar outflow. That’s why speed of response is a national-security variable.');
+  s.addNotes('The brief demands explicit, testable assumptions — so our cascade is a glass box. Notice the flat segment: a 25% closure is absorbed by the Saudi and UAE bypass pipelines — the model knows that nuance. At full closure: Brent 190, petrol above 125 rupees, and the number that matters most — the current-account deficit going from 0.7 percent to past 6 percent of GDP. And crucially, we do NOT use this global-shock model for every scenario. A Russia sanction is not a supply shock — those barrels redistribute to China — so global Brent barely moves; India’s real cost is the roughly 3.5 billion dollars a year of Urals discount it can no longer capture. Getting that channel distinction right is exactly what separates a real energy model from a dashboard. India can’t sustain the dollar outflow — which is why speed of response is a national-security variable.');
 }
 
 // ================= 9. SCENARIO MODELLER =================
@@ -389,8 +389,8 @@ function foot(s, txt) {
 
   panel(s, 0.6, 1.9, 5.9, 4.6);
   s.addText('AUTOMATED VALIDATION', { x: 0.9, y: 2.1, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, bold: true, color: DIM, charSpacing: 2, margin: 0 });
-  s.addText('57 / 57', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
-  s.addText('checks passed — one command, exit-code gated, run in CI on every push', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 12, color: MUT, margin: 0 });
+  s.addText('62 / 62', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
+  s.addText('checks passed — one command, exit-code gated, run in CI', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 11.5, color: MUT, margin: 0 });
   const checks = [
     'wedge holds: naive infeasible for grade reasons, LP optimal',
     'cascade monotonic; bypass nuance; sensitivity band; twin deficit',

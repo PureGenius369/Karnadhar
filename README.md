@@ -72,7 +72,7 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
   reroute leaves demand unmet; KARNADHAR quantifies the gap instead of pretending.
 - **Twin-deficit cascade** — the India-specific vulnerability (reviewed with Lydia
   Powell, Distinguished Fellow, ORF): a full closure adds ~$191bn/yr in USD outflow,
-  blowing the current-account deficit from 1.2% → 6.1% of GDP. The binding constraint
+  blowing the current-account deficit from 0.7% → 6.1% of GDP. The binding constraint
   is the balance of payments, not the barrels.
 - **Multi-commodity lens** — the framework generalised to 8 strategic imports (LNG,
   pharma APIs, semiconductors, edible oils, fertiliser, coking coal, solar PV) via a
@@ -105,7 +105,7 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
 ```bash
 # 1) Engine (Python 3.12)
 pip install -r requirements.txt
-python run_validate.py     # 57/57 automated checks — the proof
+python run_validate.py     # 62/62 automated checks — the proof
 python run_real.py         # reroute on REAL DGCIS diets, all scenarios
 python run_karnadhar.py    # end-to-end pipeline: signal → brief in ~45 ms
 
@@ -142,7 +142,7 @@ karnadhar/
 ├── api/main.py          # FastAPI backend
 ├── frontend/            # Next.js 16 + MapLibre war-room
 ├── run_*.py             # runnable proofs (see above)
-├── run_validate.py      # 57-check validation suite (exit-code gated; runs in CI)
+├── run_validate.py      # 62-check validation suite (exit-code gated; runs in CI)
 ├── export_ui.py         # engine → UI JSON
 └── deliverables/        # pitch deck (KARNADHAR_Deck.pptx) + renders
 ```

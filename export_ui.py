@@ -10,7 +10,7 @@ from datetime import date
 from engine.realmodel import build_refineries, build_crudes, SUPPLY_HEADROOM
 from engine.realopt import naive_plan, grade_plan, evaluate, scenarios, landed, yield_pen
 from engine.refdata import country_info, chokepoint_exposure, load_diets
-from engine.cascade import compute_cascade, CascadeParams
+from engine.cascade import compute_cascade, CascadeParams, compute_sanction_impact
 from engine.spr import plan_drawdown
 from engine.signals.gdelt import timeline_with_fallback
 from engine.signals.agent import GeopoliticalRiskAgent
@@ -189,7 +189,62 @@ def compose_cut_corridors(scn, crudes) -> list:
     return sorted(out, key=lambda x: -x["kbd"])
 
 
-def compose_brief(scn, nv, sm, marg, spr, cas, band, commodities_hit) -> list:
+def economic_impact(scn, nv, sm, national, hormuz_exposure, russia_kbd, hz_gap) -> dict:
+    """Route each scenario to the CORRECT economic channel — the fix for the
+    category error of modelling every disruption as a Hormuz global shortfall:
+
+      * Hormuz closed        -> global supply shock (Brent spike; 20 Mb/d of world
+                                flow that cannot reach anyone).
+      * supplier sanctioned  -> REDISTRIBUTION, not a shortfall: global Brent barely
+                                moves; India's cost is the lost supplier discount +
+                                the LP re-sourcing premium.
+      * minor crude strait   -> freight premium (crude reroutes via the Cape).
+    """
+    CP = CascadeParams()
+    hormuz_blocked = "Hormuz" in scn.blocked_chokepoints
+    russia_sanctioned = "RUSSIA" in scn.sanctioned_countries
+    discount_bn = 0.0
+
+    if hormuz_blocked:
+        closure = min(1.0, hz_gap / national / hormuz_exposure)         # ~1.0 = full Hormuz
+        cas = compute_cascade(closure, CP)
+        band = (compute_cascade(closure, CascadeParams(price_sensitivity_usd_per_mbd=5.0)).brent_usd,
+                compute_cascade(closure, CascadeParams(price_sensitivity_usd_per_mbd=12.0)).brent_usd)
+        brent, brent_pct, pump, gdp = cas.brent_usd, cas.brent_change_pct, cas.pump_inr_per_l, cas.gdp_drag_pp
+        bill_day, annual_bn, cad = (cas.india_extra_import_bill_musd_day,
+                                    cas.extra_annual_import_bill_usd_bn, cas.stressed_cad_pct_gdp)
+        channel = "global supply shock - Hormuz carries ~20 Mb/d of irreplaceable world flow"
+        if russia_sanctioned:                                          # compound: also lose the discount
+            sr = compute_sanction_impact(russia_kbd, sm.yield_loss_musd_day, p=CP)
+            bill_day = round(bill_day + sr.india_extra_import_bill_musd_day, 1)
+            annual_bn = round(annual_bn + sr.extra_annual_import_bill_usd_bn, 1)
+            cad = round(cad + sr.extra_annual_import_bill_usd_bn / CP.india_gdp_usd_bn * 100, 2)
+            discount_bn = round(sr.lost_discount_musd_day * 365 / 1000.0, 1)
+            channel = "global supply shock (Hormuz) + India's lost Russian discount"
+    elif russia_sanctioned:
+        sr = compute_sanction_impact(russia_kbd, sm.yield_loss_musd_day, p=CP)
+        brent, brent_pct, pump, gdp = sr.brent_usd, sr.brent_change_pct, sr.pump_inr_per_l, sr.gdp_drag_pp
+        bill_day, annual_bn, cad = (sr.india_extra_import_bill_musd_day,
+                                    sr.extra_annual_import_bill_usd_bn, sr.stressed_cad_pct_gdp)
+        band = (brent, brent)
+        discount_bn = round(sr.lost_discount_musd_day * 365 / 1000.0, 1)
+        channel = "supplier redirect - global supply intact; India loses the Urals discount + a re-sourcing premium"
+    else:
+        closure = min(1.0, nv.gap_kbd / national / hormuz_exposure)
+        cas = compute_cascade(closure, CP)
+        brent, brent_pct, pump, gdp = cas.brent_usd, cas.brent_change_pct, cas.pump_inr_per_l, cas.gdp_drag_pp
+        bill_day, annual_bn, cad = (cas.india_extra_import_bill_musd_day,
+                                    cas.extra_annual_import_bill_usd_bn, cas.stressed_cad_pct_gdp)
+        band = (brent, brent)
+        channel = "freight premium - crude reroutes via the Cape; global supply intact"
+
+    return {"brent": brent, "brent_pct": brent_pct, "brent_lo": band[0], "brent_hi": band[1],
+            "pump": pump, "gdp": gdp, "bill_day": bill_day, "cad_stressed": cad,
+            "cad_base": CP.baseline_cad_pct_gdp, "annual_bn": annual_bn,
+            "channel": channel, "discount_bn": discount_bn}
+
+
+def compose_brief(scn, nv, sm, marg, spr, econ, commodities_hit) -> list:
     """Executive brief: engine numbers, template words (the briefing agent's
     output, rendered in the war-room; Claude drop-in writes prose, never numbers)."""
     lines = []
@@ -216,9 +271,16 @@ def compose_brief(scn, nv, sm, marg, spr, cas, band, commodities_hit) -> list:
                         for m in mat[:2])
         lines.append(f"PROCUREMENT PRIORITY - secure marginal barrels first: {top} [LP shadow prices].")
     lines.append(f"RESERVES - {spr.summary()}.")
-    lines.append(f"ECONOMY - Brent ${cas.brent_usd:.0f} (sensitivity ${band[0]:.0f}-{band[1]:.0f}), "
-                 f"pump ~Rs{cas.pump_inr_per_l:.0f}/L, CAD 1.2% -> {cas.stressed_cad_pct_gdp:.1f}% GDP "
-                 f"[global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].")
+    if econ["discount_bn"] and econ["brent"] < 95:                 # pure sanction — no global shock
+        lines.append(f"ECONOMY - {econ['channel']}. Brent ~${econ['brent']:.0f} (redistribution, "
+                     f"not a shortfall); India's real cost = lost Urals discount ~${econ['discount_bn']:.1f}bn/yr "
+                     f"+ re-sourcing premium -> CAD {econ['cad_base']}% -> {econ['cad_stressed']:.1f}% GDP.")
+    else:
+        extra = (f"; +${econ['discount_bn']:.1f}bn/yr lost Russian discount on top"
+                 if econ["discount_bn"] else "")
+        lines.append(f"ECONOMY - {econ['channel']}. Brent ${econ['brent']:.0f} "
+                     f"(sensitivity ${econ['brent_lo']:.0f}-{econ['brent_hi']:.0f}), "
+                     f"pump ~Rs{econ['pump']:.0f}/L, CAD {econ['cad_base']}% -> {econ['cad_stressed']:.1f}% GDP{extra}.")
     if commodities_hit:
         spill = ", ".join(f"{c['name']} {c['affected']:.0%}" for c in commodities_hit[:2])
         lines.append(f"SPILLOVER - hardest-hit other imports: {spill}.")
@@ -231,7 +293,10 @@ def main():
     raw = load_diets()
     national = sum(r.capacity_kbd for r in refs)
     # DERIVE the national Hormuz exposure from the model itself (no hardcoding)
-    hormuz_exposure = sum(r.volume_at_risk({"Hormuz"}, set()) for r in refs) / national
+    hz_gap = sum(r.volume_at_risk({"Hormuz"}, set()) for r in refs)
+    hormuz_exposure = hz_gap / national
+    # real Russian import volume — the barrels a sanction would strand (discount-loss economics)
+    russia_kbd = sum(r.volume_at_risk(set(), {"RUSSIA"}) for r in refs)
 
     # geo
     refineries = []
@@ -276,16 +341,14 @@ def main():
         pl, st, marg = grade_plan(refs, crudes, scn)
         sm = evaluate("smart", pl, refs, crudes, scn)
         ms = round((time.perf_counter() - t0) * 1000, 1)
-        closure = min(1.0, nv.gap_kbd / national / hormuz_exposure)  # gap vs Hormuz-max
-        cas = compute_cascade(min(1.0, closure), CascadeParams())
-        # EF-3 "testable": Brent under the documented price-sensitivity range 5-12 $/bbl per Mb/d
-        band = (compute_cascade(closure, CascadeParams(price_sensitivity_usd_per_mbd=5.0)).brent_usd,
-                compute_cascade(closure, CascadeParams(price_sensitivity_usd_per_mbd=12.0)).brent_usd)
+        # scenario-aware economics: global shock (Hormuz) vs discount-loss (sanction)
+        # vs freight premium (minor strait) — NOT one cascade for all
+        econ = economic_impact(scn, nv, sm, national, hormuz_exposure, russia_kbd, hz_gap)
         spr = plan_drawdown(sm.unmet_kbd, sm.spr_bridge_days, national)
         com_hit = [c for c in commodity_screen(scn.blocked_chokepoints,
                                                {s.upper() for s in scn.sanctioned_countries})
                    if c["key"] != "crude_oil" and c["affected"] > 0.05]
-        brief = compose_brief(scn, nv, sm, marg, spr, cas, band, com_hit)
+        brief = compose_brief(scn, nv, sm, marg, spr, econ, com_hit)
         routes_ranked = compose_routes(scn, refs, crudes, pl, marg, nv.gap_kbd)
         cut_corridors = compose_cut_corridors(scn, crudes)
         cut = [c.name.title() for c in crudes if scn.is_cut(c) and c.name in SRC_COORDS]
@@ -305,12 +368,7 @@ def main():
                       "fleet_vlcc": sm.fleet_vlcc, "extra_vlcc": sm.extra_vlcc,
                       "marginals": [m for m in marg if m["avail_kbd"] >= 50][:3],
                       "plan": plan_rows(pl, crudes)},
-            "cascade": {"brent": cas.brent_usd, "brent_pct": cas.brent_change_pct,
-                        "brent_lo": band[0], "brent_hi": band[1],
-                        "pump": cas.pump_inr_per_l, "gdp": cas.gdp_drag_pp,
-                        "bill_day": cas.india_extra_import_bill_musd_day,
-                        "cad_stressed": cas.stressed_cad_pct_gdp,
-                        "cad_base": 1.2, "annual_bn": cas.extra_annual_import_bill_usd_bn},
+            "cascade": econ,
             "spr": {"verdict": spr.verdict, "draw_rate_kbd": spr.draw_rate_kbd,
                     "depletion_pct": spr.depletion_pct,
                     "demand_mgmt_kbd": spr.demand_mgmt_kbd,

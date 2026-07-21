@@ -84,19 +84,26 @@ def _derive_config(nelson: float, api_opt: float, blend_s: float,
 
     Rules (explicit and expert-calibratable — pending Dr. Bhui's written reply):
       - it already runs its current blend, so its ceilings are >= today's values
-      - deep-conversion (high Nelson) => can go very heavy, but CANNOT run a very
-        light slate (the coker/vacuum units would be starved) -> tighter api_max
-      - simple (low Nelson) => needs lighter, sweeter, low-asphaltene feed
+      - a deep-conversion coker is the MOST flexible refinery: its window is the
+        WIDEST at BOTH ends — heavy sour (Merey/Maya/Cold Lake) is its design
+        feed, and light sweet (WTI, Saharan) is perfectly runnable, merely
+        under-using the coker (an economic penalty priced by yield_pen, NOT a
+        hard wall). Jamnagar is in fact one of the world's largest WTI buyers.
+      - a simple hydroskimmer is the MOST constrained: it needs a lighter,
+        sweeter, low-asphaltene slate. So the runnable window WIDENS with Nelson.
     """
-    if nelson >= 12:            # deep conversion, full coker
-        api_min, api_span, asph_cap, pen = 18.0, 8.0, 12.0, 0.70
+    if nelson >= 12:            # deep conversion, full coker — widest slate
+        api_min, api_span, asph_cap, pen = 14.0, 16.0, 12.0, 0.70
     elif nelson >= 9:           # complex
-        api_min, api_span, asph_cap, pen = 24.0, 10.0, 6.0, 0.90
-    else:                       # medium / simple
-        api_min, api_span, asph_cap, pen = 29.0, 12.0, 3.0, 1.10
+        api_min, api_span, asph_cap, pen = 22.0, 12.0, 6.0, 0.90
+    else:                       # medium / simple hydroskimmer — narrowest slate
+        api_min, api_span, asph_cap, pen = 28.0, 9.0, 3.0, 1.10
+    api_max = round(api_opt + api_span, 1)
+    if nelson >= 12:
+        api_max = max(api_max, 46.0)   # a coker can run the lightest sweet crudes (WTI 41.5, Saharan 45)
     return dict(
         api_min=api_min,
-        api_max=round(api_opt + api_span, 1),
+        api_max=api_max,
         desulph_limit=round(blend_s * 1.15, 2),        # 15% headroom over today
         max_sulphur=round(max_s_in_diet * 1.10, 2),
         max_asphaltene=round(max(asph_cap, blend_asph * 1.2), 1),

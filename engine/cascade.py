@@ -62,14 +62,30 @@ class CascadeParams:
     # Per Lydia Powell (ORF): India, unlike trade-surplus Japan/Korea, cannot
     # sustain USD payment for expensive crude -> current-account + fiscal deficit.
     # The real constraint is the balance of payments, not the barrels.
-    india_gdp_usd_bn: float = 3900.0         # ~FY24 nominal GDP
+    # FY24 vintage throughout (same year as the 4.84 Mb/d import figure) so the
+    # CAD ratio is internally consistent:
+    india_gdp_usd_bn: float = 3550.0         # FY24 nominal GDP: Rs295.4 lakh cr / 83.5 FX (MoSPI)
     india_forex_reserves_usd_bn: float = 650.0
-    baseline_cad_pct_gdp: float = 1.2        # recent current-account deficit (% GDP)
+    baseline_cad_pct_gdp: float = 0.7        # FY24 CAD: RBI $23.2bn = 0.7% of GDP
+    # NOTE (explicit, testable): the CAD shock is applied to GROSS crude imports.
+    # India also exports ~1.1 Mb/d of refined product whose value rises with crude,
+    # so the NET current-account hit is ~20% smaller. We report gross deliberately —
+    # per the ORF review the binding constraint is the GROSS USD payment India must
+    # find, not the net trade balance. Set a product-export offset to see the net view.
 
     # --- strategic reserves ---
     # India's SPR is VOLUNTARY insurance: India is not a full IEA member, so the
     # IEA 90-day reserve mandate does not bind it. 9.5 days is thin, not a floor.
     spr_days_cover: float = 9.5
+
+    # --- supplier-sanction economics (a REDISTRIBUTION, not a global supply shock) --
+    # A sanction reroutes a supplier's barrels (Russia -> China/others); it does
+    # NOT remove them from world supply, so global Brent barely moves. India's real
+    # cost is losing that supplier's DISCOUNT plus a grade re-sourcing premium.
+    # Modelling a sanction as a global shortfall (the Hormuz channel) would be a
+    # category error and would overstate Brent and the CAD several-fold.
+    urals_discount_usd: float = 6.0          # avg Urals-to-Brent discount India realised, FY24 (narrowed from ~$30 in 2022; trade press) — conservative
+    sanction_risk_premium_usd: float = 4.0   # modest global friction/uncertainty premium on Brent, not a supply shock
 
 
 @dataclass
@@ -146,3 +162,52 @@ def sensitivity_table(p: CascadeParams = CascadeParams(),
                       fractions=(0.25, 0.50, 0.75, 1.00)) -> list[CascadeResult]:
     """Sweep disruption severity -> the 'testable' half of EF-3."""
     return [compute_cascade(f, p) for f in fractions]
+
+
+@dataclass
+class SanctionResult:
+    """India's cost of a supplier sanction — the discount-loss channel, NOT a
+    global-shortfall Brent spike."""
+    sanctioned_kbd: float
+    brent_usd: float
+    brent_change_pct: float
+    lost_discount_musd_day: float
+    resourcing_premium_musd_day: float
+    india_extra_import_bill_musd_day: float
+    extra_annual_import_bill_usd_bn: float
+    cad_widening_pct_gdp: float
+    stressed_cad_pct_gdp: float
+    pump_inr_per_l: float
+    gdp_drag_pp: float
+
+
+def compute_sanction_impact(sanctioned_kbd: float,
+                            resourcing_premium_musd_day: float = 0.0,
+                            discount_usd: float | None = None,
+                            p: CascadeParams = CascadeParams()) -> SanctionResult:
+    """Economic impact of sanctioning a supplier of `sanctioned_kbd` kb/d.
+
+    Global Brent moves only by a small risk premium (the barrels redistribute,
+    they are not destroyed). India's extra USD outflow = the discount it can no
+    longer capture on those barrels + the grade re-sourcing premium the LP pays.
+    """
+    disc = p.urals_discount_usd if discount_usd is None else discount_usd
+    brent = p.brent_base_usd + p.sanction_risk_premium_usd
+    brent_pct = p.sanction_risk_premium_usd / p.brent_base_usd * 100.0
+    lost_disc = sanctioned_kbd * disc / 1000.0                 # kb/d * $/bbl -> $M/day
+    extra_bill = lost_disc + resourcing_premium_musd_day
+    annual_bn = extra_bill * 365 / 1000.0
+    cad_widen = annual_bn / p.india_gdp_usd_bn * 100.0
+    pump_delta = (p.sanction_risk_premium_usd / p.litres_per_bbl) * p.fx_inr_per_usd * p.crude_pass_through
+    gdp_pp = (p.sanction_risk_premium_usd / 10.0) * p.gdp_drag_pp_per_10usd
+    return SanctionResult(
+        sanctioned_kbd=round(sanctioned_kbd, 1),
+        brent_usd=round(brent, 1), brent_change_pct=round(brent_pct, 1),
+        lost_discount_musd_day=round(lost_disc, 1),
+        resourcing_premium_musd_day=round(resourcing_premium_musd_day, 1),
+        india_extra_import_bill_musd_day=round(extra_bill, 1),
+        extra_annual_import_bill_usd_bn=round(annual_bn, 1),
+        cad_widening_pct_gdp=round(cad_widen, 2),
+        stressed_cad_pct_gdp=round(p.baseline_cad_pct_gdp + cad_widen, 2),
+        pump_inr_per_l=round(p.pump_base_inr_per_l + pump_delta, 1),
+        gdp_drag_pp=round(gdp_pp, 2))

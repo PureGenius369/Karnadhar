@@ -120,7 +120,7 @@ double-click to reset. Switch back to "Live map" before the next shot.*
 
 ## SHOT 7 — Proof & close (2:55–3:15) · switch to terminal
 > Run: `python run_validate.py` — let the green checks scroll.
-> "Fifty-seven automated checks — every claim falsifiable, re-run in CI on every push.
+> "Sixty-two automated checks — every claim falsifiable, re-run in CI on every push.
 > Real government data. Two domain experts. India's energy lifeline has no
 > helmsman for the storm. Now it does. KARNADHAR."
 

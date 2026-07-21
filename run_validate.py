@@ -90,6 +90,17 @@ def main() -> int:
     check("EF-3 testable: Brent sensitivity band brackets the central estimate",
           lo < mid < hi, f"${lo:.0f} < ${mid:.0f} < ${hi:.0f}")
 
+    from engine.cascade import compute_sanction_impact
+    sr = compute_sanction_impact(1590.0, 3.3)      # ~Russia volume + a small re-sourcing premium
+    check("sanction is NOT a global shock: Brent stays near base (barrels redistribute)",
+          sr.brent_usd < p.brent_base_usd + 15, f"${sr.brent_usd} vs full-Hormuz ${rows[-1].brent_usd}")
+    check("sanction CAD widening is modest (discount-loss channel, not a shortfall)",
+          0 < sr.stressed_cad_pct_gdp - p.baseline_cad_pct_gdp < 0.5,
+          f"+{sr.stressed_cad_pct_gdp - p.baseline_cad_pct_gdp:.2f}pp CAD")
+    check("sanction cost is the lost discount, material and realistic ($1-8bn/yr)",
+          1.0 < sr.lost_discount_musd_day * 365 / 1000 < 8.0,
+          f"${sr.lost_discount_musd_day * 365 / 1000:.1f}bn/yr")
+
     # ------------------------------------------------------------------ #
     section("3. SIGNAL — alert leads the market repricing")
     from datetime import date
@@ -273,6 +284,16 @@ def main() -> int:
               and "extra_vlcc" in hz["smart"] and "usable_short" in hz["naive"])
         check("hormuz naive breach lines exported (UI can explain INFEASIBLE)",
               hz is not None and len(hz["naive"].get("breaches", [])) > 0)
+        rus = next((s for s in d["scenarios"] if s["key"] == "russia_sanction"), None)
+        check("Russia scenario uses the SANCTION channel — not a fake Hormuz Brent spike",
+              rus is not None and rus["cascade"]["brent_pct"] < 15
+              and rus["cascade"]["discount_bn"] > 0,
+              f"Brent +{rus['cascade']['brent_pct']}%, discount ${rus['cascade']['discount_bn']}bn/yr"
+              if rus else "none")
+        check("Hormuz scenario still a GLOBAL shock (Brent well above base)",
+              hz is not None and hz["cascade"]["brent"] > 150
+              and "global supply shock" in hz["cascade"]["channel"],
+              f"${hz['cascade']['brent']}" if hz else "none")
 
     # ------------------------------------------------------------------ #
     section("8. RANKED REROUTE — the deep-dive ranks routes defensibly")

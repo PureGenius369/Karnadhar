@@ -41,7 +41,7 @@ key-gated) writes words only; numbers always come from the engine.
 
 ## 7 · Expert reviews
 - **Lydia Powell (ORF)**: sourcing-first for India validated; SPR = voluntary
-  insurance; **twin-deficit** reframe → CAD block added to the cascade (1.2% → 6.1%
+  insurance; **twin-deficit** reframe → CAD block added to the cascade (0.7% → 6.1%
   of GDP at full closure).
 - **Prof. U. K. Bhui (PDEU)**, phone: wedge "perfectly right"; API is a *surface*
   property → **SARA/asphaltene** added as a third quality axis; crude-to-chemicals
@@ -157,3 +157,32 @@ routes and prove why*, and two bugs (white popup, tangled lines) had to go.
   card self-defends ("+$5/bbl above the cheapest survivor — ranks first on secured
   volume, not price"). Validation now **57/57**, incl. a check that a bigger-volume
   slack corridor outranks a tiny binding one.
+
+## 16 · Calculation audit (adversarial, multi-discipline) + the identity
+"Is every calculation correct?" — so we ran a 4-lens adversarial audit (energy
+economist, petroleum engineer, macroeconomist, LP/OR) and fixed the confirmed defects:
+- **Sanctions were modelled as a global supply shock** (the biggest error). A Russia
+  sanction was pushed through the Hormuz cascade → a fictional Brent +71% and CAD
+  3.8%. But a sanction REDISTRIBUTES barrels (Russia → China); global Brent barely
+  moves. Split the economics by channel: Hormuz = global supply shock (Brent spike);
+  **sanction = discount-loss** (India's real cost is the ~$3.5bn/yr Urals discount it
+  can no longer capture + the LP re-sourcing premium), CAD 0.7 → 0.8%, not 3.8%; minor
+  strait = freight premium. `compute_sanction_impact` + an `economic_impact` dispatcher.
+- **Refinery windows were inverted** (certain bug). The derived config gave the
+  deep-conversion coker the *narrowest* crude window — Jamnagar (Nelson 21) was barred
+  from light-sweet WTI/Saharan while a simple hydroskimmer could run them. Backwards: a
+  full coker is the *most* flexible asset. Widened the window monotonically with Nelson
+  (deep 14–47 incl. Merey and WTI; simple 28–44). Frees the LP to route open-ocean
+  light crude to India's largest refinery in a Hormuz closure — the wedge still holds
+  (naive infeasible on sulphur; smart feasible).
+- **Macro vintage** made consistent: GDP relabelled to true FY24 ($3,550bn, not the
+  FY25 $3,900bn) and baseline CAD to the FY24 0.7% (not 1.2%). The two errors were
+  offsetting, so the flagship **6.1%** headline is unchanged — but now internally
+  consistent, and the gross-vs-net-imports choice is documented (gross, per the ORF
+  USD-outflow framing). Deferred as documented refinements: asphaltene colloidal
+  stability (vs linear average) and an asymmetric yield penalty.
+- **Identity**: a logo that means something — **the Ashoka Chakra rendered as a
+  ship's helm wheel**. *Karnadhar* is the helmsman; India's 24-spoke national wheel
+  *is* a wheel; the tricolour rides the four helm handles (saffron, green) and India
+  sits at the teal command-centre hub. In the header and as the favicon.
+Validation now **62/62** (sanction-channel + vintage checks added), all in CI.
