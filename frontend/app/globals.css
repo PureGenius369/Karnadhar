@@ -39,3 +39,22 @@ body {
 /* subtle terminal flicker-free pulse for live LEDs */
 @keyframes led-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 .led-live { animation: led-pulse 2s ease-in-out infinite; }
+
+/* MapLibre popups: force the terminal-dark theme (default is white -> our
+   light text was invisible). Covers content, tip triangle (all anchors), close. */
+.maplibregl-popup-content {
+  background: #0d1219 !important;
+  border: 1px solid #243040;
+  border-radius: 6px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, .55);
+  padding: 8px 11px !important;
+}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-top-right .maplibregl-popup-tip { border-bottom-color: #0d1219 !important; }
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip { border-top-color: #0d1219 !important; }
+.maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: #0d1219 !important; }
+.maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: #0d1219 !important; }
+.maplibregl-popup-close-button { color: #8b95a3; font-size: 15px; }

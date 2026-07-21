@@ -7,8 +7,8 @@ import json, time
 from pathlib import Path
 from datetime import date
 
-from engine.realmodel import build_refineries, build_crudes
-from engine.realopt import naive_plan, grade_plan, evaluate, scenarios, landed
+from engine.realmodel import build_refineries, build_crudes, SUPPLY_HEADROOM
+from engine.realopt import naive_plan, grade_plan, evaluate, scenarios, landed, yield_pen
 from engine.refdata import country_info, chokepoint_exposure, load_diets
 from engine.cascade import compute_cascade, CascadeParams
 from engine.spr import plan_drawdown
@@ -72,6 +72,121 @@ def plan_rows(plan, crudes):
             rows.append({"refinery": rn, "grade": cby[cn].grade, "source": cn.title(),
                          "kbd": v})
     return rows
+
+
+MATERIAL_KBD = 50.0        # below this, a supplier's shadow price is a scarcity artifact
+
+
+def compose_routes(scn, refs, crudes, pl, marg, gap_kbd) -> list:
+    """Rank the surviving sourcing corridors the LP used to close the gap.
+
+    Metric (validated adversarially): the LP's OWN two-stage objective, per
+    corridor — PRIMARY = volume the optimizer committed (stage-1: maximise
+    grade-feasible re-sourced barrels), TIEBREAK = effective landed+yield cost
+    (stage-2). NOT shadow-price-first (that puts a 3-kb/d scarcity artifact at #1
+    and buries the 90% lifeline) and NOT cheapest-first (same failure). The
+    shadow price is an annotation on MATERIAL binding corridors only, never the
+    sort key. Headline is gap-closure % so the unmet residual stays visible.
+    """
+    cby = {c.name: c for c in crudes}
+    rby = {r.name: r for r in refs}
+    shadow = {m["source"].upper(): m for m in marg}
+    blocked = scn.blocked_chokepoints
+    agg: dict = {}
+    for rn, alloc in pl.items():
+        r = rby[rn]
+        for cn, v in alloc.items():
+            if v < 1:
+                continue
+            a = agg.setdefault(cn, {"kbd": 0.0, "refs": [], "ypen": 0.0})
+            a["kbd"] += v
+            a["refs"].append({"name": rn, "kbd": round(v, 1), "nelson": r.nelson})
+            a["ypen"] += v * yield_pen(r, cby[cn])
+    rows = []
+    for cn, a in agg.items():
+        c = cby[cn]
+        cps = list(c.chokepoints)
+        if not cps and c.transit_days >= 30:
+            via = "Cape of Good Hope"
+        elif cps:
+            via = " + ".join(cps)
+        else:
+            via = "open ocean"
+        avg_yp = a["ypen"] / a["kbd"] if a["kbd"] else 0.0
+        landed_c = landed(c, scn)
+        sh = shadow.get(cn.upper())
+        avail = sh["avail_kbd"] if sh else None
+        material = bool(sh) and (avail or 0) >= MATERIAL_KBD
+        rows.append({
+            "source": cn.title(), "grade": c.grade,
+            "kbd": round(a["kbd"], 1),
+            "gap_share": round(a["kbd"] / gap_kbd, 3) if gap_kbd else 0,
+            "refineries": sorted(a["refs"], key=lambda x: -x["kbd"]),
+            "n_refineries": len(a["refs"]),
+            "api": c.api, "sulphur": c.sulphur, "asph": c.asphaltene,
+            "price": round(c.price_usd_bbl, 1), "transit_days": c.transit_days,
+            "landed": round(landed_c, 1), "yield_pen": round(avg_yp, 2),
+            "eff_cost": round(landed_c + avg_yp, 1),
+            "via": via, "chokepoints": cps, "residual_risk": bool(cps),
+            "cape_immune": (not cps and blocked != set()),
+            "tier": "binding" if material else "slack",
+            "shadow_kusd": sh["shadow_kusd_per_kbd"] if material else None,
+            "avail_kbd": round(avail, 1) if avail else None,
+        })
+    rows.sort(key=lambda x: (-x["kbd"], x["eff_cost"]))
+    min_eff = min((r["eff_cost"] for r in rows if r["kbd"] >= MATERIAL_KBD), default=0)
+    for i, row in enumerate(rows):
+        row["rank"] = i + 1
+        row["long_tail"] = row["gap_share"] < 0.01
+        row["why"] = _route_why(row, scn, min_eff)
+    return rows
+
+
+def _route_why(r, scn, min_eff) -> str:
+    """Deterministic per-card justification. The #1 card self-defends against the
+    'you just sorted by size' attack by naming its cost premium explicitly."""
+    blocked = " + ".join(sorted(scn.blocked_chokepoints)) or "disruption"
+    sup = " — the single largest grade-feasible corridor that survives" if r["rank"] == 1 else ""
+    s = (f"The optimizer committed {r['kbd']:,.0f} kb/d here, closing "
+         f"{r['gap_share'] * 100:.0f}% of the {scn.name} gap{sup}. ")
+    if not r["chokepoints"]:
+        lane = f"the {r['via']}" if r["via"] != "open ocean" else "open ocean (no strait)"
+        s += f"It sails {lane} clear of the closure, " if scn.blocked_chokepoints else f"It routes via {lane}, "
+    else:
+        s += f"It transits {r['via']} (open in this scenario, but chokepoint-exposed), "
+    s += f"and its {r['api']:.0f}° / {r['sulphur']}% S / {r['asph']}% asph slate runs at {r['n_refineries']} of 10 refineries. "
+    prem = r["eff_cost"] - min_eff
+    if r["kbd"] >= MATERIAL_KBD and prem <= 0.1:
+        s += f"Landed ${r['landed']}/bbl — the cheapest surviving barrel of real scale. "
+    elif prem > 0.1:
+        s += (f"Landed ${r['landed']}/bbl (+${prem:.0f}/bbl above the cheapest survivor "
+              f"— it ranks first on secured volume, not price). ")
+    else:
+        s += f"Landed ${r['landed']}/bbl. "
+    if r["shadow_kusd"]:
+        s += (f"Scarce: one more kb/d is worth ${r['shadow_kusd']}k/day to the system "
+              f"(LP shadow price) — buy incremental volume here.")
+    elif r["tier"] == "slack":
+        s += "Supply slack — more available than the reroute needs; no procurement urgency."
+    return s.strip()
+
+
+def compose_cut_corridors(scn, crudes) -> list:
+    """The corridors that DIED in this disruption — shown severed, to prove the
+    ranking encodes grade-fit + chokepoint survival, not raw size (e.g. Iraq is
+    a bigger supplier than Russia, yet it is CUT at Hormuz)."""
+    out = []
+    for c in crudes:
+        if not scn.is_cut(c) or c.name not in SRC_COORDS:
+            continue
+        if c.name in scn.sanctioned_countries:
+            reason = "sanctioned"
+        else:
+            hit = sorted(set(c.chokepoints) & scn.blocked_chokepoints)
+            reason = f"severed at {' + '.join(hit)}" if hit else "cut"
+        out.append({"source": c.name.title(), "grade": c.grade,
+                    "kbd": round(c.available_kbd / SUPPLY_HEADROOM, 0), "reason": reason})
+    return sorted(out, key=lambda x: -x["kbd"])
 
 
 def compose_brief(scn, nv, sm, marg, spr, cas, band, commodities_hit) -> list:
@@ -171,6 +286,8 @@ def main():
                                                {s.upper() for s in scn.sanctioned_countries})
                    if c["key"] != "crude_oil" and c["affected"] > 0.05]
         brief = compose_brief(scn, nv, sm, marg, spr, cas, band, com_hit)
+        routes_ranked = compose_routes(scn, refs, crudes, pl, marg, nv.gap_kbd)
+        cut_corridors = compose_cut_corridors(scn, crudes)
         cut = [c.name.title() for c in crudes if scn.is_cut(c) and c.name in SRC_COORDS]
         scen_out.append({
             "key": key, "name": scn.name,
@@ -199,6 +316,8 @@ def main():
                     "demand_mgmt_kbd": spr.demand_mgmt_kbd,
                     "summary": spr.summary()},
             "brief": brief,
+            "routes_ranked": routes_ranked,
+            "cut_corridors": cut_corridors,
         })
 
     # vessels: real cached AIS (Malacca live) + labelled Hormuz snapshot

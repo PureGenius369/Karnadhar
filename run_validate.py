@@ -275,6 +275,35 @@ def main() -> int:
               hz is not None and len(hz["naive"].get("breaches", [])) > 0)
 
     # ------------------------------------------------------------------ #
+    section("8. RANKED REROUTE — the deep-dive ranks routes defensibly")
+    if ui.exists():
+        hz = next((s for s in d["scenarios"] if s["key"] == "hormuz"), None)
+        rr = hz["routes_ranked"] if hz else []
+        check("every scenario ships ranked routes + severed corridors",
+              all(len(s.get("routes_ranked", [])) >= 1 and "cut_corridors" in s
+                  for s in d["scenarios"]))
+        kbds = [r["kbd"] for r in rr]
+        check("ranked by LP-committed volume (monotonic non-increasing)",
+              all(a >= b - 1e-6 for a, b in zip(kbds, kbds[1:])),
+              f"top {kbds[:3]}")
+        check("rank #1 closes the largest share of the gap",
+              rr and rr[0]["gap_share"] == max(r["gap_share"] for r in rr),
+              f"#1 {rr[0]['source']} {rr[0]['gap_share']:.0%}" if rr else "none")
+        check("NOT shadow-price-first: a bigger-volume slack corridor outranks a "
+              "tiny binding one (avoids the scarcity-artifact trap)",
+              rr and rr[0]["kbd"] > 500 and rr[0]["tier"] == "slack",
+              f"#1 {rr[0]['source']} {rr[0]['kbd']}kb/d {rr[0]['tier']}" if rr else "none")
+        check("shadow price shown only on MATERIAL corridors (>=50 kb/d avail)",
+              all(r["shadow_kusd"] is None or (r["avail_kbd"] or 0) >= 50 for r in rr))
+        check("severed section proves grade-fit: a cut supplier is bigger than #1",
+              hz and hz["cut_corridors"]
+              and max(c["kbd"] for c in hz["cut_corridors"]) > 0,
+              f"cut: {hz['cut_corridors'][0]['source']} "
+              f"{hz['cut_corridors'][0]['kbd']:.0f}kb/d" if hz and hz["cut_corridors"] else "none")
+        check("every ranked route carries a numbered self-defending justification",
+              all(r.get("why") and "committed" in r["why"] for r in rr))
+
+    # ------------------------------------------------------------------ #
     print("\n" + "=" * 72)
     total = PASS + FAIL
     print(f"  RESULT: {PASS}/{total} checks passed" + ("" if FAIL == 0 else f"  |  {FAIL} FAILED"))

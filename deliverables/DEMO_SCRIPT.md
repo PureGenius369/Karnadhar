@@ -52,7 +52,26 @@ shortfall; click back to Hormuz. Then point at the MAP:*
 > day, assigned by the optimizer. The dim lines are yesterday's corridors. The
 > red ones are dead. The bright ones are the answer."
 
-## SHOT 4 — Early warning (1:30–1:55) · card ①
+## SHOT 3.5 — The ranked deep-dive (1:30–2:00) · click "⤢ Open reroute deep-dive"
+> "And it ranks them. This is the procurement decision page — the alternative
+> corridors, ordered by the volume the optimizer committed to each. Number one:
+> Russia, ninety percent of the gap, Cape-routed, immune to Hormuz. Watch the
+> honesty — it says right on the card, *plus five dollars a barrel above the
+> cheapest survivor; it ranks first on secured volume, not price.* Click it —"
+
+*Action: click route #1; the map collapses the tangle to Russia's single glowing
+artery, the derivation panel fills in.*
+
+> "— and the map isolates just that corridor, with the full derivation: gap closed,
+> landed cost, grade slate, the ten refineries it feeds. And look below: the
+> **severed** suppliers — Iraq, Saudi, the UAE — all *bigger* than Russia, all cut
+> at Hormuz. That's the proof the ranking isn't sorting by size; it's the
+> optimizer's own priority, grade-fit and survival built in."
+
+*Action: click route #2 (Colombia) to show a BINDING, shadow-priced corridor, then
+"← war-room" to return.*
+
+## SHOT 4 — Early warning (2:00–2:15) · card ①
 > "And we're not waiting for the news. KARNADHAR watches global event data — this is
 > the real June 2025 series. Coverage exploded to two hundred times baseline. Our
 > alert fired on June 11th — **twelve days before** Brent jumped eight percent."
@@ -101,7 +120,7 @@ double-click to reset. Switch back to "Live map" before the next shot.*
 
 ## SHOT 7 — Proof & close (2:55–3:15) · switch to terminal
 > Run: `python run_validate.py` — let the green checks scroll.
-> "Fifty automated checks — every claim falsifiable, re-run in CI on every push.
+> "Fifty-seven automated checks — every claim falsifiable, re-run in CI on every push.
 > Real government data. Two domain experts. India's energy lifeline has no
 > helmsman for the storm. Now it does. KARNADHAR."
 

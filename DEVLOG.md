@@ -116,7 +116,7 @@ but missing:
 - **Bypass pipelines on the map** (Petroline + ADCOP) — the cascade's 6.5 Mb/d
   nuance drawn where it physically exists.
 - Small-volume LP rounding fix (0.01 kb/d granularity) caught by the new Red
-  Sea regression check. Validation now **50/50**, in CI.
+  Sea regression check. Validation now **50/50** (later 57/57), in CI.
 
 ## 14 · From status display to decision display
 The sharpest self-critique yet: the map showed red/green *status* but never the
@@ -134,3 +134,26 @@ optimizer's *answer* — the one thing that makes it more than a dashboard. Fixe
 - **Terminal pass**: live ticker tape (scenario · gap · Brent · CAD · reroute ·
   VLCC · SPR · solve-ms), tabular monospace numerals, status LEDs, thin
   scrollbars — Bloomberg grammar without the kitsch.
+
+## 15 · The reroute deep-dive (ranking, defended)
+User pushback: red/green lines aren't optimisation; the map must *rank the best
+routes and prove why*, and two bugs (white popup, tangled lines) had to go.
+- **Bugs**: MapLibre popups forced to the dark theme (default white hid our light
+  text); flows bowed into per-flow arcs so parallel corridors fan into a readable
+  ribbon instead of a straight-line tangle.
+- **Deep-dive page**: selecting a disruption opens a full-screen decision view —
+  alternative corridors ranked #1..N, each with a self-defending justification,
+  BINDING/slack tag, LP marginal value, and the refineries it feeds; click a
+  corridor and it isolates on the map (`focusSource` flow-filter) with a live
+  derivation panel; long-tail (<1% of gap) collapses; a severed-corridors section
+  shows the bigger suppliers that were cut.
+- **Ranking metric** — decided via an adversarial design panel (3 diverse
+  proposals + a hostile-judge synthesis). It rejected the two tempting metrics:
+  *cheapest-first* and *shadow-price-first* both crown a ~3 kb/d rounding-error
+  corridor while burying the 90% lifeline (a scarcity artifact of the LP dual).
+  The defensible metric is the LP's own **stage-1 objective — volume committed**
+  (secure grade-feasible barrels), cost as the stage-2 tiebreak, with the shadow
+  price shown only as a badge on material (≥50 kb/d) binding corridors. The #1
+  card self-defends ("+$5/bbl above the cheapest survivor — ranks first on secured
+  volume, not price"). Validation now **57/57**, incl. a check that a bigger-volume
+  slack corridor outranks a tiny binding one.

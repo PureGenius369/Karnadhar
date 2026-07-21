@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 
 const WarMap = dynamic(() => import('./WarMap'), { ssr: false });
 const KgView = dynamic(() => import('./KgView'), { ssr: false });
+const ScenarioDeepDive = dynamic(() => import('./ScenarioDeepDive'), { ssr: false });
 
 const C = {
   bg: '#080b10', panel: '#0f141b', line: '#1e2733', text: '#e8edf2',
@@ -33,6 +34,7 @@ export default function Page() {
   const [si, setSi] = useState(0);
   const [view, setView] = useState<'map' | 'graph'>('map');
   const [proj, setProj] = useState<'globe' | 'mercator'>('globe');
+  const [deepDive, setDeepDive] = useState(false);
   useEffect(() => { fetch('/karnadhar.json').then((r) => r.json()).then(setData); }, []);
 
   if (!data)
@@ -121,6 +123,15 @@ export default function Page() {
               }}>{s.name}</button>
             ))}
           </div>
+          <button onClick={() => setDeepDive(true)} style={{
+            width: '100%', cursor: 'pointer', marginBottom: 14, padding: '9px 12px', borderRadius: 6,
+            border: `1px solid ${C.cyan}55`, background: 'linear-gradient(90deg, rgba(46,201,255,.14), rgba(46,201,255,.04))',
+            color: C.cyan, fontWeight: 700, fontFamily: MONO, fontSize: 12, letterSpacing: 0.5,
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          }}>
+            <span>⤢ OPEN REROUTE DEEP-DIVE</span>
+            <span style={{ fontSize: 10.5, color: C.mut, fontWeight: 400 }}>{(scn.routes_ranked || []).length} ranked routes →</span>
+          </button>
 
           <Card title="① Early-warning signal (real GDELT)" accent={C.blue} led={[sig.source === 'live' ? 'LIVE FEED' : 'REAL SERIES · CACHED', C.teal]}>
             <Row k="Alert raised" v={sig.alert_day} c={C.amber} />
@@ -250,6 +261,8 @@ export default function Page() {
           </div>
         </div>
       </div>
+
+      {deepDive && <ScenarioDeepDive data={data} scenario={scn} onClose={() => setDeepDive(false)} />}
     </div>
   );
 }

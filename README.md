@@ -83,10 +83,19 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
   **shadow prices** (marginal value of one more kb/d of each scarce grade), the
   **usable-shortfall** honesty metric, and the **VLCC-equivalent tanker cost** of
   longer voyages.
+- **Reroute deep-dive** — click any disruption and open a full-screen decision
+  page that **ranks the alternative sourcing corridors #1..N** by the volume the
+  optimizer committed (the LP's own stage-1 priority; cost as tiebreak — *not*
+  shadow-price-first, which would rank a 3 kb/d scarcity artifact above the 90%
+  lifeline). Each corridor carries a self-defending justification, a BINDING/slack
+  tag, its LP marginal value, and the refineries it feeds; clicking one **isolates
+  it on the map** with a live derivation panel. A **severed-corridors** section
+  shows the bigger suppliers that were cut (Iraq > Russia, gone at Hormuz) —
+  proving the rank encodes grade-fit and chokepoint survival, not raw size.
 - **War-room UI** — Next.js + MapLibre command center that draws **the optimizer's
-  plan itself**: every LP allocation becomes an animated flow line — source →
-  real corridor (Cape where that's the true voyage) → the exact refinery it
-  feeds, width = kb/d, hover for the allocation. True **3D globe / 2D toggle**,
+  plan itself**: every LP allocation becomes an animated, arc-separated flow line —
+  source → real corridor (Cape where that's the true voyage) → the exact refinery
+  it feeds, width = kb/d, hover for the allocation. True **3D globe / 2D toggle**,
   real AIS vessels, bypass pipelines, a fully **interactive knowledge graph**
   (zoom/pan/drag), the multi-commodity lens, a live ticker tape, and scenario
   switching with the national plan re-solved in tens of milliseconds.
@@ -96,7 +105,7 @@ live AIS ships  cascade + twin       over real DGCIS    LLM writes words,
 ```bash
 # 1) Engine (Python 3.12)
 pip install -r requirements.txt
-python run_validate.py     # 50/50 automated checks — the proof
+python run_validate.py     # 57/57 automated checks — the proof
 python run_real.py         # reroute on REAL DGCIS diets, all scenarios
 python run_karnadhar.py    # end-to-end pipeline: signal → brief in ~45 ms
 
@@ -133,7 +142,7 @@ karnadhar/
 ├── api/main.py          # FastAPI backend
 ├── frontend/            # Next.js 16 + MapLibre war-room
 ├── run_*.py             # runnable proofs (see above)
-├── run_validate.py      # 50-check validation suite (exit-code gated; runs in CI)
+├── run_validate.py      # 57-check validation suite (exit-code gated; runs in CI)
 ├── export_ui.py         # engine → UI JSON
 └── deliverables/        # pitch deck (KARNADHAR_Deck.pptx) + renders
 ```

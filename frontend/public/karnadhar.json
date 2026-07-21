@@ -1195,7 +1195,7 @@
     "Qatar"
    ],
    "gap_kbd": 2312.6,
-   "solve_ms": 121.2,
+   "solve_ms": 200.7,
    "naive": {
     "feasible": false,
     "unrunnable": 0.0,
@@ -1395,6 +1395,506 @@
     "ECONOMY - Brent $190 (sensitivity $150-244), pump ~Rs126/L, CAD 1.2% -> 6.1% GDP [global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].",
     "SPILLOVER - hardest-hit other imports: LNG (natural gas) 53%, Fertilisers (urea/DAP/MOP) 30%.",
     "SEQUENCE (per ORF review) - re-source first, bridge with SPR, demand-manage last."
+   ],
+   "routes_ranked": [
+    {
+     "source": "Russia",
+     "grade": "Urals",
+     "kbd": 2086.8,
+     "gap_share": 0.902,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 657.9,
+       "nelson": 21.1
+      },
+      {
+       "name": "IOCL Paradip",
+       "kbd": 323.9,
+       "nelson": 12.2
+      },
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 239.7,
+       "nelson": 11.8
+      },
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 238.5,
+       "nelson": 7.0
+      },
+      {
+       "name": "MRPL Mangalore",
+       "kbd": 135.1,
+       "nelson": 9.5
+      },
+      {
+       "name": "BPCL Kochi",
+       "kbd": 134.2,
+       "nelson": 8.0
+      },
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 117.4,
+       "nelson": 12.5
+      },
+      {
+       "name": "CPCL Chennai",
+       "kbd": 115.3,
+       "nelson": 7.0
+      },
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 97.4,
+       "nelson": 7.0
+      },
+      {
+       "name": "ONGC Mangalore (OMPL)",
+       "kbd": 27.4,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 10,
+     "api": 31.0,
+     "sulphur": 1.6,
+     "asph": 2.8,
+     "price": 72.2,
+     "transit_days": 35,
+     "landed": 78.6,
+     "yield_pen": 1.07,
+     "eff_cost": 79.7,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 1,
+     "long_tail": false,
+     "why": "The optimizer committed 2,087 kb/d here, closing 90% of the Strait of Hormuz closure gap \u2014 the single largest grade-feasible corridor that survives. It sails the Cape of Good Hope clear of the closure, and its 31\u00b0 / 1.6% S / 2.8% asph slate runs at 10 of 10 refineries. Landed $78.6/bbl (+$5/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Colombia",
+     "grade": "Vasconia",
+     "kbd": 125.5,
+     "gap_share": 0.054,
+     "refineries": [
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 125.5,
+       "nelson": 12.5
+      }
+     ],
+     "n_refineries": 1,
+     "api": 24.0,
+     "sulphur": 1.0,
+     "asph": 5.0,
+     "price": 63.3,
+     "transit_days": 30,
+     "landed": 69.5,
+     "yield_pen": 5.32,
+     "eff_cost": 74.8,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 4.2,
+     "avail_kbd": 125.5,
+     "rank": 2,
+     "long_tail": false,
+     "why": "The optimizer committed 126 kb/d here, closing 5% of the Strait of Hormuz closure gap. It sails the Cape of Good Hope clear of the closure, and its 24\u00b0 / 1.0% S / 5.0% asph slate runs at 1 of 10 refineries. Landed $69.5/bbl \u2014 the cheapest surviving barrel of real scale. Scarce: one more kb/d is worth $4.2k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Mexico",
+     "grade": "Maya",
+     "kbd": 24.1,
+     "gap_share": 0.01,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 24.1,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 22.0,
+     "sulphur": 3.3,
+     "asph": 10.0,
+     "price": 60.4,
+     "transit_days": 35,
+     "landed": 66.8,
+     "yield_pen": 7.21,
+     "eff_cost": 74.0,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 24.1,
+     "rank": 3,
+     "long_tail": false,
+     "why": "The optimizer committed 24 kb/d here, closing 1% of the Strait of Hormuz closure gap. It sails the Cape of Good Hope clear of the closure, and its 22\u00b0 / 3.3% S / 10.0% asph slate runs at 1 of 10 refineries. Landed $66.8/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Guyana",
+     "grade": "Other",
+     "kbd": 18.0,
+     "gap_share": 0.008,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 18.0,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.0,
+     "transit_days": 28,
+     "landed": 73.1,
+     "yield_pen": 2.97,
+     "eff_cost": 76.1,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 18.0,
+     "rank": 4,
+     "long_tail": true,
+     "why": "The optimizer committed 18 kb/d here, closing 1% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $73.1/bbl (+$1/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Korea Rp",
+     "grade": "Other",
+     "kbd": 12.7,
+     "gap_share": 0.005,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 12.7,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 70.2,
+     "transit_days": 28,
+     "landed": 76.3,
+     "yield_pen": 2.97,
+     "eff_cost": 79.3,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 12.7,
+     "rank": 5,
+     "long_tail": true,
+     "why": "The optimizer committed 13 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $76.3/bbl (+$4/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Panama Republic",
+     "grade": "Other",
+     "kbd": 9.7,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 9.7,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 61.8,
+     "transit_days": 28,
+     "landed": 67.9,
+     "yield_pen": 2.97,
+     "eff_cost": 70.9,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 9.7,
+     "rank": 6,
+     "long_tail": true,
+     "why": "The optimizer committed 10 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $67.9/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Uruguay",
+     "grade": "Other",
+     "kbd": 8.9,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 7.4,
+       "nelson": 7.0
+      },
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 1.5,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 2,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.8,
+     "transit_days": 28,
+     "landed": 73.9,
+     "yield_pen": 1.6,
+     "eff_cost": 75.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 8.9,
+     "rank": 7,
+     "long_tail": true,
+     "why": "The optimizer committed 9 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 2 of 10 refineries. Landed $73.9/bbl (+$1/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Singapore",
+     "grade": "Other",
+     "kbd": 7.2,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 7.2,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 68.6,
+     "transit_days": 28,
+     "landed": 74.7,
+     "yield_pen": 1.32,
+     "eff_cost": 76.0,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 7.2,
+     "rank": 8,
+     "long_tail": true,
+     "why": "The optimizer committed 7 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $74.7/bbl (+$1/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Congo D. Rep.",
+     "grade": "Other",
+     "kbd": 6.2,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 6.2,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 66.7,
+     "transit_days": 28,
+     "landed": 72.8,
+     "yield_pen": 1.32,
+     "eff_cost": 74.1,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 6.2,
+     "rank": 9,
+     "long_tail": true,
+     "why": "The optimizer committed 6 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $72.8/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Togo",
+     "grade": "Other",
+     "kbd": 4.3,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 4.3,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 73.3,
+     "transit_days": 28,
+     "landed": 79.4,
+     "yield_pen": 1.32,
+     "eff_cost": 80.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 4.3,
+     "rank": 10,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $79.4/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Canada",
+     "grade": "Cold Lake",
+     "kbd": 3.5,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 3.5,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 21.0,
+     "sulphur": 3.5,
+     "asph": 12.0,
+     "price": 58.0,
+     "transit_days": 40,
+     "landed": 64.6,
+     "yield_pen": 7.91,
+     "eff_cost": 72.5,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.5,
+     "rank": 11,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails the Cape of Good Hope clear of the closure, and its 21\u00b0 / 3.5% S / 12.0% asph slate runs at 1 of 10 refineries. Landed $64.6/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Aruba",
+     "grade": "Other",
+     "kbd": 3.1,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 3.1,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 53.1,
+     "transit_days": 28,
+     "landed": 59.2,
+     "yield_pen": 1.32,
+     "eff_cost": 60.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.1,
+     "rank": 12,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $59.2/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "South Sudan",
+     "grade": "Other",
+     "kbd": 2.6,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 2.6,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 69.4,
+     "transit_days": 28,
+     "landed": 75.5,
+     "yield_pen": 1.32,
+     "eff_cost": 76.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 2.6,
+     "rank": 13,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Strait of Hormuz closure gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $75.5/bbl (+$2/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    }
+   ],
+   "cut_corridors": [
+    {
+     "source": "Iraq",
+     "grade": "Basrah",
+     "kbd": 842.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Saudi Arab",
+     "grade": "Arab Medium",
+     "kbd": 711.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "U Arab Emts",
+     "grade": "Murban/Zakum",
+     "kbd": 533.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Kuwait",
+     "grade": "Kuwait Export",
+     "kbd": 155.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Qatar",
+     "grade": "Qatar Marine",
+     "kbd": 71.0,
+     "reason": "severed at Hormuz"
+    }
    ]
   },
   {
@@ -1412,7 +1912,7 @@
     "Qatar"
    ],
    "gap_kbd": 2312.6,
-   "solve_ms": 108.5,
+   "solve_ms": 211.6,
    "naive": {
     "feasible": true,
     "unrunnable": 0.0,
@@ -1670,6 +2170,791 @@
     "ECONOMY - Brent $190 (sensitivity $150-244), pump ~Rs126/L, CAD 1.2% -> 6.1% GDP [global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].",
     "SPILLOVER - hardest-hit other imports: LNG (natural gas) 53%, Fertilisers (urea/DAP/MOP) 30%.",
     "SEQUENCE (per ORF review) - re-source first, bridge with SPR, demand-manage last."
+   ],
+   "routes_ranked": [
+    {
+     "source": "Russia",
+     "grade": "Urals",
+     "kbd": 1526.4,
+     "gap_share": 0.66,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 556.3,
+       "nelson": 21.1
+      },
+      {
+       "name": "IOCL Paradip",
+       "kbd": 334.9,
+       "nelson": 12.2
+      },
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 239.7,
+       "nelson": 11.8
+      },
+      {
+       "name": "MRPL Mangalore",
+       "kbd": 135.1,
+       "nelson": 9.5
+      },
+      {
+       "name": "CPCL Chennai",
+       "kbd": 115.3,
+       "nelson": 7.0
+      },
+      {
+       "name": "BPCL Kochi",
+       "kbd": 62.3,
+       "nelson": 8.0
+      },
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 35.7,
+       "nelson": 12.5
+      },
+      {
+       "name": "ONGC Mangalore (OMPL)",
+       "kbd": 27.4,
+       "nelson": 8.0
+      },
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 19.7,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 9,
+     "api": 31.0,
+     "sulphur": 1.6,
+     "asph": 2.8,
+     "price": 72.2,
+     "transit_days": 35,
+     "landed": 81.6,
+     "yield_pen": 0.58,
+     "eff_cost": 82.2,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 7.1,
+     "avail_kbd": 1526.4,
+     "rank": 1,
+     "long_tail": false,
+     "why": "The optimizer committed 1,526 kb/d here, closing 66% of the Hormuz + OPEC+ squeeze gap \u2014 the single largest grade-feasible corridor that survives. It sails the Cape of Good Hope clear of the closure, and its 31\u00b0 / 1.6% S / 2.8% asph slate runs at 9 of 10 refineries. Landed $81.6/bbl (+$4/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $7.1k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "U S A",
+     "grade": "WTI Midland",
+     "kbd": 177.5,
+     "gap_share": 0.077,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 177.5,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 41.5,
+     "sulphur": 0.24,
+     "asph": 0.2,
+     "price": 72.4,
+     "transit_days": 40,
+     "landed": 82.0,
+     "yield_pen": 7.48,
+     "eff_cost": 89.5,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 2,
+     "long_tail": false,
+     "why": "The optimizer committed 178 kb/d here, closing 8% of the Hormuz + OPEC+ squeeze gap. It sails the Cape of Good Hope clear of the closure, and its 42\u00b0 / 0.24% S / 0.2% asph slate runs at 1 of 10 refineries. Landed $82.0/bbl (+$12/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Nigeria",
+     "grade": "Bonny Light",
+     "kbd": 144.9,
+     "gap_share": 0.063,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 102.9,
+       "nelson": 7.0
+      },
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 42.0,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 2,
+     "api": 35.3,
+     "sulphur": 0.15,
+     "asph": 0.5,
+     "price": 77.8,
+     "transit_days": 22,
+     "landed": 86.7,
+     "yield_pen": 1.14,
+     "eff_cost": 87.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 2.1,
+     "avail_kbd": 144.9,
+     "rank": 3,
+     "long_tail": false,
+     "why": "The optimizer committed 145 kb/d here, closing 6% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 35\u00b0 / 0.15% S / 0.5% asph slate runs at 2 of 10 refineries. Landed $86.7/bbl (+$10/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $2.1k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Angola",
+     "grade": "Girassol",
+     "kbd": 131.9,
+     "gap_share": 0.057,
+     "refineries": [
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 131.9,
+       "nelson": 12.5
+      }
+     ],
+     "n_refineries": 1,
+     "api": 30.0,
+     "sulphur": 0.33,
+     "asph": 1.0,
+     "price": 73.2,
+     "transit_days": 25,
+     "landed": 82.2,
+     "yield_pen": 1.12,
+     "eff_cost": 83.3,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 5.8,
+     "avail_kbd": 131.9,
+     "rank": 4,
+     "long_tail": false,
+     "why": "The optimizer committed 132 kb/d here, closing 6% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 30\u00b0 / 0.33% S / 1.0% asph slate runs at 1 of 10 refineries. Landed $82.2/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $5.8k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Brazil",
+     "grade": "Tupi",
+     "kbd": 101.6,
+     "gap_share": 0.044,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 101.6,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 29.0,
+     "sulphur": 0.4,
+     "asph": 1.2,
+     "price": 72.9,
+     "transit_days": 30,
+     "landed": 82.1,
+     "yield_pen": 1.68,
+     "eff_cost": 83.8,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 5.2,
+     "avail_kbd": 101.6,
+     "rank": 5,
+     "long_tail": false,
+     "why": "The optimizer committed 102 kb/d here, closing 4% of the Hormuz + OPEC+ squeeze gap. It sails the Cape of Good Hope clear of the closure, and its 29\u00b0 / 0.4% S / 1.2% asph slate runs at 1 of 10 refineries. Landed $82.1/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $5.2k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Colombia",
+     "grade": "Vasconia",
+     "kbd": 75.3,
+     "gap_share": 0.033,
+     "refineries": [
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 75.3,
+       "nelson": 12.5
+      }
+     ],
+     "n_refineries": 1,
+     "api": 24.0,
+     "sulphur": 1.0,
+     "asph": 5.0,
+     "price": 63.3,
+     "transit_days": 30,
+     "landed": 72.5,
+     "yield_pen": 5.32,
+     "eff_cost": 77.8,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 11.3,
+     "avail_kbd": 75.3,
+     "rank": 6,
+     "long_tail": false,
+     "why": "The optimizer committed 75 kb/d here, closing 3% of the Hormuz + OPEC+ squeeze gap. It sails the Cape of Good Hope clear of the closure, and its 24\u00b0 / 1.0% S / 5.0% asph slate runs at 1 of 10 refineries. Landed $72.5/bbl \u2014 the cheapest surviving barrel of real scale. Scarce: one more kb/d is worth $11.3k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Egypt A Rp",
+     "grade": "Egypt Blend",
+     "kbd": 51.8,
+     "gap_share": 0.022,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 51.8,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 33.0,
+     "sulphur": 1.5,
+     "asph": 2.0,
+     "price": 76.1,
+     "transit_days": 12,
+     "landed": 84.6,
+     "yield_pen": 0.22,
+     "eff_cost": 84.8,
+     "via": "Suez",
+     "chokepoints": [
+      "Suez"
+     ],
+     "residual_risk": true,
+     "cape_immune": false,
+     "tier": "binding",
+     "shadow_kusd": 6.3,
+     "avail_kbd": 51.8,
+     "rank": 7,
+     "long_tail": false,
+     "why": "The optimizer committed 52 kb/d here, closing 2% of the Hormuz + OPEC+ squeeze gap. It transits Suez (open in this scenario, but chokepoint-exposed), and its 33\u00b0 / 1.5% S / 2.0% asph slate runs at 1 of 10 refineries. Landed $84.6/bbl (+$7/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $6.3k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Libya",
+     "grade": "Other",
+     "kbd": 15.7,
+     "gap_share": 0.007,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 15.7,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 77.2,
+     "transit_days": 28,
+     "landed": 86.3,
+     "yield_pen": 0.66,
+     "eff_cost": 87.0,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 15.7,
+     "rank": 8,
+     "long_tail": true,
+     "why": "The optimizer committed 16 kb/d here, closing 1% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $86.3/bbl (+$9/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Mexico",
+     "grade": "Maya",
+     "kbd": 14.5,
+     "gap_share": 0.006,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 14.5,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 22.0,
+     "sulphur": 3.3,
+     "asph": 10.0,
+     "price": 60.4,
+     "transit_days": 35,
+     "landed": 69.8,
+     "yield_pen": 7.21,
+     "eff_cost": 77.0,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 14.5,
+     "rank": 9,
+     "long_tail": true,
+     "why": "The optimizer committed 14 kb/d here, closing 1% of the Hormuz + OPEC+ squeeze gap. It sails the Cape of Good Hope clear of the closure, and its 22\u00b0 / 3.3% S / 10.0% asph slate runs at 1 of 10 refineries. Landed $69.8/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Gabon",
+     "grade": "Rabi Light",
+     "kbd": 11.3,
+     "gap_share": 0.005,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 11.3,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 33.0,
+     "sulphur": 0.1,
+     "asph": 0.3,
+     "price": 81.5,
+     "transit_days": 25,
+     "landed": 90.5,
+     "yield_pen": 0.22,
+     "eff_cost": 90.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 11.3,
+     "rank": 10,
+     "long_tail": true,
+     "why": "The optimizer committed 11 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 33\u00b0 / 0.1% S / 0.3% asph slate runs at 1 of 10 refineries. Landed $90.5/bbl (+$13/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Guyana",
+     "grade": "Other",
+     "kbd": 10.8,
+     "gap_share": 0.005,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 10.8,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.0,
+     "transit_days": 28,
+     "landed": 76.1,
+     "yield_pen": 0.66,
+     "eff_cost": 76.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 10.8,
+     "rank": 11,
+     "long_tail": true,
+     "why": "The optimizer committed 11 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $76.1/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Turkey",
+     "grade": "Other",
+     "kbd": 8.8,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 8.8,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 77.8,
+     "transit_days": 28,
+     "landed": 86.9,
+     "yield_pen": 0.66,
+     "eff_cost": 87.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 8.8,
+     "rank": 12,
+     "long_tail": true,
+     "why": "The optimizer committed 9 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $86.9/bbl (+$10/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Korea Rp",
+     "grade": "Other",
+     "kbd": 7.6,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 7.6,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 70.2,
+     "transit_days": 28,
+     "landed": 79.3,
+     "yield_pen": 0.66,
+     "eff_cost": 80.0,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 7.6,
+     "rank": 13,
+     "long_tail": true,
+     "why": "The optimizer committed 8 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $79.3/bbl (+$2/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Ghana",
+     "grade": "Other",
+     "kbd": 7.3,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 7.3,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 74.0,
+     "transit_days": 28,
+     "landed": 83.1,
+     "yield_pen": 0.66,
+     "eff_cost": 83.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 7.3,
+     "rank": 14,
+     "long_tail": true,
+     "why": "The optimizer committed 7 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $83.1/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Panama Republic",
+     "grade": "Other",
+     "kbd": 5.8,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 5.8,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 61.8,
+     "transit_days": 28,
+     "landed": 70.9,
+     "yield_pen": 0.66,
+     "eff_cost": 71.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 5.8,
+     "rank": 15,
+     "long_tail": true,
+     "why": "The optimizer committed 6 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $70.9/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Uruguay",
+     "grade": "Other",
+     "kbd": 5.3,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 5.3,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.8,
+     "transit_days": 28,
+     "landed": 76.9,
+     "yield_pen": 0.66,
+     "eff_cost": 77.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 5.3,
+     "rank": 16,
+     "long_tail": true,
+     "why": "The optimizer committed 5 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $76.9/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Singapore",
+     "grade": "Other",
+     "kbd": 4.3,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 4.3,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 68.6,
+     "transit_days": 28,
+     "landed": 77.7,
+     "yield_pen": 0.66,
+     "eff_cost": 78.4,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 4.3,
+     "rank": 17,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $77.7/bbl (+$1/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Congo D. Rep.",
+     "grade": "Other",
+     "kbd": 3.7,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 3.7,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 66.7,
+     "transit_days": 28,
+     "landed": 75.8,
+     "yield_pen": 0.66,
+     "eff_cost": 76.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.7,
+     "rank": 18,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $75.8/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Togo",
+     "grade": "Other",
+     "kbd": 2.6,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 2.6,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 73.3,
+     "transit_days": 28,
+     "landed": 82.4,
+     "yield_pen": 0.66,
+     "eff_cost": 83.1,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 2.6,
+     "rank": 19,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $82.4/bbl (+$5/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Canada",
+     "grade": "Cold Lake",
+     "kbd": 2.1,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 2.1,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 21.0,
+     "sulphur": 3.5,
+     "asph": 12.0,
+     "price": 58.0,
+     "transit_days": 40,
+     "landed": 67.6,
+     "yield_pen": 7.91,
+     "eff_cost": 75.5,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 2.1,
+     "rank": 20,
+     "long_tail": true,
+     "why": "The optimizer committed 2 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails the Cape of Good Hope clear of the closure, and its 21\u00b0 / 3.5% S / 12.0% asph slate runs at 1 of 10 refineries. Landed $67.6/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Aruba",
+     "grade": "Other",
+     "kbd": 1.9,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 1.9,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 53.1,
+     "transit_days": 28,
+     "landed": 62.2,
+     "yield_pen": 1.32,
+     "eff_cost": 63.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 1.9,
+     "rank": 21,
+     "long_tail": true,
+     "why": "The optimizer committed 2 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $62.2/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "South Sudan",
+     "grade": "Other",
+     "kbd": 1.6,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 1.6,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 69.4,
+     "transit_days": 28,
+     "landed": 78.5,
+     "yield_pen": 1.32,
+     "eff_cost": 79.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 1.6,
+     "rank": 22,
+     "long_tail": true,
+     "why": "The optimizer committed 2 kb/d here, closing 0% of the Hormuz + OPEC+ squeeze gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $78.5/bbl (+$2/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    }
+   ],
+   "cut_corridors": [
+    {
+     "source": "Iraq",
+     "grade": "Basrah",
+     "kbd": 842.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Saudi Arab",
+     "grade": "Arab Medium",
+     "kbd": 711.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "U Arab Emts",
+     "grade": "Murban/Zakum",
+     "kbd": 533.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Kuwait",
+     "grade": "Kuwait Export",
+     "kbd": 155.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Qatar",
+     "grade": "Qatar Marine",
+     "kbd": 71.0,
+     "reason": "severed at Hormuz"
+    }
    ]
   },
   {
@@ -1683,7 +2968,7 @@
     "Russia"
    ],
    "gap_kbd": 1589.9,
-   "solve_ms": 110.7,
+   "solve_ms": 221.0,
    "naive": {
     "feasible": false,
     "unrunnable": 219.6,
@@ -1936,6 +3221,599 @@
     "ECONOMY - Brent $140 (sensitivity $118-169), pump ~Rs114/L, CAD 1.2% -> 3.8% GDP [global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].",
     "SPILLOVER - hardest-hit other imports: Fertilisers (urea/DAP/MOP) 20%, Coking coal 15%.",
     "SEQUENCE (per ORF review) - re-source first, bridge with SPR, demand-manage last."
+   ],
+   "routes_ranked": [
+    {
+     "source": "Iraq",
+     "grade": "Basrah",
+     "kbd": 639.5,
+     "gap_share": 0.402,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 335.9,
+       "nelson": 21.1
+      },
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 91.1,
+       "nelson": 12.5
+      },
+      {
+       "name": "IOCL Paradip",
+       "kbd": 85.0,
+       "nelson": 12.2
+      },
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 72.0,
+       "nelson": 11.8
+      },
+      {
+       "name": "MRPL Mangalore",
+       "kbd": 55.5,
+       "nelson": 9.5
+      }
+     ],
+     "n_refineries": 5,
+     "api": 29.5,
+     "sulphur": 2.9,
+     "asph": 3.6,
+     "price": 65.9,
+     "transit_days": 7,
+     "landed": 72.2,
+     "yield_pen": 1.52,
+     "eff_cost": 73.7,
+     "via": "Hormuz",
+     "chokepoints": [
+      "Hormuz"
+     ],
+     "residual_risk": true,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 1,
+     "long_tail": false,
+     "why": "The optimizer committed 640 kb/d here, closing 40% of the Russia fully sanctioned gap \u2014 the single largest grade-feasible corridor that survives. It transits Hormuz (open in this scenario, but chokepoint-exposed), and its 30\u00b0 / 2.9% S / 3.6% asph slate runs at 5 of 10 refineries. Landed $72.2/bbl (+$1/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Kuwait",
+     "grade": "Kuwait Export",
+     "kbd": 247.4,
+     "gap_share": 0.156,
+     "refineries": [
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 247.4,
+       "nelson": 11.8
+      }
+     ],
+     "n_refineries": 1,
+     "api": 31.0,
+     "sulphur": 2.55,
+     "asph": 3.4,
+     "price": 65.7,
+     "transit_days": 6,
+     "landed": 71.9,
+     "yield_pen": 0.45,
+     "eff_cost": 72.4,
+     "via": "Hormuz",
+     "chokepoints": [
+      "Hormuz"
+     ],
+     "residual_risk": true,
+     "cape_immune": false,
+     "tier": "binding",
+     "shadow_kusd": 2.7,
+     "avail_kbd": 247.4,
+     "rank": 2,
+     "long_tail": false,
+     "why": "The optimizer committed 247 kb/d here, closing 16% of the Russia fully sanctioned gap. It transits Hormuz (open in this scenario, but chokepoint-exposed), and its 31\u00b0 / 2.55% S / 3.4% asph slate runs at 1 of 10 refineries. Landed $71.9/bbl \u2014 the cheapest surviving barrel of real scale. Scarce: one more kb/d is worth $2.7k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Angola",
+     "grade": "Girassol",
+     "kbd": 219.8,
+     "gap_share": 0.138,
+     "refineries": [
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 145.3,
+       "nelson": 11.8
+      },
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 32.2,
+       "nelson": 21.1
+      },
+      {
+       "name": "MRPL Mangalore",
+       "kbd": 21.2,
+       "nelson": 9.5
+      },
+      {
+       "name": "CPCL Chennai",
+       "kbd": 21.1,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 4,
+     "api": 30.0,
+     "sulphur": 0.33,
+     "asph": 1.0,
+     "price": 73.2,
+     "transit_days": 25,
+     "landed": 80.2,
+     "yield_pen": 1.33,
+     "eff_cost": 81.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "binding",
+     "shadow_kusd": 0.8,
+     "avail_kbd": 219.8,
+     "rank": 3,
+     "long_tail": false,
+     "why": "The optimizer committed 220 kb/d here, closing 14% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 30\u00b0 / 0.33% S / 1.0% asph slate runs at 4 of 10 refineries. Landed $80.2/bbl (+$9/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $0.8k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Brazil",
+     "grade": "Tupi",
+     "kbd": 159.2,
+     "gap_share": 0.1,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 100.7,
+       "nelson": 21.1
+      },
+      {
+       "name": "IOCL Paradip",
+       "kbd": 58.5,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 2,
+     "api": 29.0,
+     "sulphur": 0.4,
+     "asph": 1.2,
+     "price": 72.9,
+     "transit_days": 30,
+     "landed": 80.1,
+     "yield_pen": 1.91,
+     "eff_cost": 82.0,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 4,
+     "long_tail": false,
+     "why": "The optimizer committed 159 kb/d here, closing 10% of the Russia fully sanctioned gap. It routes via the Cape of Good Hope, and its 29\u00b0 / 0.4% S / 1.2% asph slate runs at 2 of 10 refineries. Landed $80.1/bbl (+$10/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Colombia",
+     "grade": "Vasconia",
+     "kbd": 125.5,
+     "gap_share": 0.079,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 66.1,
+       "nelson": 21.1
+      },
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 59.4,
+       "nelson": 12.5
+      }
+     ],
+     "n_refineries": 2,
+     "api": 24.0,
+     "sulphur": 1.0,
+     "asph": 5.0,
+     "price": 63.3,
+     "transit_days": 30,
+     "landed": 70.5,
+     "yield_pen": 5.25,
+     "eff_cost": 75.7,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "binding",
+     "shadow_kusd": 4.1,
+     "avail_kbd": 125.5,
+     "rank": 5,
+     "long_tail": false,
+     "why": "The optimizer committed 126 kb/d here, closing 8% of the Russia fully sanctioned gap. It routes via the Cape of Good Hope, and its 24\u00b0 / 1.0% S / 5.0% asph slate runs at 2 of 10 refineries. Landed $70.5/bbl (+$3/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $4.1k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Qatar",
+     "grade": "Qatar Marine",
+     "kbd": 113.7,
+     "gap_share": 0.072,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 49.1,
+       "nelson": 7.0
+      },
+      {
+       "name": "BPCL Kochi",
+       "kbd": 33.8,
+       "nelson": 8.0
+      },
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 30.8,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 3,
+     "api": 36.0,
+     "sulphur": 1.45,
+     "asph": 0.9,
+     "price": 69.0,
+     "transit_days": 5,
+     "landed": 75.2,
+     "yield_pen": 2.83,
+     "eff_cost": 78.0,
+     "via": "Hormuz",
+     "chokepoints": [
+      "Hormuz"
+     ],
+     "residual_risk": true,
+     "cape_immune": false,
+     "tier": "binding",
+     "shadow_kusd": 4.1,
+     "avail_kbd": 113.7,
+     "rank": 6,
+     "long_tail": false,
+     "why": "The optimizer committed 114 kb/d here, closing 7% of the Russia fully sanctioned gap. It transits Hormuz (open in this scenario, but chokepoint-exposed), and its 36\u00b0 / 1.45% S / 0.9% asph slate runs at 3 of 10 refineries. Landed $75.2/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $4.1k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Guyana",
+     "grade": "Other",
+     "kbd": 18.0,
+     "gap_share": 0.011,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 16.0,
+       "nelson": 8.0
+      },
+      {
+       "name": "ONGC Mangalore (OMPL)",
+       "kbd": 2.0,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 2,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.0,
+     "transit_days": 28,
+     "landed": 74.1,
+     "yield_pen": 0.62,
+     "eff_cost": 74.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 18.0,
+     "rank": 7,
+     "long_tail": false,
+     "why": "The optimizer committed 18 kb/d here, closing 1% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 2 of 10 refineries. Landed $74.1/bbl (+$2/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Korea Rp",
+     "grade": "Other",
+     "kbd": 12.7,
+     "gap_share": 0.008,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 12.7,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 70.2,
+     "transit_days": 28,
+     "landed": 77.3,
+     "yield_pen": 0.44,
+     "eff_cost": 77.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 12.7,
+     "rank": 8,
+     "long_tail": true,
+     "why": "The optimizer committed 13 kb/d here, closing 1% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $77.3/bbl (+$5/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Ghana",
+     "grade": "Other",
+     "kbd": 12.1,
+     "gap_share": 0.008,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 7.2,
+       "nelson": 7.0
+      },
+      {
+       "name": "BPCL Kochi",
+       "kbd": 4.9,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 2,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 74.0,
+     "transit_days": 28,
+     "landed": 81.1,
+     "yield_pen": 0.53,
+     "eff_cost": 81.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 12.1,
+     "rank": 9,
+     "long_tail": true,
+     "why": "The optimizer committed 12 kb/d here, closing 1% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 2 of 10 refineries. Landed $81.1/bbl (+$9/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Panama Republic",
+     "grade": "Other",
+     "kbd": 9.7,
+     "gap_share": 0.006,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 9.7,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 61.8,
+     "transit_days": 28,
+     "landed": 68.9,
+     "yield_pen": 0.44,
+     "eff_cost": 69.4,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 9.7,
+     "rank": 10,
+     "long_tail": true,
+     "why": "The optimizer committed 10 kb/d here, closing 1% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $68.9/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Uruguay",
+     "grade": "Other",
+     "kbd": 8.9,
+     "gap_share": 0.006,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 8.9,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.8,
+     "transit_days": 28,
+     "landed": 74.9,
+     "yield_pen": 0.66,
+     "eff_cost": 75.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 8.9,
+     "rank": 11,
+     "long_tail": true,
+     "why": "The optimizer committed 9 kb/d here, closing 1% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $74.9/bbl (+$3/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Singapore",
+     "grade": "Other",
+     "kbd": 7.2,
+     "gap_share": 0.005,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 7.2,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 68.6,
+     "transit_days": 28,
+     "landed": 75.7,
+     "yield_pen": 0.66,
+     "eff_cost": 76.4,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 7.2,
+     "rank": 12,
+     "long_tail": true,
+     "why": "The optimizer committed 7 kb/d here, closing 0% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $75.7/bbl (+$4/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Congo D. Rep.",
+     "grade": "Other",
+     "kbd": 6.2,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 6.2,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 66.7,
+     "transit_days": 28,
+     "landed": 73.8,
+     "yield_pen": 0.66,
+     "eff_cost": 74.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 6.2,
+     "rank": 13,
+     "long_tail": true,
+     "why": "The optimizer committed 6 kb/d here, closing 0% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $73.8/bbl (+$2/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Togo",
+     "grade": "Other",
+     "kbd": 4.3,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 4.3,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 73.3,
+     "transit_days": 28,
+     "landed": 80.4,
+     "yield_pen": 0.44,
+     "eff_cost": 80.9,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 4.3,
+     "rank": 14,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $80.4/bbl (+$8/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Aruba",
+     "grade": "Other",
+     "kbd": 3.1,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 3.1,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 53.1,
+     "transit_days": 28,
+     "landed": 60.2,
+     "yield_pen": 0.44,
+     "eff_cost": 60.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.1,
+     "rank": 15,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $60.2/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "South Sudan",
+     "grade": "Other",
+     "kbd": 2.6,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 2.6,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 69.4,
+     "transit_days": 28,
+     "landed": 76.5,
+     "yield_pen": 0.44,
+     "eff_cost": 77.0,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 2.6,
+     "rank": 16,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Russia fully sanctioned gap. It routes via open ocean (no strait), and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $76.5/bbl (+$5/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    }
+   ],
+   "cut_corridors": [
+    {
+     "source": "Russia",
+     "grade": "Urals",
+     "kbd": 1590.0,
+     "reason": "sanctioned"
+    }
    ]
   },
   {
@@ -1956,7 +3834,7 @@
     "Qatar"
    ],
    "gap_kbd": 3902.5,
-   "solve_ms": 104.0,
+   "solve_ms": 292.0,
    "naive": {
     "feasible": false,
     "unrunnable": 545.7,
@@ -2218,6 +4096,986 @@
     "ECONOMY - Brent $190 (sensitivity $150-244), pump ~Rs126/L, CAD 1.2% -> 6.1% GDP [global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].",
     "SPILLOVER - hardest-hit other imports: LNG (natural gas) 53%, Fertilisers (urea/DAP/MOP) 50%.",
     "SEQUENCE (per ORF review) - re-source first, bridge with SPR, demand-manage last."
+   ],
+   "routes_ranked": [
+    {
+     "source": "U S A",
+     "grade": "WTI Midland",
+     "kbd": 492.9,
+     "gap_share": 0.126,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 299.7,
+       "nelson": 7.0
+      },
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 193.2,
+       "nelson": 11.8
+      }
+     ],
+     "n_refineries": 2,
+     "api": 41.5,
+     "sulphur": 0.24,
+     "asph": 0.2,
+     "price": 72.4,
+     "transit_days": 40,
+     "landed": 86.0,
+     "yield_pen": 8.08,
+     "eff_cost": 94.1,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 33.8,
+     "avail_kbd": 492.9,
+     "rank": 1,
+     "long_tail": false,
+     "why": "The optimizer committed 493 kb/d here, closing 13% of the Hormuz closure + Russia sanctioned gap \u2014 the single largest grade-feasible corridor that survives. It sails the Cape of Good Hope clear of the closure, and its 42\u00b0 / 0.24% S / 0.2% asph slate runs at 2 of 10 refineries. Landed $86.0/bbl (+$12/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $33.8k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Nigeria",
+     "grade": "Bonny Light",
+     "kbd": 241.5,
+     "gap_share": 0.062,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 241.5,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 35.3,
+     "sulphur": 0.15,
+     "asph": 0.5,
+     "price": 77.8,
+     "transit_days": 22,
+     "landed": 90.7,
+     "yield_pen": 2.1,
+     "eff_cost": 92.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 36.0,
+     "avail_kbd": 241.5,
+     "rank": 2,
+     "long_tail": false,
+     "why": "The optimizer committed 242 kb/d here, closing 6% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 35\u00b0 / 0.15% S / 0.5% asph slate runs at 1 of 10 refineries. Landed $90.7/bbl (+$11/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $36.0k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Angola",
+     "grade": "Girassol",
+     "kbd": 219.8,
+     "gap_share": 0.056,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 219.8,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 30.0,
+     "sulphur": 0.33,
+     "asph": 1.0,
+     "price": 73.2,
+     "transit_days": 25,
+     "landed": 86.2,
+     "yield_pen": 0.98,
+     "eff_cost": 87.2,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 41.6,
+     "avail_kbd": 219.8,
+     "rank": 3,
+     "long_tail": false,
+     "why": "The optimizer committed 220 kb/d here, closing 6% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 30\u00b0 / 0.33% S / 1.0% asph slate runs at 1 of 10 refineries. Landed $86.2/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $41.6k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Brazil",
+     "grade": "Tupi",
+     "kbd": 169.3,
+     "gap_share": 0.043,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 169.3,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 29.0,
+     "sulphur": 0.4,
+     "asph": 1.2,
+     "price": 72.9,
+     "transit_days": 30,
+     "landed": 86.1,
+     "yield_pen": 1.68,
+     "eff_cost": 87.8,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 41.0,
+     "avail_kbd": 169.3,
+     "rank": 4,
+     "long_tail": false,
+     "why": "The optimizer committed 169 kb/d here, closing 4% of the Hormuz closure + Russia sanctioned gap. It sails the Cape of Good Hope clear of the closure, and its 29\u00b0 / 0.4% S / 1.2% asph slate runs at 1 of 10 refineries. Landed $86.1/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $41.0k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Colombia",
+     "grade": "Vasconia",
+     "kbd": 125.5,
+     "gap_share": 0.032,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 125.5,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 24.0,
+     "sulphur": 1.0,
+     "asph": 5.0,
+     "price": 63.3,
+     "transit_days": 30,
+     "landed": 76.5,
+     "yield_pen": 5.18,
+     "eff_cost": 81.7,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 47.1,
+     "avail_kbd": 125.5,
+     "rank": 5,
+     "long_tail": false,
+     "why": "The optimizer committed 126 kb/d here, closing 3% of the Hormuz closure + Russia sanctioned gap. It sails the Cape of Good Hope clear of the closure, and its 24\u00b0 / 1.0% S / 5.0% asph slate runs at 1 of 10 refineries. Landed $76.5/bbl \u2014 the cheapest surviving barrel of real scale. Scarce: one more kb/d is worth $47.1k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Oman",
+     "grade": "Oman Export",
+     "kbd": 114.3,
+     "gap_share": 0.029,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 114.3,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 33.0,
+     "sulphur": 1.2,
+     "asph": 1.5,
+     "price": 84.8,
+     "transit_days": 7,
+     "landed": 97.1,
+     "yield_pen": 0.22,
+     "eff_cost": 97.3,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "binding",
+     "shadow_kusd": 31.2,
+     "avail_kbd": 114.3,
+     "rank": 6,
+     "long_tail": false,
+     "why": "The optimizer committed 114 kb/d here, closing 3% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 33\u00b0 / 1.2% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $97.1/bbl (+$16/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $31.2k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Egypt A Rp",
+     "grade": "Egypt Blend",
+     "kbd": 86.3,
+     "gap_share": 0.022,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 44.1,
+       "nelson": 7.0
+      },
+      {
+       "name": "BPCL Kochi",
+       "kbd": 42.2,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 2,
+     "api": 33.0,
+     "sulphur": 1.5,
+     "asph": 2.0,
+     "price": 76.1,
+     "transit_days": 12,
+     "landed": 88.6,
+     "yield_pen": 0.33,
+     "eff_cost": 88.9,
+     "via": "Suez",
+     "chokepoints": [
+      "Suez"
+     ],
+     "residual_risk": true,
+     "cape_immune": false,
+     "tier": "binding",
+     "shadow_kusd": 39.7,
+     "avail_kbd": 86.3,
+     "rank": 7,
+     "long_tail": false,
+     "why": "The optimizer committed 86 kb/d here, closing 2% of the Hormuz closure + Russia sanctioned gap. It transits Suez (open in this scenario, but chokepoint-exposed), and its 33\u00b0 / 1.5% S / 2.0% asph slate runs at 2 of 10 refineries. Landed $88.6/bbl (+$7/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Scarce: one more kb/d is worth $39.7k/day to the system (LP shadow price) \u2014 buy incremental volume here."
+    },
+    {
+     "source": "Congo P Rep",
+     "grade": "Djeno",
+     "kbd": 32.2,
+     "gap_share": 0.008,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 32.2,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 27.0,
+     "sulphur": 0.3,
+     "asph": 1.0,
+     "price": 81.3,
+     "transit_days": 25,
+     "landed": 94.3,
+     "yield_pen": 3.08,
+     "eff_cost": 97.4,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 32.2,
+     "rank": 8,
+     "long_tail": true,
+     "why": "The optimizer committed 32 kb/d here, closing 1% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 27\u00b0 / 0.3% S / 1.0% asph slate runs at 1 of 10 refineries. Landed $94.3/bbl (+$16/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Malaysia",
+     "grade": "Other",
+     "kbd": 27.1,
+     "gap_share": 0.007,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 27.1,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 81.4,
+     "transit_days": 28,
+     "landed": 94.5,
+     "yield_pen": 0.21,
+     "eff_cost": 94.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 27.1,
+     "rank": 9,
+     "long_tail": true,
+     "why": "The optimizer committed 27 kb/d here, closing 1% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $94.5/bbl (+$13/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Libya",
+     "grade": "Other",
+     "kbd": 26.2,
+     "gap_share": 0.007,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 26.2,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 77.2,
+     "transit_days": 28,
+     "landed": 90.3,
+     "yield_pen": 0.21,
+     "eff_cost": 90.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 26.2,
+     "rank": 10,
+     "long_tail": true,
+     "why": "The optimizer committed 26 kb/d here, closing 1% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $90.3/bbl (+$9/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Mexico",
+     "grade": "Maya",
+     "kbd": 24.1,
+     "gap_share": 0.006,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 24.1,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 22.0,
+     "sulphur": 3.3,
+     "asph": 10.0,
+     "price": 60.4,
+     "transit_days": 35,
+     "landed": 73.8,
+     "yield_pen": 6.58,
+     "eff_cost": 80.4,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 24.1,
+     "rank": 11,
+     "long_tail": true,
+     "why": "The optimizer committed 24 kb/d here, closing 1% of the Hormuz closure + Russia sanctioned gap. It sails the Cape of Good Hope clear of the closure, and its 22\u00b0 / 3.3% S / 10.0% asph slate runs at 1 of 10 refineries. Landed $73.8/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Gabon",
+     "grade": "Rabi Light",
+     "kbd": 18.9,
+     "gap_share": 0.005,
+     "refineries": [
+      {
+       "name": "HPCL Visakhapatnam",
+       "kbd": 18.9,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 33.0,
+     "sulphur": 0.1,
+     "asph": 0.3,
+     "price": 81.5,
+     "transit_days": 25,
+     "landed": 94.5,
+     "yield_pen": 0.22,
+     "eff_cost": 94.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 18.9,
+     "rank": 12,
+     "long_tail": true,
+     "why": "The optimizer committed 19 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 33\u00b0 / 0.1% S / 0.3% asph slate runs at 1 of 10 refineries. Landed $94.5/bbl (+$13/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Guyana",
+     "grade": "Other",
+     "kbd": 18.0,
+     "gap_share": 0.005,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 18.0,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.0,
+     "transit_days": 28,
+     "landed": 80.1,
+     "yield_pen": 0.21,
+     "eff_cost": 80.3,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 18.0,
+     "rank": 13,
+     "long_tail": true,
+     "why": "The optimizer committed 18 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $80.1/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Iran",
+     "grade": "Other",
+     "kbd": 17.0,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 17.0,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 111.0,
+     "transit_days": 28,
+     "landed": 124.1,
+     "yield_pen": 0.21,
+     "eff_cost": 124.3,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 17.0,
+     "rank": 14,
+     "long_tail": true,
+     "why": "The optimizer committed 17 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $124.1/bbl (+$43/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Brunei",
+     "grade": "Other",
+     "kbd": 15.2,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 15.2,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 80.7,
+     "transit_days": 28,
+     "landed": 93.8,
+     "yield_pen": 0.21,
+     "eff_cost": 94.0,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 15.2,
+     "rank": 15,
+     "long_tail": true,
+     "why": "The optimizer committed 15 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $93.8/bbl (+$12/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Turkey",
+     "grade": "Other",
+     "kbd": 14.6,
+     "gap_share": 0.004,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 14.6,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 77.8,
+     "transit_days": 28,
+     "landed": 90.9,
+     "yield_pen": 0.21,
+     "eff_cost": 91.1,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 14.6,
+     "rank": 16,
+     "long_tail": true,
+     "why": "The optimizer committed 15 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $90.9/bbl (+$9/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Korea Rp",
+     "grade": "Other",
+     "kbd": 12.7,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 12.7,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 70.2,
+     "transit_days": 28,
+     "landed": 83.3,
+     "yield_pen": 0.21,
+     "eff_cost": 83.5,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 12.7,
+     "rank": 17,
+     "long_tail": true,
+     "why": "The optimizer committed 13 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $83.3/bbl (+$2/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Ghana",
+     "grade": "Other",
+     "kbd": 12.1,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 12.1,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 74.0,
+     "transit_days": 28,
+     "landed": 87.1,
+     "yield_pen": 0.21,
+     "eff_cost": 87.3,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 12.1,
+     "rank": 18,
+     "long_tail": true,
+     "why": "The optimizer committed 12 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $87.1/bbl (+$6/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Algeria",
+     "grade": "Saharan Blend",
+     "kbd": 11.5,
+     "gap_share": 0.003,
+     "refineries": [
+      {
+       "name": "BPCL/HPCL Mumbai",
+       "kbd": 11.5,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 45.0,
+     "sulphur": 0.1,
+     "asph": 0.1,
+     "price": 103.3,
+     "transit_days": 15,
+     "landed": 115.9,
+     "yield_pen": 11.33,
+     "eff_cost": 127.2,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 19,
+     "long_tail": true,
+     "why": "The optimizer committed 12 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 45\u00b0 / 0.1% S / 0.1% asph slate runs at 1 of 10 refineries. Landed $115.9/bbl (+$46/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Panama Republic",
+     "grade": "Other",
+     "kbd": 9.7,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 9.7,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 61.8,
+     "transit_days": 28,
+     "landed": 74.9,
+     "yield_pen": 0.21,
+     "eff_cost": 75.1,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 9.7,
+     "rank": 20,
+     "long_tail": true,
+     "why": "The optimizer committed 10 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $74.9/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Uruguay",
+     "grade": "Other",
+     "kbd": 8.9,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 8.9,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.8,
+     "transit_days": 28,
+     "landed": 80.9,
+     "yield_pen": 0.21,
+     "eff_cost": 81.1,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 8.9,
+     "rank": 21,
+     "long_tail": true,
+     "why": "The optimizer committed 9 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $80.9/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Singapore",
+     "grade": "Other",
+     "kbd": 7.2,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 7.2,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 68.6,
+     "transit_days": 28,
+     "landed": 81.7,
+     "yield_pen": 0.21,
+     "eff_cost": 81.9,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 7.2,
+     "rank": 22,
+     "long_tail": true,
+     "why": "The optimizer committed 7 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $81.7/bbl (+$0/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Congo D. Rep.",
+     "grade": "Other",
+     "kbd": 6.2,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 6.2,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 66.7,
+     "transit_days": 28,
+     "landed": 79.8,
+     "yield_pen": 0.21,
+     "eff_cost": 80.0,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 6.2,
+     "rank": 23,
+     "long_tail": true,
+     "why": "The optimizer committed 6 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $79.8/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Argentina",
+     "grade": "Other",
+     "kbd": 5.9,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 5.9,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 82.5,
+     "transit_days": 28,
+     "landed": 95.6,
+     "yield_pen": 0.21,
+     "eff_cost": 95.8,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 5.9,
+     "rank": 24,
+     "long_tail": true,
+     "why": "The optimizer committed 6 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $95.6/bbl (+$14/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Sudan",
+     "grade": "Other",
+     "kbd": 5.9,
+     "gap_share": 0.002,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 5.9,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 85.6,
+     "transit_days": 28,
+     "landed": 98.7,
+     "yield_pen": 0.21,
+     "eff_cost": 98.9,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 5.9,
+     "rank": 25,
+     "long_tail": true,
+     "why": "The optimizer committed 6 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $98.7/bbl (+$17/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Togo",
+     "grade": "Other",
+     "kbd": 4.3,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 4.3,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 73.3,
+     "transit_days": 28,
+     "landed": 86.4,
+     "yield_pen": 0.21,
+     "eff_cost": 86.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 4.3,
+     "rank": 26,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $86.4/bbl (+$5/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Canada",
+     "grade": "Cold Lake",
+     "kbd": 3.5,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 3.5,
+       "nelson": 21.1
+      }
+     ],
+     "n_refineries": 1,
+     "api": 21.0,
+     "sulphur": 3.5,
+     "asph": 12.0,
+     "price": 58.0,
+     "transit_days": 40,
+     "landed": 71.6,
+     "yield_pen": 7.28,
+     "eff_cost": 78.9,
+     "via": "Cape of Good Hope",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.5,
+     "rank": 27,
+     "long_tail": true,
+     "why": "The optimizer committed 4 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails the Cape of Good Hope clear of the closure, and its 21\u00b0 / 3.5% S / 12.0% asph slate runs at 1 of 10 refineries. Landed $71.6/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Aruba",
+     "grade": "Other",
+     "kbd": 3.1,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 3.1,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 53.1,
+     "transit_days": 28,
+     "landed": 66.2,
+     "yield_pen": 0.21,
+     "eff_cost": 66.4,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.1,
+     "rank": 28,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $66.2/bbl. Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "South Sudan",
+     "grade": "Other",
+     "kbd": 2.6,
+     "gap_share": 0.001,
+     "refineries": [
+      {
+       "name": "IOCL Paradip",
+       "kbd": 2.6,
+       "nelson": 12.2
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 69.4,
+     "transit_days": 28,
+     "landed": 82.5,
+     "yield_pen": 0.21,
+     "eff_cost": 82.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 2.6,
+     "rank": 29,
+     "long_tail": true,
+     "why": "The optimizer committed 3 kb/d here, closing 0% of the Hormuz closure + Russia sanctioned gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $82.5/bbl (+$1/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    }
+   ],
+   "cut_corridors": [
+    {
+     "source": "Russia",
+     "grade": "Urals",
+     "kbd": 1590.0,
+     "reason": "sanctioned"
+    },
+    {
+     "source": "Iraq",
+     "grade": "Basrah",
+     "kbd": 842.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Saudi Arab",
+     "grade": "Arab Medium",
+     "kbd": 711.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "U Arab Emts",
+     "grade": "Murban/Zakum",
+     "kbd": 533.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Kuwait",
+     "grade": "Kuwait Export",
+     "kbd": 155.0,
+     "reason": "severed at Hormuz"
+    },
+    {
+     "source": "Qatar",
+     "grade": "Qatar Marine",
+     "kbd": 71.0,
+     "reason": "severed at Hormuz"
+    }
    ]
   },
   {
@@ -2232,7 +5090,7 @@
     "Egypt A Rp"
    ],
    "gap_kbd": 53.9,
-   "solve_ms": 115.5,
+   "solve_ms": 214.5,
    "naive": {
     "feasible": false,
     "unrunnable": 19.0,
@@ -2369,6 +5227,213 @@
     "ECONOMY - Brent $82 (sensitivity $82-82), pump ~Rs100/L, CAD 1.2% -> 1.2% GDP [global price channel = Hormuz flow; supplier sanctions add procurement cost, not global shortfall].",
     "SPILLOVER - hardest-hit other imports: Edible oils 18%.",
     "SEQUENCE (per ORF review) - re-source first, bridge with SPR, demand-manage last."
+   ],
+   "routes_ranked": [
+    {
+     "source": "Kuwait",
+     "grade": "Kuwait Export",
+     "kbd": 23.8,
+     "gap_share": 0.442,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 15.4,
+       "nelson": 21.1
+      },
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 4.2,
+       "nelson": 12.5
+      },
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 3.1,
+       "nelson": 11.8
+      },
+      {
+       "name": "MRPL Mangalore",
+       "kbd": 1.1,
+       "nelson": 9.5
+      }
+     ],
+     "n_refineries": 4,
+     "api": 31.0,
+     "sulphur": 2.55,
+     "asph": 3.4,
+     "price": 65.7,
+     "transit_days": 6,
+     "landed": 68.9,
+     "yield_pen": 0.33,
+     "eff_cost": 69.3,
+     "via": "Hormuz",
+     "chokepoints": [
+      "Hormuz"
+     ],
+     "residual_risk": true,
+     "cape_immune": false,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 1,
+     "long_tail": false,
+     "why": "The optimizer committed 24 kb/d here, closing 44% of the Red Sea suspension (Bab-el-Mandeb + Suez) gap \u2014 the single largest grade-feasible corridor that survives. It transits Hormuz (open in this scenario, but chokepoint-exposed), and its 31\u00b0 / 2.55% S / 3.4% asph slate runs at 4 of 10 refineries. Landed $68.9/bbl (+$69/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Guyana",
+     "grade": "Other",
+     "kbd": 10.7,
+     "gap_share": 0.199,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 4.3,
+       "nelson": 21.1
+      },
+      {
+       "name": "Nayara Vadinar",
+       "kbd": 2.5,
+       "nelson": 11.8
+      },
+      {
+       "name": "BPCL Kochi",
+       "kbd": 2.4,
+       "nelson": 8.0
+      },
+      {
+       "name": "HMEL Bathinda",
+       "kbd": 1.6,
+       "nelson": 12.5
+      }
+     ],
+     "n_refineries": 4,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 67.0,
+     "transit_days": 28,
+     "landed": 71.1,
+     "yield_pen": 0.46,
+     "eff_cost": 71.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": null,
+     "rank": 2,
+     "long_tail": false,
+     "why": "The optimizer committed 11 kb/d here, closing 20% of the Red Sea suspension (Bab-el-Mandeb + Suez) gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 4 of 10 refineries. Landed $71.1/bbl (+$72/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Panama Republic",
+     "grade": "Other",
+     "kbd": 9.7,
+     "gap_share": 0.18,
+     "refineries": [
+      {
+       "name": "BPCL Kochi",
+       "kbd": 9.7,
+       "nelson": 8.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 61.8,
+     "transit_days": 28,
+     "landed": 65.9,
+     "yield_pen": 0.66,
+     "eff_cost": 66.6,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 9.7,
+     "rank": 3,
+     "long_tail": false,
+     "why": "The optimizer committed 10 kb/d here, closing 18% of the Red Sea suspension (Bab-el-Mandeb + Suez) gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $65.9/bbl (+$67/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Congo D. Rep.",
+     "grade": "Other",
+     "kbd": 6.2,
+     "gap_share": 0.115,
+     "refineries": [
+      {
+       "name": "RIL Jamnagar",
+       "kbd": 4.1,
+       "nelson": 21.1
+      },
+      {
+       "name": "CPCL Chennai",
+       "kbd": 2.1,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 2,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 66.7,
+     "transit_days": 28,
+     "landed": 70.8,
+     "yield_pen": 0.43,
+     "eff_cost": 71.2,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 6.2,
+     "rank": 4,
+     "long_tail": false,
+     "why": "The optimizer committed 6 kb/d here, closing 12% of the Red Sea suspension (Bab-el-Mandeb + Suez) gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 2 of 10 refineries. Landed $70.8/bbl (+$71/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    },
+    {
+     "source": "Aruba",
+     "grade": "Other",
+     "kbd": 3.1,
+     "gap_share": 0.058,
+     "refineries": [
+      {
+       "name": "CPCL Chennai",
+       "kbd": 3.1,
+       "nelson": 7.0
+      }
+     ],
+     "n_refineries": 1,
+     "api": 32.0,
+     "sulphur": 1.1,
+     "asph": 1.5,
+     "price": 53.1,
+     "transit_days": 28,
+     "landed": 57.2,
+     "yield_pen": 0.44,
+     "eff_cost": 57.7,
+     "via": "open ocean",
+     "chokepoints": [],
+     "residual_risk": false,
+     "cape_immune": true,
+     "tier": "slack",
+     "shadow_kusd": null,
+     "avail_kbd": 3.1,
+     "rank": 5,
+     "long_tail": false,
+     "why": "The optimizer committed 3 kb/d here, closing 6% of the Red Sea suspension (Bab-el-Mandeb + Suez) gap. It sails open ocean (no strait) clear of the closure, and its 32\u00b0 / 1.1% S / 1.5% asph slate runs at 1 of 10 refineries. Landed $57.2/bbl (+$58/bbl above the cheapest survivor \u2014 it ranks first on secured volume, not price). Supply slack \u2014 more available than the reroute needs; no procurement urgency."
+    }
+   ],
+   "cut_corridors": [
+    {
+     "source": "Egypt A Rp",
+     "grade": "Egypt Blend",
+     "kbd": 54.0,
+     "reason": "severed at Suez"
+    }
    ]
   }
  ]

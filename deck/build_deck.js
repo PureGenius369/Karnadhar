@@ -364,9 +364,9 @@ function foot(s, txt) {
   s.addShape('rect', { x: 0.6, y: 1.9, w: 6.31, h: 5.0, fill: { type: 'none' }, line: { color: LINE, width: 1 } });
 
   const feats = [
-    ['Optimizer flows — the plan, drawn', 'every LP allocation becomes an animated flow: source → corridor → the exact refinery, width = kb/d', BLUE],
-    ['Live 3D globe / 2D toggle', 'true globe projection (or flat map), real AIS vessels, bypass pipelines mapped', TEAL],
-    ['Interactive knowledge graph', 'zoom, pan, drag the 50-node supplier→strait→refinery web; threat edges glow per scenario', PURPLE],
+    ['Reroute deep-dive — routes ranked #1..N', 'click a disruption: alternative corridors ranked by LP-committed volume, each self-defending; click one to isolate it on the map with its derivation', BLUE],
+    ['Optimizer flows — the plan, drawn', 'every LP allocation becomes an animated arc: source → corridor → the exact refinery, width = kb/d', TEAL],
+    ['3D globe / 2D toggle · interactive KG', 'globe or flat map, real AIS vessels, bypass pipelines; zoom/pan/drag the 50-node supplier→strait→refinery graph', PURPLE],
     ['Multi-commodity lens', 'same disruption scored across 8 strategic imports — Hormuz hits 53% of LNG too', AMBER],
     ['Decision layer', 'shadow prices, VLCC ton-mile, SPR drawdown schedule + executive brief — on every scenario', TEAL],
   ];
@@ -389,7 +389,7 @@ function foot(s, txt) {
 
   panel(s, 0.6, 1.9, 5.9, 4.6);
   s.addText('AUTOMATED VALIDATION', { x: 0.9, y: 2.1, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, bold: true, color: DIM, charSpacing: 2, margin: 0 });
-  s.addText('50 / 50', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
+  s.addText('57 / 57', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
   s.addText('checks passed — one command, exit-code gated, run in CI on every push', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 12, color: MUT, margin: 0 });
   const checks = [
     'wedge holds: naive infeasible for grade reasons, LP optimal',
@@ -398,6 +398,7 @@ function foot(s, txt) {
     'real-diet integrity: 46% exposure, configs sane',
     'engine admits unmet demand; SPR scheduler holds/bridges/rations',
     'decision layer proven: shadow prices · VLCC ton-mile · usable shortfall',
+    'reroute routes ranked by LP-committed volume — not the scarcity-artifact trap',
     'multi-commodity lens generalises — Red Sea spares crude, hits edible oils',
   ];
   s.addText(checks.map((c, i) => ({ text: c, options: { bullet: { code: '2713' }, color: MUT, breakLine: i < checks.length - 1 } })),

@@ -87,11 +87,41 @@ function refFC(d: any): any {
   };
 }
 
+// deterministic per-flow lateral offset so overlapping routes fan into a
+// readable ribbon instead of a straight-line tangle
+function hashStr(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return h;
+}
+function bowSeg(a: number[], b: number[], k: number, seg = 14): number[][] {
+  const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  const cx = mx - dy * k, cy = my + dx * k;      // control point, perpendicular bow
+  const pts: number[][] = [];
+  for (let i = 0; i <= seg; i++) {
+    const t = i / seg, u = 1 - t;
+    pts.push([u * u * a[0] + 2 * u * t * cx + t * t * b[0],
+              u * u * a[1] + 2 * u * t * cy + t * t * b[1]]);
+  }
+  return pts;
+}
+function arcPath(coords: number[][], k: number): number[][] {
+  const out: number[][] = [];
+  for (let i = 0; i < coords.length - 1; i++) {
+    const s = bowSeg(coords[i], coords[i + 1], k);
+    if (i > 0) s.shift();
+    out.push(...s);
+  }
+  return out;
+}
+
 // THE ANSWER LAYER — the LP's actual reroute plan drawn as flows:
-// each smart-plan allocation becomes a line from its source, along that
+// each smart-plan allocation becomes an ARC from its source, along that
 // source's real corridor, ending at the SPECIFIC refinery it now feeds,
 // width-weighted by kb/d. Red shows what died; THIS shows what to do.
-function flowFC(d: any, scn: any): any {
+// `focus` (a source name) isolates one route; others fade to context.
+function flowFC(d: any, scn: any, focus?: string | null): any {
   const routeBySrc: Record<string, any> = {};
   for (const r of d.routes) routeBySrc[r.source] = r;
   const refByName: Record<string, any> = {};
@@ -102,18 +132,23 @@ function flowFC(d: any, scn: any): any {
     const rt = routeBySrc[row.source];
     const ref = refByName[row.refinery];
     if (!rt || !ref) continue;                    // micro-suppliers without coords
-    const path = rt.path.slice(0, -1).concat([[ref.lon, ref.lat]]);
+    const raw = rt.path.slice(0, -1).concat([[ref.lon, ref.lat]]);
+    const bow = 0.05 * (((hashStr(row.source + row.refinery) % 9) - 4)); // ±0.2
+    const path = arcPath(raw, bow);
     feats.push({
       type: 'Feature',
       geometry: { type: 'LineString', coordinates: path },
-      properties: { source: row.source, refinery: row.refinery, grade: row.grade, kbd: row.kbd },
+      properties: {
+        source: row.source, refinery: row.refinery, grade: row.grade, kbd: row.kbd,
+        dim: focus && row.source !== focus ? 1 : 0,
+      },
     });
   }
   return { type: 'FeatureCollection', features: feats };
 }
 
-export default function WarMap({ data, scenario, projection = 'globe' }:
-  { data: any; scenario: any; projection?: 'globe' | 'mercator' }) {
+export default function WarMap({ data, scenario, projection = 'globe', focusSource = null }:
+  { data: any; scenario: any; projection?: 'globe' | 'mercator'; focusSource?: string | null }) {
   const ref = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const dashTimer = useRef<number | null>(null);
@@ -159,13 +194,14 @@ export default function WarMap({ data, scenario, projection = 'globe' }:
 
       // OPTIMIZER FLOWS — the grade-aware LP's plan, drawn: source -> corridor
       // -> the exact refinery it feeds, width = kb/d. Glow under, ants on top.
-      m.addSource('flows', { type: 'geojson', data: flowFC(data, scenario) });
+      m.addSource('flows', { type: 'geojson', data: flowFC(data, scenario, focusSource) });
       m.addLayer({
         id: 'flows-glow', type: 'line', source: 'flows',
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
           'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 3, 2.5, 700, 12],
-          'line-color': '#2ec9ff', 'line-opacity': 0.16, 'line-blur': 3,
+          'line-color': '#2ec9ff',
+          'line-opacity': ['case', ['==', ['get', 'dim'], 1], 0.03, 0.16], 'line-blur': 3,
         },
       });
       m.addLayer({
@@ -174,7 +210,7 @@ export default function WarMap({ data, scenario, projection = 'globe' }:
         paint: {
           'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 3, 1.1, 700, 4.2],
           'line-color': ['interpolate', ['linear'], ['get', 'kbd'], 3, '#59d6b7', 400, '#2ec9ff'],
-          'line-opacity': 0.95,
+          'line-opacity': ['case', ['==', ['get', 'dim'], 1], 0.1, 0.95],
           'line-dasharray': [0, 4, 3] as any,
         },
       });
@@ -290,8 +326,8 @@ export default function WarMap({ data, scenario, projection = 'globe' }:
     (m.getSource('routes') as any).setData(routeFC(data, scenario));
     (m.getSource('sources') as any).setData(srcFC(data, scenario));
     (m.getSource('chokes') as any).setData(chokeFC(data, scenario));
-    (m.getSource('flows') as any)?.setData(flowFC(data, scenario));
-  }, [scenario, data]);
+    (m.getSource('flows') as any)?.setData(flowFC(data, scenario, focusSource));
+  }, [scenario, data, focusSource]);
 
   // 2D / 3D: swap the projection live (globe <-> mercator).
   // NB: don't gate on isStyleLoaded() — it false-negatives during tile loads
