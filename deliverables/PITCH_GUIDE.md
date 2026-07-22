@@ -1,8 +1,13 @@
-# KARNADHAR — Winning Pitch Guide (3–4 min demo video)
+# KARNADHAR — Winning Pitch Guide (demo video)
 
 You reached top-10 before but the pitch didn't land. This guide fixes that. The rule:
 **state the thesis in the first 15 seconds, let the live product carry the middle,
 end on one line — and stop.** Don't explain everything; show the few things that win.
+
+**On length:** record the **~2:45 tight cut (Part B)** — four beats, calm and clear.
+A relaxed 2:45 beats a rushed 3:45. The form allows up to 4 minutes, but *nobody ever
+lost for being concise* — they lose for cramming. The full 6-beat version (Part B-EXT)
+is there only if you're confident and want to show more.
 
 ---
 
@@ -26,9 +31,57 @@ Voice: calm, certain, a little proud. You built something real — sound like it
 
 ---
 
-## Part B — the script (word-for-word) + what to do on screen
+## Part B — RECOMMENDED TIGHT CUT (~2:45, four beats)
 
-> Target 3:15. Each shot has a **[SAY]** (memorise) and a **[DO]** (screen action).
+> **This is the version to record.** The form allows 3–4 min, but a *calm* 2:45
+> beats a rushed 3:45 every time — especially when nerves are the risk. Four beats,
+> room to breathe, one clear story. (The fuller 6-beat script is Part B-EXT below,
+> only if you're confident and want to show more.)
+
+### 1 · 0:00–0:30 — Hook + the one idea
+**[SAY]** "India imports 88 percent of its crude oil — and nearly half of it sails
+through a single strait: Hormuz. Every planning tool treats oil as one number:
+barrels. But a refinery is an engine tuned to a fuel. That one fact is what
+KARNADHAR is built on."
+**[DO]** Globe rotating; tricolour-chakra logo top-left. Don't rush — let it breathe.
+
+### 2 · 0:30–1:05 — The verdict
+**[SAY]** "Close Hormuz, and the naive plan — buy the cheapest barrels — is physically
+*impossible*: it sends crude to refineries that cannot run it. KARNADHAR produces a
+plan where every barrel is runnable, refinery by refinery. And all of this is built
+from official Indian customs records — our 46-percent Hormuz exposure isn't quoted
+from a report, the system derives it."
+**[DO]** Point at INFEASIBLE (red) → FEASIBLE (teal). Hover Jamnagar's diet popup.
+
+### 3 · 1:05–1:55 — The optimization, made visible (your winning beat — go slow here)
+**[SAY]** "And we don't just draw lines — we rank the routes. Number one: Russia,
+ninety percent of the gap, routed around the Cape, immune to Hormuz. The card even
+says, in its own words — it ranks first on secured volume, not price. Click it—"
+**[DO]** Open "⤢ Reroute deep-dive"; click route #1 — the tangle collapses to one
+glowing artery, the derivation panel fills in.
+**[SAY]** "—and the map isolates that one corridor with the full derivation. And
+below: the *severed* suppliers — Iraq, Saudi, the UAE — all bigger than Russia, all
+cut at Hormuz. That proves the ranking isn't sorting by size. It's the optimizer's
+own priority — grade-fit and survival built in."
+**[DO]** Point at the severed section. Return to the war-room.
+
+### 4 · 1:55–2:45 — Honest economics + proof + close
+**[SAY]** "We also saw the June 2025 crisis twelve days before Brent moved. And the
+economics are honest per scenario: a Hormuz closure is a global shock. But sanction
+Russia and we do *not* fake a price spike — those barrels redistribute; India's real
+cost is the three-and-a-half-billion-dollar discount it loses. Real government data,
+a real optimizer, two domain experts — and sixty-two automated checks prove it."
+**[DO]** Card ① 12-day lead; click Russia, point at card ②'s channel line; then a
+terminal: `python run_validate.py`, let the green checks scroll ~2s.
+**[SAY]** (back on the globe) "India's energy lifeline has no helmsman for the storm.
+Now it does. KARNADHAR."
+**[DO]** Stop. Hold the last frame a beat. End recording.
+
+---
+
+## Part B-EXT — full script (extended, ~3:15 — only if confident)
+
+> Each shot has a **[SAY]** (memorise) and a **[DO]** (screen action).
 > Priorities are marked ★ (never cut) and ◇ (cut first if you're over time).
 
 ### ★ 0:00–0:20 — Hook  (screen: war-room, 3D globe, Hormuz scenario selected)
@@ -113,17 +166,51 @@ Now it does. KARNADHAR."
 
 ---
 
-## Part D — recording logistics
+## Part D — recording your screen + your face together
 
-1. `cd karnadhar/frontend && npm run dev` → open **localhost:3000** maximised, dark theme,
+**Do you even need your face on camera? No — it's optional.** A confident *voice* over a
+live product is what wins; many top demos are screen + voiceover only, and recording
+audio-only is far less stressful (you can re-do the voice without worrying how you look).
+**Recommendation:** if you're nervous, do **screen + voiceover**, and optionally add a
+5-second face intro ("Hi, I'm Mann from PDEU — this is KARNADHAR") and a face outro. If
+you're comfortable, keep a **small webcam bubble in a corner** the whole time — it adds
+warmth. Either way, use **OBS Studio** (free) — it's the one tool that does both cleanly.
+
+### OBS setup (screen + webcam picture-in-picture) — 10 minutes, one time
+1. Install **OBS Studio** (obsproject.com, free). Open it.
+2. In **Sources** (bottom panel), click **+** → **Display Capture** (or **Window Capture**
+   to grab just the browser) → OK. This is your full screen.
+3. Click **+** again → **Video Capture Device** → pick your webcam → OK. Your face appears.
+4. Drag the webcam box to a **bottom corner** and resize it small (~1/6 of the screen).
+   Optional: right-click it → **Filters** to crop, or use a circular overlay if you want.
+5. Audio: in the **Audio Mixer**, confirm your **Mic** is live (green bars when you talk).
+   Turn **Desktop Audio** down/off unless you want UI sounds (there are none here).
+6. **Settings → Video**: Base & Output resolution **1920×1080**, 30 fps.
+   **Settings → Output**: Recording format **mp4**, quality "High".
+7. Press **Start Recording**, do your take, **Stop Recording**. The MP4 lands in your
+   Videos folder (Settings → Output shows the path).
+
+*Simplest fallback (no face):* **Xbox Game Bar** (Win+G) → record the browser window + mic.
+Fine for screen + voiceover, but it can't overlay a webcam — use OBS if you want your face.
+
+### Before you hit record
+1. `cd karnadhar/frontend && npm run dev` → **localhost:3000** maximised, dark theme,
    Hormuz scenario selected. If the globe stutters on your recorder, use the **2D MAP**
    toggle — the flows still animate.
-2. Second window: a terminal at `karnadhar/`, ~16pt font, dark.
-3. Recorder: OBS or Xbox Game Bar (Win+G), 1080p, mic on, quiet room.
-4. Do a silent dry-run first (click through every action once) so nothing surprises you.
-5. Record in one take if you can; if you fumble, pause 2 seconds and repeat the sentence
-   (easy to trim). Speak to one imagined judge, not a crowd.
-6. Export MP4. If ≤50 MB, upload directly on Unstop; if larger, put it on Google Drive
-   (link-shareable) and paste the link. Also drop the link in the GitHub README top.
+2. Second window ready: a terminal at `karnadhar/`, ~16 pt font, dark.
+3. Close notifications (Windows **Focus Assist** on), silence your phone, quiet room.
+4. **Silent dry-run once** — click through every [DO] with no talking, so nothing
+   surprises you on the real take.
+
+### Recording
+5. Record in one take if you can. If you fumble a line, **pause 2 seconds and just repeat
+   the sentence** — the silence makes it trivial to trim later. Speak to *one* imagined
+   judge, not a crowd. Slower than feels natural.
+6. Trim the fumbles/dead air in any free editor (Clipchamp is built into Windows, or
+   CapCut). Keep it tight.
+7. Export **MP4, 1080p**. If **≤50 MB**, upload directly on Unstop (the "3–4 minute demo
+   video" field). If larger, put it on **Google Drive** (share = "Anyone with the link"),
+   and paste that link in the "Video link (Google Drive)" field. Also drop the link at the
+   top of the GitHub README.
 
 **Title:** "KARNADHAR — AI Energy Supply-Chain Command Center | ET AI Hackathon 2026"
