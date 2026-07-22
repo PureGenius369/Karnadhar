@@ -97,60 +97,65 @@ the storm. Now it does. This is KARNADHAR. Thank you."
 > Priorities are marked ★ (never cut) and ◇ (cut first if you're over time).
 
 ### ★ 0:00–0:20 — Hook  (screen: war-room, 3D globe, Hormuz scenario selected)
-**[SAY]** "India imports 88 percent of its crude oil — and nearly half of it sails
-through a single strait: Hormuz. Every planning tool treats oil as one number: barrels.
-But a refinery is an engine tuned to a fuel. That one fact changes everything — and it's
-what KARNADHAR is built on."
+**[SAY]** "So — India buys about 88 percent of its oil from abroad, and almost half of
+it comes through one narrow strait: Hormuz. Now, most tools treat oil as just one big
+number — barrels. But that's not really how it works. A refinery is like an engine
+built for one kind of fuel — it can't just run anything. That one idea changes
+everything, and it's the whole reason I built KARNADHAR."
 **[DO]** Let the globe rotate a touch. Don't rush. The tricolour-chakra logo is top-left.
 
 ### ★ 0:20–0:55 — The wedge + the verdict  (screen: right panel, card ③)
-**[SAY]** "Close Hormuz, and the naive plan — buy the cheapest barrels — is physically
-*impossible*: it sends crude to refineries that cannot run it. KARNADHAR's grade-aware
-optimizer produces a plan where every barrel is runnable — sourced, sulphur- and
-asphaltene-checked, refinery by refinery. And everything you're seeing is built from
-official Indian customs records. Our 46-percent Hormuz exposure isn't quoted from a
-report — the system derives it."
+**[SAY]** "So watch what happens when Hormuz closes. The obvious move — buy the cheapest
+oil — actually breaks: it sends crude to refineries that physically can't process it.
+KARNADHAR finds a plan where every barrel can genuinely be run — the right sulphur, the
+right weight, refinery by refinery. And everything you're seeing is built from India's
+real customs records. That 46 percent going through Hormuz? I didn't copy it from some
+report — the system works it out from the data itself."
 **[DO]** Point at INFEASIBLE (red) vs FEASIBLE (teal). Hover Jamnagar's diet popup.
 
 ### ★ 0:55–1:35 — The optimization, made visible  (screen: click "⤢ Open reroute deep-dive")
-**[SAY]** "And we don't just draw lines — we rank the routes. This is the procurement
-decision page: the alternative corridors, ranked by the volume the optimizer commits to
-each. Number one — Russia, ninety percent of the gap, routed around the Cape, immune to
-Hormuz. Watch the honesty: the card says, in its own words, *plus five dollars a barrel
-above the cheapest survivor — it ranks first on secured volume, not price.* Click it—"
+**[SAY]** "Now, this is the part I'm really proud of. It doesn't just draw lines on a
+map — it actually ranks your options. This is the decision page: every alternative
+route, ranked by how much the optimizer leans on it. Number one is Russia — ninety
+percent of the gap, it comes around the Cape, so Hormuz can't touch it. And watch how
+honest it is: the card itself says Russia's about five dollars a barrel pricier than
+the cheapest option — it ranks first for securing the volume, not on price. Let me
+click it—"
 **[DO]** Click route #1. The tangle collapses to one glowing artery; the derivation
 panel fills in.
-**[SAY]** "—and the map isolates that one corridor, with the full derivation. And below,
-the *severed* suppliers — Iraq, Saudi, the UAE — all bigger than Russia, all cut at
-Hormuz. That proves the ranking isn't sorting by size. It's the optimizer's own priority,
-with grade-fit and survival built in."
+**[SAY]** "—and the map zooms right into that one route and shows you exactly why. And
+down here, look — Iraq, Saudi, the UAE, all bigger suppliers than Russia, and all of
+them sitting in the cut-off list. So it's clearly not just picking the biggest. It
+actually understands which oil each refinery can run, and which routes survive."
 **[DO]** Point at the severed section. Click "← war-room" to return.
 
 ### ★ 1:35–2:05 — Early warning + honest economics  (screen: cards ① then ②)
-**[SAY]** "We're not waiting for the news either. KARNADHAR watches global event data —
-this is the real June 2025 series. Our alert fired twelve days before Brent jumped eight
-percent. And the economics are honest per scenario: a Hormuz closure is a global shock —
-Brent to 190, the current-account deficit past six percent of GDP. But sanction Russia
-and we do *not* fake a price spike — those barrels redistribute; India's real cost is the
-three-and-a-half-billion-dollar Urals discount it loses. Getting that distinction right is
-what separates a real energy model from a dashboard."
+**[SAY]** "And it doesn't wait for the news, either — it watches global event data, and
+this is the real June 2025 crisis. Our alert fired twelve days before oil actually
+jumped eight percent. And here's something I really care about: it's honest about the
+money. If Hormuz shuts, that's a genuine global shock — oil at 190, the deficit past
+six percent of GDP. But if you just sanction Russia, I don't fake a price spike — that
+oil doesn't vanish, it just goes to China instead. India's real cost is losing the
+cheap Russian discount, about three and a half billion dollars. Getting that difference
+right is what makes this a real model, and not just a dashboard."
 **[DO]** Point at the 12-day lead on card ①. Click "Russia fully sanctioned"; point at
 card ②'s channel line and "Lost Russian discount."
 
 ### ◇ 2:05–2:25 — Any disruption + multi-commodity  (screen: click "Red Sea suspension")
-**[SAY]** "It's not one hard-coded scenario — block any strait, sanction any supplier,
-and the whole national plan re-solves in under a tenth of a second. And it isn't
-oil-only: suspend the Red Sea and India's crude barely moves — but cooking oil lights up,
-eighteen percent, the Black-Sea artery. One engine, any material."
+**[SAY]** "And it's not one fixed scenario — block any strait, sanction any supplier,
+and the whole national plan re-solves in under a tenth of a second. And it isn't only
+about oil. Suspend the Red Sea, and India's crude barely flinches — but look, cooking
+oil lights up, eighteen percent, because that's the Black-Sea route. Same engine, any
+commodity."
 **[DO]** Click Red Sea; point at card ④ (Edible oils jumping).
 
 ### ★ 2:25–3:00 — Proof + close  (screen: terminal, then back to the globe)
-**[SAY]** "Real government data. A real optimizer — the same linear programming a refinery
-runs. Two domain experts, from ORF and PDEU, reviewed our assumptions. And sixty-two
-automated checks prove it, re-run on every push."
+**[SAY]** "So — real government data. A real optimizer, the same kind of math a refinery
+actually runs. Two experts, from ORF and PDEU, looked over our assumptions. And
+sixty-two automated tests back it up, re-run every time I change the code."
 **[DO]** In a terminal, run `python run_validate.py`; let the green checks scroll ~3s.
-**[SAY]** (back on the globe) "India's energy lifeline has no helmsman for the storm.
-Now it does. KARNADHAR."
+**[SAY]** (back on the globe, slower) "India's energy lifeline never had a helmsman for
+the storm. Now it does. This is KARNADHAR. Thank you."
 **[DO]** Stop. Let the last frame hold for a second. End recording.
 
 *If over time, cut the ◇ Red Sea shot first, then trim the early-warning half of the
