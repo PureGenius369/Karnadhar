@@ -94,7 +94,7 @@ function hashStr(s: string): number {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
   return h;
 }
-function bowSeg(a: number[], b: number[], k: number, seg = 14): number[][] {
+function bowSeg(a: number[], b: number[], k: number, seg = 8): number[][] {
   const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
   const dx = b[0] - a[0], dy = b[1] - a[1];
   const cx = mx - dy * k, cy = my + dx * k;      // control point, perpendicular bow
@@ -158,7 +158,11 @@ export default function WarMap({ data, scenario, projection = 'globe', focusSour
     const m = new maplibregl.Map({
       container: ref.current, style: STYLE, center: [50, 18], zoom: 2.6,
       attributionControl: false,
-      canvasContextAttributes: { preserveDrawingBuffer: true },
+      // preserveDrawingBuffer is only needed for the dev-only canvas snapshot;
+      // in production it forces the GPU to keep the framebuffer each frame and
+      // measurably slows the globe — so keep it OFF in the deployed build.
+      canvasContextAttributes: { preserveDrawingBuffer: process.env.NODE_ENV !== 'production' },
+      fadeDuration: 0,           // skip the tile cross-fade repaints
     });
     map.current = m;
     (window as any).__map = m;
@@ -199,9 +203,9 @@ export default function WarMap({ data, scenario, projection = 'globe', focusSour
         id: 'flows-glow', type: 'line', source: 'flows',
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 3, 2.5, 700, 12],
+          'line-width': ['interpolate', ['linear'], ['get', 'kbd'], 3, 2, 700, 9],
           'line-color': '#2ec9ff',
-          'line-opacity': ['case', ['==', ['get', 'dim'], 1], 0.03, 0.16], 'line-blur': 3,
+          'line-opacity': ['case', ['==', ['get', 'dim'], 1], 0.03, 0.16], 'line-blur': 2,
         },
       });
       m.addLayer({
@@ -214,17 +218,22 @@ export default function WarMap({ data, scenario, projection = 'globe', focusSour
           'line-dasharray': [0, 4, 3] as any,
         },
       });
-      // barrels-in-motion: phase-cycle the dash pattern (~12 fps is plenty)
+      // barrels-in-motion: phase-cycle the dash pattern. Each update forces a
+      // full map repaint, so we SKIP it while the map is already animating
+      // (pan/zoom provides the motion) or the tab is hidden — big idle win.
       const DASH: number[][] = [
         [0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5],
         [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5],
       ];
+      const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
       let dashT = 0;
-      dashTimer.current = window.setInterval(() => {
-        if (!m.getLayer('flows')) return;
-        dashT = (dashT + 1) % DASH.length;
-        m.setPaintProperty('flows', 'line-dasharray', DASH[dashT] as any);
-      }, 90);
+      if (!reduceMotion) {
+        dashTimer.current = window.setInterval(() => {
+          if (!m.getLayer('flows') || document.hidden || m.isMoving()) return;
+          dashT = (dashT + 1) % DASH.length;
+          m.setPaintProperty('flows', 'line-dasharray', DASH[dashT] as any);
+        }, 140);
+      }
       m.addSource('sources', { type: 'geojson', data: srcFC(data, scenario) });
       m.addLayer({
         id: 'sources', type: 'circle', source: 'sources',
