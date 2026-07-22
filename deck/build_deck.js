@@ -495,9 +495,14 @@ function foot(s, txt) {
   });
 
   s.addText([
+    { text: 'Live: ', options: { color: MUT, fontSize: 13 } },
+    { text: 'karnadhar-117722238113.asia-south1.run.app', options: { color: TEAL, bold: true, fontSize: 13 } },
+    { text: '   ·   github.com/PureGenius369/Karnadhar', options: { color: MUT, fontSize: 13 } },
+  ], { x: 0.7, y: 6.15, w: 11.9, h: 0.35, fontFace: F, margin: 0 });
+  s.addText([
     { text: 'KARNADHAR', options: { bold: true, color: TEXT, fontSize: 16 } },
     { text: '   ·   Mann Sutariya · PDEU · mannsutaria2605@gmail.com', options: { color: MUT, fontSize: 13 } },
-  ], { x: 0.7, y: 6.55, w: 11.9, h: 0.4, fontFace: F, margin: 0 });
+  ], { x: 0.7, y: 6.6, w: 11.9, h: 0.4, fontFace: F, margin: 0 });
   s.addNotes('Close: everything you saw runs today — real data, real signals, provable results, expert-reviewed. India’s energy lifeline has no helmsman for the storm. Now it does. Thank you.');
 }
 

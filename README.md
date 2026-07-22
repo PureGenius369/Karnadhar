@@ -1,5 +1,7 @@
 # KARNADHAR — India's Energy Supply-Chain Command Center
 
+### ▶ **Live war-room: https://karnadhar-117722238113.asia-south1.run.app**  (deployed on Google Cloud Run, Mumbai)
+
 [![validation](https://github.com/PureGenius369/Karnadhar/actions/workflows/ci.yml/badge.svg)](https://github.com/PureGenius369/Karnadhar/actions/workflows/ci.yml)
 ![python](https://img.shields.io/badge/python-3.12-blue)
 ![license](https://img.shields.io/badge/license-MIT-green)
