@@ -60,8 +60,8 @@ s.addText('ORCHESTRATOR — chains the agents, times every stage (45 ms end-to-e
 });
 const t2y = 2.66, t2h = 0.92;
 box(2.55, t2y, 2.45, t2h, 'Geopolitical Risk Agent', 'baseline × spike alert rule; 12-day-lead backtest (real GDELT)', BLUE);
-box(5.1, t2y, 2.45, t2h, 'Disruption Scenario Modeller', 'block any chokepoint AND/OR sanction any supplier', AMBER);
-box(7.65, t2y, 2.75, t2h, 'Adaptive Procurement Orchestrator', 'grade-aware LP: API · sulphur · asphaltene · desulph caps', TEAL);
+box(5.1, t2y, 2.45, t2h, 'Disruption Scenario Modeller', '5 scenarios: block any chokepoint AND/OR sanction any supplier', AMBER);
+box(7.65, t2y, 2.75, t2h, 'Adaptive Procurement Orchestrator', 'grade-aware LP → ranked routes, shadow prices, VLCC ton-mile', TEAL);
 box(10.5, t2y, 2.45, t2h, 'Briefing Agent', 'executive memo — LLM writes words, never numbers', RED);
 downArrow(6.66, 3.63);
 
@@ -69,15 +69,15 @@ downArrow(6.66, 3.63);
 tierLabel(4.12, 'Domain engine\n(glass box)');
 const t3y = 3.94, t3h = 0.92;
 box(2.55, t3y, 2.85, t3h, 'Real refinery model', '10 refineries, diets & configs DERIVED from DGCIS + Nelson complexity', AMBER);
-box(5.5, t3y, 2.55, t3h, 'Economic cascade', 'closure → Brent → pump → CPI/GDP → twin-deficit CAD (ORF-reviewed)', RED);
-box(8.15, t3y, 2.45, t3h, 'Reserve coupling', 'honest SPR runway vs voyage bridge (Strategic Reserve view)', BLUE);
-box(10.7, t3y, 2.25, t3h, 'Validation suite', '35/35 falsifiable checks, exit-code gated', TEAL);
+box(5.5, t3y, 2.55, t3h, 'Channel-aware cascade', 'Hormuz = global shock; sanction = discount-loss; twin-deficit CAD + multi-commodity IVX', RED);
+box(8.15, t3y, 2.45, t3h, 'SPR drawdown scheduler', 'hold / bridge / ration; runway vs voyage bridge (Strategic Reserve)', BLUE);
+box(10.7, t3y, 2.25, t3h, 'Validation suite', '62/62 falsifiable checks, exit-code gated, in CI', TEAL);
 downArrow(6.66, 4.91);
 
 // ---------- Tier 4: interface ----------
 tierLabel(5.42, 'Digital twin\ninterface');
 const t4y = 5.22, t4h = 0.92;
-box(2.55, t4y, 6.2, t4h, 'War-room — Supply Chain Digital Twin', 'Next.js + MapLibre: live routed map, cut/alive corridors, per-refinery diets, scenario switching (~45 ms recompute)', PURP, 13);
+box(2.55, t4y, 6.2, t4h, 'War-room — Supply Chain Digital Twin', 'Next.js + MapLibre: 3D globe / 2D, animated optimizer flows, reroute deep-dive (ranked #1..N), knowledge graph, multi-commodity lens (~45 ms recompute)', PURP, 12.5);
 box(8.85, t4y, 4.1, t4h, 'FastAPI backend + JSON export', '/api/pipeline · /api/geo · /api/scenario — same engine, headless', PURP);
 downArrow(6.66, 6.19);
 

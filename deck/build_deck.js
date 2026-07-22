@@ -246,7 +246,7 @@ function foot(s, txt) {
 // ================= 6. HEADLINE RESULT =================
 {
   const s = slideBase();
-  kicker(s, 'The result that matters');
+  kicker(s, 'Evaluation focus 2 · procurement executability');
   title(s, 'The “fungible” plan is physically impossible. Ours is not.');
 
   // naive card
@@ -390,19 +390,17 @@ function foot(s, txt) {
   panel(s, 0.6, 1.9, 5.9, 4.6);
   s.addText('AUTOMATED VALIDATION', { x: 0.9, y: 2.1, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, bold: true, color: DIM, charSpacing: 2, margin: 0 });
   s.addText('62 / 62', { x: 0.9, y: 2.4, w: 5.3, h: 0.8, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0 });
-  s.addText('checks passed — one command, exit-code gated, run in CI', { x: 0.9, y: 3.2, w: 5.3, h: 0.3, fontFace: F, fontSize: 11.5, color: MUT, margin: 0 });
+  s.addText('checks passed — one command, exit-code gated, run in CI', { x: 0.9, y: 3.18, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, color: MUT, margin: 0 });
   const checks = [
-    'wedge holds: naive infeasible for grade reasons, LP optimal',
-    'cascade monotonic; bypass nuance; sensitivity band; twin deficit',
-    'signal alert precedes market repricing on real data',
-    'real-diet integrity: 46% exposure, configs sane',
-    'engine admits unmet demand; SPR scheduler holds/bridges/rations',
-    'decision layer proven: shadow prices · VLCC ton-mile · usable shortfall',
-    'reroute routes ranked by LP-committed volume — not the scarcity-artifact trap',
-    'multi-commodity lens generalises — Red Sea spares crude, hits edible oils',
+    'the wedge holds: naive infeasible for grade reasons; LP optimal',
+    'cascade monotonic + sanction ≠ global shock (discount-loss channel)',
+    'signal alert precedes market repricing on the real 2025 data',
+    'reroute ranked by LP-committed volume — no scarcity-artifact trap',
+    'decision layer: shadow prices · VLCC ton-mile · SPR scheduler',
+    'multi-commodity generalises — Red Sea spares crude, hits edible oils',
   ];
   s.addText(checks.map((c, i) => ({ text: c, options: { bullet: { code: '2713' }, color: MUT, breakLine: i < checks.length - 1 } })),
-    { x: 0.95, y: 3.6, w: 5.35, h: 2.7, fontFace: F, fontSize: 12.5, margin: 0, paraSpaceAfter: 8 });
+    { x: 0.95, y: 3.62, w: 5.35, h: 2.75, fontFace: F, fontSize: 12, margin: 0, paraSpaceAfter: 9, valign: 'top' });
 
   panel(s, 6.85, 1.9, 5.9, 2.2);
   s.addText('EVALUATION FOCUS — ALL FIVE, COVERED', { x: 7.15, y: 2.1, w: 5.3, h: 0.3, fontFace: F, fontSize: 11, bold: true, color: DIM, charSpacing: 2, margin: 0 });
@@ -486,20 +484,14 @@ function foot(s, txt) {
   s.addImage({ path: 'captures/map_hormuz.jpg', x: 0, y: 0, w: 13.33, h: 10.56, sizing: { type: 'crop', w: 13.33, h: 7.5 } });
   s.addShape('rect', { x: 0, y: 0, w: 13.33, h: 7.5, fill: { color: BG, transparency: 25 }, line: { type: 'none' } });
 
-  s.addText('NEXT 90 DAYS', { x: 0.7, y: 0.6, w: 6, h: 0.3, fontFace: F, fontSize: 12, bold: true, color: TEAL, charSpacing: 3, margin: 0 });
-  const road = [
-    'Refinery configs calibrated with Prof. Bhui’s written inputs (in progress)',
-    'Commercial AIS feed for dense Gulf coverage; Claude-authored live briefs',
-    'Pilot conversations: PPAC · ISPRL — the analysis they do in days, in 45 ms',
-  ];
-  s.addText(road.map((r, i) => ({ text: r, options: { bullet: { code: '2192' }, color: TEXT, breakLine: i < road.length - 1 } })),
-    { x: 0.7, y: 1.0, w: 8.5, h: 1.5, fontFace: F, fontSize: 14, margin: 0, paraSpaceAfter: 8 });
-
   s.addText('India’s energy lifeline has no helmsman for the storm.', {
-    x: 0.7, y: 3.4, w: 11.9, h: 0.6, fontFace: F, fontSize: 26, bold: true, color: TEXT, margin: 0,
+    x: 0.7, y: 2.7, w: 11.9, h: 0.6, fontFace: F, fontSize: 27, bold: true, color: TEXT, margin: 0,
   });
   s.addText('Now it does.', {
-    x: 0.7, y: 4.05, w: 11.9, h: 0.9, fontFace: F, fontSize: 44, bold: true, color: TEAL, margin: 0,
+    x: 0.7, y: 3.35, w: 11.9, h: 0.95, fontFace: F, fontSize: 46, bold: true, color: TEAL, margin: 0,
+  });
+  s.addText('Real government data · a real optimizer · two domain experts · 62 green checks — running today.', {
+    x: 0.7, y: 4.5, w: 11.9, h: 0.4, fontFace: F, fontSize: 14, color: MUT, margin: 0,
   });
 
   s.addText([

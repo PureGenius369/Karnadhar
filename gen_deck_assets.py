@@ -88,32 +88,49 @@ x = [f * 100 for f in fracs]
 brent = [r.brent_usd for r in rows]
 cad = [r.stressed_cad_pct_gdp for r in rows]
 
-fig, ax1 = plt.subplots(figsize=(8.6, 3.8), dpi=200)
+fig, ax1 = plt.subplots(figsize=(8.6, 4.0), dpi=200)
 fig.patch.set_alpha(0)
 style_ax(ax1)
-ax1.plot(x, brent, color=AMBER, lw=2.6, marker="o", ms=6, label="Brent $/bbl")
+ax1.plot(x, brent, color=AMBER, lw=2.6, marker="o", ms=6, label="Brent  ($/bbl)")
 ax1.set_xlabel("Strait of Hormuz closure severity (%)", fontsize=11)
 ax1.set_ylabel("Brent  ($/bbl)", fontsize=11)
 ax1.grid(axis="y", color=GRID, lw=.6, alpha=.6)
+ax1.set_ylim(74, 205)          # headroom so the top labels never clip
 
 ax2 = ax1.twinx()
 ax2.set_facecolor("none")
 for s in ax2.spines.values():
     s.set_visible(False)
 ax2.tick_params(colors=MUT, labelsize=11)
-ax2.plot(x, cad, color=RED, lw=2.6, marker="s", ms=6, label="Current-account deficit % GDP")
+ax2.plot(x, cad, color=RED, lw=2.6, marker="s", ms=6, label="Current-account deficit  (% GDP)")
 ax2.fill_between(x, cad, color=RED, alpha=.12)
 ax2.set_ylabel("Current-account deficit  (% of GDP)", fontsize=11, color=MUT)
+ax2.set_ylim(-0.3, 7.2)
 
+# combined legend, no frame, top-left corner (the flat-segment region is empty there)
+h1, _ = ax1.get_legend_handles_labels()
+h2, _ = ax2.get_legend_handles_labels()
+ax1.legend(h1 + h2, ["Brent  ($/bbl)", "Current-account deficit  (% GDP)"],
+           loc="upper left", frameon=False, fontsize=9.5, labelcolor=MUT)
+
+# the Brent and CAD lines nearly coincide, so split their labels diagonally:
+# Brent up-right, CAD down-left. Skip the redundant flat $82 duplicate at 25%.
 for xi, b in zip(x, brent):
-    ax1.annotate(f"${b:.0f}", (xi, b), textcoords="offset points", xytext=(10, -14),
+    if xi == 25:
+        continue
+    ax1.annotate(f"${b:.0f}", (xi, b), textcoords="offset points", xytext=(7, 7),
                  ha="left", color=AMBER, fontsize=10, fontweight="bold")
-for xi, c in zip(x[2:], cad[2:]):
-    ax2.annotate(f"{c:.1f}%", (xi, c), textcoords="offset points", xytext=(-8, 10),
-                 ha="right", color=RED, fontsize=10, fontweight="bold")
+for xi, c in zip(x, cad):
+    if c <= p.baseline_cad_pct_gdp + 0.05:          # only where it actually rises
+        continue
+    ax2.annotate(f"{c:.1f}%", (xi, c), textcoords="offset points", xytext=(-8, -15),
+                 ha="right", va="top", color=RED, fontsize=10, fontweight="bold")
 
-ax1.annotate("pipeline bypass\nabsorbs a 25% closure", (25, 97), color=TEAL,
-             fontsize=10, ha="center", fontweight="bold")
+# bypass callout in the empty upper-left, below the legend, with a light leader
+ax1.annotate("pipeline bypass absorbs\nthe first 25% of the closure",
+             xy=(14, 83), xytext=(2, 152), color=TEAL, fontsize=9.5,
+             ha="left", va="top", fontweight="bold",
+             arrowprops=dict(arrowstyle="-", color=TEAL, lw=1, alpha=.5))
 fig.tight_layout()
 fig.savefig(ASSETS / "cascade_chart.png", transparent=True, bbox_inches="tight")
 plt.close(fig)

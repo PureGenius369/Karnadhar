@@ -161,6 +161,9 @@ Suggested technologies: agentic multi-agent chain ✓ · geospatial (AIS, pipeli
 
 ## Data provenance (honest by design)
 
+**Full source list with links:** see [`SOURCES.md`](SOURCES.md) — DGCIS, PPAC, ISPRL,
+EIA, IEA, GDELT, aisstream, RBI, MoSPI, crude assays, and the two expert reviewers.
+
 **Reproducibility:** the raw DGCIS `.xls` files are government downloads and are
 not redistributed here; the repo ships the **derived dataset**
 (`engine/data/india_refinery_diets.json`, schema-versioned, with the derivation
